@@ -1,0 +1,15 @@
+.currentlocation {
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    z-index: 10;
+    
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
