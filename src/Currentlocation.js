@@ -1,11 +1,11 @@
-import { useState } from "react";
 import currentlacation from "./currentlocation.css";
+import { currentlo, geolocate } from "./utility";
 
-function Currentlacation(props) {
-  let coordinate = [];
+const { kakao } = window;
+
+function Currentlacation() {
   const onClick = () => {
-    coordinate =[33.450701, 126.570667];
-    props.currentlo(coordinate);
+    geolocate();
   };
 
   return (

@@ -1,5 +1,4 @@
 import Map from './Map';
-import Currentlacation from './Currentlocation';
 import style from './App.css';
 
 function App() {
