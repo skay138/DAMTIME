@@ -1,3 +1,5 @@
+import { Addplace } from "./addplace";
+
 /*global kakao*/
 const { kakao } = window;
 
@@ -65,7 +67,7 @@ export function geolocate() {
     marker.setVisible(false);
     console.log(marker.getVisible());
 
-    var iwContent = '<div style="padding:5px;">흡연구역 등록</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    var iwContent = `<div style="padding:5px;">흡연구역 등록</div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
       iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
     // 인포윈도우를 생성합니다
@@ -76,15 +78,17 @@ export function geolocate() {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, "click", function () {
-      // 마커 위에 인포윈도우를 표시합니다
-      infowindow.open(map, marker);
+      console.log("i HAVE TO CODE");
+      Addplace(marker.getPosition());
     });
+
 
     kakao.maps.event.addListener(map, "click", function (mouseEvent) {
       {
-        marker.getVisible() ? marker.setVisible(false) : marker.setVisible(true); infowindow.close(); //마커가 보이는데 맵을 클릭하면 마커 안보이게
+        marker.getVisible()
+          ? marker.setVisible(false)
+          : marker.setVisible(true); //마커가 보이는데 맵을 클릭하면 마커 안보이게
       }
-      console.log(marker.getVisible());
 
       // 클릭한 위도, 경도 정보를 가져옵니다
       var latlng = mouseEvent.latLng;
