@@ -1,3 +1,4 @@
+/*global kakao*/
 import React, { useEffect, useState } from "react";
 import Currentlacation from "./Currentlocation";
 import Mapstyle from "./Map.css";
