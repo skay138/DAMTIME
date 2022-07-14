@@ -1,16 +1,16 @@
-import Map from './Map';
-import style from './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import Mainmap from "./main.js";
 
 function App() {
+  const [login, setLogin] = useState(false);
 
+  function onclick(){
+    setLogin(true);
+  }
 
   return (
-    <div>
-      <div className='Mapcontent'>
-      <div className='title'>DAMTIME</div>
-      <Map />
-      </div>
-    </div>
+  login? <Mainmap /> : <button onClick={onclick}>LOGIN</button>
   );
 }
 
