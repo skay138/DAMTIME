@@ -1,13 +1,10 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import Mainmap from "./main.js";
-import { Addplace } from "./utility";
+import Main from "./main.js";
 
 function App() {
   return (
     <div>
-  <Mainmap />
-  <Addplace/>
+  <Main />
   </div>);
 }
 
