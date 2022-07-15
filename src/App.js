@@ -1,17 +1,14 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Mainmap from "./main.js";
+import { Addplace } from "./utility";
 
 function App() {
-  const [login, setLogin] = useState(false);
-
-  function onclick(){
-    setLogin(true);
-  }
-
   return (
-  login? <Mainmap /> : <button onClick={onclick}>LOGIN</button>
-  );
+    <div>
+  <Mainmap />
+  <Addplace/>
+  </div>);
 }
 
 export default App;

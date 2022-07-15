@@ -57,3 +57,7 @@ font-variation-settings:
   font-size: 30px;
   background-color: white;
 }
+
+.hide{
+  display: none;
+}
