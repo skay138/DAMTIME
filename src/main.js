@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 const { kakao } = window;
 
 function Main() {
-  const [refresh, setRefresh] = useState(false);
-  const [pinla, setPinla] = useState();
-  const [pinma, setPinma] = useState();
+  const [refresh, setRefresh] = useState(false); //refresh
+  const [pinla, setPinla] = useState(); //위도
+  const [pinma, setPinma] = useState(); //경도
 
   //map 구현
   useEffect(() => {
