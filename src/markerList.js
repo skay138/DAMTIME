@@ -1,4 +1,6 @@
 // 마커목록
+
+//https://api.odcloud.kr/api/15074379/v1/uddi:2d8a8cc8-94e3-4681-8388-bfb97e72a2c7?page=1&perPage=100&serviceKey=IlESOA6awIaazYgUuoHSILvZU%2BLsa7HTcYYDDXHBQe%2BjY%2BtiC2h4TgEybWsWWKNIRNHmIpUaC1G4S2z5QS%2FzRQ%3D%3D
 export const markerList = [
     {
         num : 1,
@@ -27,7 +29,13 @@ export const markerList = [
         lon : 127.0332457,
         name : "한국it전문학교 다산관",
         imgsrc : "koritDS.png"
-    }
+    },
+    {
+        num : 5,
+        lat : 37.46872470489714,
+        lon : 127.04659611317905,
+        name : "test pin",
+    },
   ];
  
   

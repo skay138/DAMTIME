@@ -1,3 +1,4 @@
+/* global kakao*/
 import "./App.css";
 import { useEffect, useState } from "react";
 import { markerList } from "./markerList";
@@ -10,27 +11,10 @@ function Main() {
   const [pinma, setPinma] = useState(); //경도
 
   //map 구현
+
   var map; // 외부접근 위해 전역변수로 설정
 
-  useEffect(() => {
-    var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
-      mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 4, // 지도의 확대 레벨
-      };
-
-    map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-  
-    // 흡연구역 표시
-    markerList.forEach((el) => {
-      new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(el.lat, el.lon),
-        title: el.name,
-      });
-    });
-    
-
+  function geolocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -75,6 +59,45 @@ function Main() {
       // 지도 중심좌표를 접속위치로 변경합니다
       map.setCenter(locPosition);
     }
+  }
+
+  useEffect(() => {
+    var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 4, // 지도의 확대 레벨
+      };
+
+    map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    geolocation(); //geolaction
+
+    // 흡연구역 표시
+    markerList.forEach((el) => {
+      var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(el.lat, el.lon),
+        title: el.name,
+      });
+
+      var iwContent = el.name, // 인포윈도우에 표시할 내용
+        iwRemoveable = false;
+
+      // 인포윈도우를 생성합니다
+      var infowindow = new kakao.maps.InfoWindow({
+        content: iwContent,
+        removable: iwRemoveable,
+      });
+
+      // 인포윈도우를 마커위에 표시합니다
+      infowindow.open(map, marker);
+
+      //마커의 클릭이벤트
+      kakao.maps.event.addListener(marker, 'click', function() {
+        document.getElementById("pininfo").className = "addpin";
+      });
+      
+    });
 
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
@@ -117,7 +140,8 @@ function Main() {
           ? marker.setVisible(false)
           : marker.setVisible(true);
         infowindow.close(); //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
-        document.getElementById("addpin").className = "addpin hide";
+        document.getElementById("addpin").className = "addpin hide"; //마커추가 숨기기
+        document.getElementById("pininfo").className = "addpin hide"; //마커정보 숨기기
       }
 
       // 클릭한 위도, 경도 정보를 가져옵니다
@@ -125,9 +149,7 @@ function Main() {
 
       // 가져온 위치로 마커 이동
       marker.setPosition(latlng);
-
     });
-
   }, [refresh]);
 
   //장소추가
@@ -141,11 +163,11 @@ function Main() {
 
   // 등록 창 닫기
   const cancel = () => {
-    document.getElementById("addpin").className="addpin hide";
+    document.getElementById("addpin").className = "addpin hide";
     console.log("핀 등록 닫음");
-  }
+  };
 
-  // 마커등록
+  // 등록버튼
   const submit = () => {
     var pinName = document.getElementById("pinName").value;
     var newmarker = {
@@ -153,12 +175,12 @@ function Main() {
       lat: pinla,
       lon: pinma,
       name: pinName,
-      imgsrc: ""
+      imgsrc: "",
     };
-    
+
     markerList.push(newmarker);
-    var last = markerList[markerList.length-1];
-    console.log(last.num, last.name);
+    var last = markerList[markerList.length - 1];
+    console.log(last.num, last.name, last.lat, last.lon);
 
     // 마커 업데이트
     var lastloc = new kakao.maps.LatLng(last.lat, last.lon);
@@ -170,7 +192,7 @@ function Main() {
     newmarker = {};
     alert("흡연구역으로 등록되었습니다.");
     cancel();
-  }
+  };
 
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
@@ -182,7 +204,11 @@ function Main() {
           DAMTIME
         </div>
         <div id="myMap" className="Mapstyle"></div>
-        <button className="currentlocation" id="currentlo">
+        <button
+          className="currentlocation"
+          id="currentlo"
+          onClick={geolocation}
+        >
           <span className="material-symbols-outlined">share_location</span>
         </button>
       </div>
@@ -195,6 +221,13 @@ function Main() {
         <button onClick={submit}>등록</button>
         <button onClick={cancel}>취소</button>
       </div>
+
+      {/* 여기부터는 핀정보입니다 */}
+      <div id="pininfo" className="addpin hide">
+        
+      </div>
+
+
     </div>
   );
 }
