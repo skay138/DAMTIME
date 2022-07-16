@@ -13,6 +13,8 @@
   height: 44px;
   font-size: 30px;
   background-color: white;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .Mapstyle {
@@ -26,9 +28,11 @@
 
 .currentlocation {
   position: absolute;
-  left: 10px;
-  bottom: 20px;
+  left: 5px;
+  bottom: 10px;
   z-index: 10;
+  border: none;
+  background: none;
   
 }
 
