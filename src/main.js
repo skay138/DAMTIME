@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { markerList } from "./markerList";
 
 const { kakao } = window;
 
@@ -9,6 +10,8 @@ function Main() {
   const [pinma, setPinma] = useState(); //경도
 
   //map 구현
+  var map; // 외부접근 위해 전역변수로 설정
+
   useEffect(() => {
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
@@ -16,7 +19,17 @@ function Main() {
         level: 4, // 지도의 확대 레벨
       };
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+  
+    // 흡연구역 표시
+    markerList.forEach((el) => {
+      new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(el.lat, el.lon),
+        title: el.name,
+      });
+    });
+    
 
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
@@ -114,6 +127,7 @@ function Main() {
       marker.setPosition(latlng);
 
     });
+
   }, [refresh]);
 
   //장소추가
@@ -124,7 +138,39 @@ function Main() {
     setPinla(prop.La);
     setPinma(prop.Ma);
   };
-  const cancel = () => document.getElementById("addpin").className="addpin hide";
+
+  // 등록 창 닫기
+  const cancel = () => {
+    document.getElementById("addpin").className="addpin hide";
+    console.log("핀 등록 닫음");
+  }
+
+  // 마커등록
+  const submit = () => {
+    var pinName = document.getElementById("pinName").value;
+    var newmarker = {
+      num: markerList.length + 1,
+      lat: pinla,
+      lon: pinma,
+      name: pinName,
+      imgsrc: ""
+    };
+    
+    markerList.push(newmarker);
+    var last = markerList[markerList.length-1];
+    console.log(last.num, last.name);
+
+    // 마커 업데이트
+    var lastloc = new kakao.maps.LatLng(last.lat, last.lon);
+    var lastmarker = new kakao.maps.Marker({
+      map: map,
+      position: lastloc,
+    });
+    lastmarker.setMap(map);
+    newmarker = {};
+    alert("흡연구역으로 등록되었습니다.");
+    cancel();
+  }
 
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
@@ -143,10 +189,10 @@ function Main() {
 
       {/* 여기부터는 addpin입니다 */}
       <div id="addpin" className="addpin hide">
-        <h3>{pinla}</h3>
-        <h3>{pinma}</h3>
-        <input type="text"></input>
-        <button>등록</button>
+        {/* <h3>{pinla}, {pinma}</h3> */}
+        <h3>흡연구역을 등록해주세요</h3>
+        <input type="text" id="pinName" placeholder="장소명 입력"></input>
+        <button onClick={submit}>등록</button>
         <button onClick={cancel}>취소</button>
       </div>
     </div>
