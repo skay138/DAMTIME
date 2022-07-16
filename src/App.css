@@ -12,7 +12,7 @@
   width: 100%;
   height: 44px;
   font-size: 30px;
-  background-color: white;
+  background-color: #ceeafa;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
@@ -76,18 +76,18 @@
 }
 .overlay_info a {
   display: block;
-  background: #d95050;
-  background: #d95050
+  background: #ceeafa;
+  background: #ceeafa
     url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
     no-repeat right 14px center;
   text-decoration: none;
-  color: #fff;
+  color: rgb(0, 0, 0);
   padding: 12px 36px 12px 14px;
   font-size: 14px;
   border-radius: 6px 6px 0 0;
 }
 .overlay_info a strong {
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_icon.png)
+  background: url(https://img.icons8.com/material-outlined/24/000000/smoking.png)
     no-repeat;
   padding-left: 27px;
 }

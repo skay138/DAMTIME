@@ -64,8 +64,6 @@ function Main() {
   }
 
   useEffect(() => {
-    console.log(pindata);
-
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -94,44 +92,45 @@ function Main() {
         image: markerImage,
         map: map,
         position: new kakao.maps.LatLng(el.Latitude, el.Longitude),
-        title: el.name,
+        title: el.Location,
       });
 
       //오버레이
-      var content = '<div class="overlay_info">';
-      content +=
-        '    <a href="https://place.map.kakao.com/17600274" target="_blank"><strong>흡연구역</strong></a>';
+      var content = '<div class="overlay_info" onclick="closeOverlay()">';
+      content += "    <a><strong>&nbsp상세정보</strong></a>";
       content += '    <div class="desc">';
       content +=
         '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
-      content +=
-        '        <span class="address">흡연구역위치</span>';
+      content += '        <span class="address">' + el.Location + "</span>";
       content += "    </div>";
       content += "</div>";
+
+      function closeOverlay(){
+        console.log("need to fix");
+      }
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
 
       // 커스텀 오버레이를 생성합니다
       var mapCustomOverlay = new kakao.maps.CustomOverlay({
-        clickable : true,
+        clickable: true,
         position: position,
         content: content,
         xAnchor: 0.56, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
         yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
-      // 커스텀 오버레이를 지도에 표시합니다
+      
+
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         mapCustomOverlay.setMap(map);
-        // document.getElementById("pininfo").className = "addpin";
-        // document.getElementById("pinname").innerHTML = el.Location;
       });
 
-      kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+      kakao.maps.event.addListener(map, "click", function () {
         mapCustomOverlay.setMap(null);
-      })
+      });
     });
 
     var marker = new kakao.maps.Marker({
@@ -142,7 +141,6 @@ function Main() {
     // 지도에 마커를 표시합니다
     marker.setMap(map);
     marker.setVisible(false);
-    console.log(marker.getVisible());
 
     //흡연구역등록
     let btn = document.createElement("div");
@@ -174,7 +172,8 @@ function Main() {
         marker.getVisible()
           ? marker.setVisible(false)
           : marker.setVisible(true);
-          //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
+        infowindow.close();
+        //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
         document.getElementById("addpin").className = "addpin hide"; //마커추가 숨기기
         document.getElementById("pininfo").className = "addpin hide"; //마커정보 숨기기
       }
