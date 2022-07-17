@@ -2,6 +2,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { markerList } from "./markerList";
+import pindata from "./pintest";
 
 const { kakao } = window;
 
@@ -13,6 +14,7 @@ function Main() {
   //map 구현
 
   var map; // 외부접근 위해 전역변수로 설정
+  var mapCustomOverlay; //동일
 
   function geolocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
@@ -73,30 +75,62 @@ function Main() {
     geolocation(); //geolaction
 
     // 흡연구역 표시
-    markerList.forEach((el) => {
+    pindata.forEach((el) => {
+      var imageSrc =
+          "https://img.icons8.com/material-rounded/96/000000/marker.png", // 마커이미지의 주소입니다
+        imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
+        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+      var markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imageOption
+      );
+
       var marker = new kakao.maps.Marker({
+        image: markerImage,
         map: map,
-        position: new kakao.maps.LatLng(el.lat, el.lon),
-        title: el.name,
+        position: new kakao.maps.LatLng(el.Latitude, el.Longitude),
+        title: el.Location,
       });
 
-      var iwContent = el.name, // 인포윈도우에 표시할 내용
-        iwRemoveable = false;
+      //오버레이
+      var content = '<div class="overlay_info" onclick="closeOverlay()">';
+      content += "    <a><strong>&nbsp상세정보</strong></a>";
+      content += '    <div class="desc">';
+      content +=
+        '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+      content += '        <span class="address">' + el.Location + "</span>";
+      content += "    </div>";
+      content += "</div>";
 
-      // 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: iwContent,
-        removable: iwRemoveable,
+      function closeOverlay(){
+        console.log("need to fix");
+      }
+
+      // 커스텀 오버레이가 표시될 위치입니다
+      var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
+
+      // 커스텀 오버레이를 생성합니다
+      var mapCustomOverlay = new kakao.maps.CustomOverlay({
+        clickable: true,
+        position: position,
+        content: content,
+        xAnchor: 0.56, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+        yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
-      // 인포윈도우를 마커위에 표시합니다
-      infowindow.open(map, marker);
+      
 
       //마커의 클릭이벤트
-      kakao.maps.event.addListener(marker, 'click', function() {
-        document.getElementById("pininfo").className = "addpin";
+      kakao.maps.event.addListener(marker, "click", function () {
+        mapCustomOverlay.setMap(map);
       });
-      
+
+      kakao.maps.event.addListener(map, "click", function () {
+        mapCustomOverlay.setMap(null);
+      });
     });
 
     var marker = new kakao.maps.Marker({
@@ -107,7 +141,6 @@ function Main() {
     // 지도에 마커를 표시합니다
     marker.setMap(map);
     marker.setVisible(false);
-    console.log(marker.getVisible());
 
     //흡연구역등록
     let btn = document.createElement("div");
@@ -139,7 +172,8 @@ function Main() {
         marker.getVisible()
           ? marker.setVisible(false)
           : marker.setVisible(true);
-        infowindow.close(); //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
+        infowindow.close();
+        //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
         document.getElementById("addpin").className = "addpin hide"; //마커추가 숨기기
         document.getElementById("pininfo").className = "addpin hide"; //마커정보 숨기기
       }
@@ -209,7 +243,10 @@ function Main() {
           id="currentlo"
           onClick={geolocation}
         >
-          <span className="material-symbols-outlined">share_location</span>
+          <img
+            src="https://img.icons8.com/sf-black-filled/64/000000/location-update.png"
+            width="50px"
+          />
         </button>
       </div>
 
@@ -224,10 +261,8 @@ function Main() {
 
       {/* 여기부터는 핀정보입니다 */}
       <div id="pininfo" className="addpin hide">
-        
+        <h3 id="pinname"></h3>
       </div>
-
-
     </div>
   );
 }

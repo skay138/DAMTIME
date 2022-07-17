@@ -1,0 +1,527 @@
+[
+  {
+    "No": 1,
+    "FacilityType": "개방형흡연부스",
+    "Location": "사당역 2번 출구와 3번 출구 사이 보도",
+    "Longitude": 126.981985,
+    "Latitude": 37.475772
+  },
+  {
+    "No": 2,
+    "FacilityType": "개방형흡연부스",
+    "Location": "강남역 7번 출구와 8번출구 사이 보도 서초동 1319-5 앞",
+    "Longitude": 127.0272426,
+    "Latitude": 37.49732157
+  },
+  {
+    "No": 3,
+    "FacilityType": "개방형흡연부스",
+    "Location": "방배역3번출구 먹자골목 입구방배동 910-9 옆",
+    "Longitude": 126.9968626,
+    "Latitude": 37.4821695
+  },
+  {
+    "No": 4,
+    "FacilityType": "개방형흡연부스",
+    "Location": "방배천복개도로 명동칼국수방배동 450-14 앞",
+    "Longitude": 126.9829627,
+    "Latitude": 37.47774476
+  },
+  {
+    "No": 5,
+    "FacilityType": "개방형흡연부스",
+    "Location": "서초대로 78길 24 서초동 1327-5 스타벅스 앞",
+    "Longitude": 127.0276995,
+    "Latitude": 37.49562161
+  },
+  {
+    "No": 6,
+    "FacilityType": "개방형흡연부스",
+    "Location": "서초대로 78길 42 서초동 1330-18 현대기림오피스텔 앞",
+    "Longitude": 127.028331,
+    "Latitude": 37.49399497
+  },
+  {
+    "No": 7,
+    "FacilityType": "개방형흡연부스",
+    "Location": "원지동 23서초종합체육센터 입구",
+    "Longitude": 127.0406249,
+    "Latitude": 37.45929098
+  },
+  {
+    "No": 8,
+    "FacilityType": "개방형흡연부스",
+    "Location": "방배동 438-38(서울시공공자전거 수서센터  앞)",
+    "Longitude": 126.9824348,
+    "Latitude": 37.48403915
+  },
+  {
+    "No": 9,
+    "FacilityType": "개방형흡연부스",
+    "Location": "방배천복개도로 방배경찰서방배동 455-10 앞",
+    "Longitude": 126.9829963,
+    "Latitude": 37.48139501
+  },
+  {
+    "No": 10,
+    "FacilityType": "개방형흡연부스",
+    "Location": "방배천복개도로 그린골프장방배동 452-1 앞",
+    "Longitude": 126.9829129,
+    "Latitude": 37.47890746
+  },
+  {
+    "No": 11,
+    "FacilityType": "라인형흡연구역",
+    "Location": "서희타워서초동1366-4 옆 이면도로",
+    "Longitude": 127.0162998,
+    "Latitude": 37.48845867
+  },
+  {
+    "No": 12,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재환승주차장 세븐일레븐 편의점 옆",
+    "Longitude": 127.034911,
+    "Latitude": 37.483537
+  },
+  {
+    "No": 13,
+    "FacilityType": "폐쇄형흡연부스",
+    "Location": "서초구청 주차장 자판기 옆",
+    "Longitude": 127.0135013,
+    "Latitude": 37.47688099
+  },
+  {
+    "No": 14,
+    "FacilityType": "개방형흡연구역",
+    "Location": "교보생명보험㈜서초사옥 부지주차장 진입로 옆)",
+    "Longitude": 127.0135013,
+    "Latitude": 37.47688099
+  },
+  {
+    "No": 15,
+    "FacilityType": "개방형흡연구역",
+    "Location": "엘타워 뒤 주차장 진입로 옆",
+    "Longitude": 127.035929,
+    "Latitude": 37.482145
+  },
+  {
+    "No": 16,
+    "FacilityType": "부분개방형흡연실",
+    "Location": "서울가정행정법원 청사 출입계단 밑",
+    "Longitude": 126.9396083,
+    "Latitude": 37.56448109
+  },
+  {
+    "No": 17,
+    "FacilityType": "부분개방형흡연부스",
+    "Location": "센트럴시티 경부선 하차장 옆",
+    "Longitude": 127.005008,
+    "Latitude": 37.505033
+  },
+  {
+    "No": 18,
+    "FacilityType": "부분개방형흡연부스",
+    "Location": "센트럴시티 호남선 출입구 옆",
+    "Longitude": 127.003274,
+    "Latitude": 37.505583
+  },
+  {
+    "No": 19,
+    "FacilityType": "개방형흡연구역",
+    "Location": "센트럴시티  경부선 건물 남쪽 외부 공간",
+    "Longitude": 127.006705,
+    "Latitude": 37.506298
+  },
+  {
+    "No": 20,
+    "FacilityType": "부분개방형흡연구역",
+    "Location": "고속버스터미널역 3번출구 앞",
+    "Longitude": 127.006222,
+    "Latitude": 37.504128
+  },
+  {
+    "No": 21,
+    "FacilityType": "라인형흡연구역",
+    "Location": "남부순환로350길 36 강촌쭈꾸미 앞 전신주 주변",
+    "Longitude": 127.0362142,
+    "Latitude": 37.4832926
+  },
+  {
+    "No": 22,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로30길 7 카센터 옆 기존 주차구역(영동교회 맞은편)",
+    "Longitude": 127.0376926,
+    "Latitude": 37.48187307
+  },
+  {
+    "No": 23,
+    "FacilityType": "라인형흡연구역",
+    "Location": "남부순환로 2636 건물 우측 골목(오선채 좌측골목)",
+    "Longitude": 127.0390378,
+    "Latitude": 37.48488671
+  },
+  {
+    "No": 24,
+    "FacilityType": "라인형흡연구역",
+    "Location": "논현로31길 9 전국자동차노조연맹 사옥건물 뒤 사거리",
+    "Longitude": 127.0423596,
+    "Latitude": 37.48200959
+  },
+  {
+    "No": 25,
+    "FacilityType": "라인형흡연구역",
+    "Location": "바우뫼로 201 블랙야크빌딩 주차장 출입구 옆 사거리",
+    "Longitude": 127.0409249,
+    "Latitude": 37.48020914
+  },
+  {
+    "No": 26,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로 148 서울마더스성형외과 앞 녹지 사이 보도",
+    "Longitude": 127.0391797,
+    "Latitude": 37.47788702
+  },
+  {
+    "No": 27,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재천로21길 29 앞 녹지 사이 보도",
+    "Longitude": 127.0391505,
+    "Latitude": 37.47700583
+  },
+  {
+    "No": 28,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재천로21길 3 건물 앞 보도 가각지점",
+    "Longitude": 127.0391501,
+    "Latitude": 37.47580359
+  },
+  {
+    "No": 29,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로27길 7-21 건물 앞 횃불어린이공원 경계",
+    "Longitude": 127.0380875,
+    "Latitude": 37.47825349
+  },
+  {
+    "No": 30,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재천로19길 34 건물 앞 녹지 사이 보도",
+    "Longitude": 127.0381653,
+    "Latitude": 37.47685884
+  },
+  {
+    "No": 31,
+    "FacilityType": "라인형흡연구역",
+    "Location": "바우뫼로 128 비스텔타워 후면 전신주 주변",
+    "Longitude": 127.0351956,
+    "Latitude": 37.47551886
+  },
+  {
+    "No": 32,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로 193 서울가정행정법원 청사계단 옆",
+    "Longitude": 127.0361894,
+    "Latitude": 37.48124416
+  },
+  {
+    "No": 33,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로 213 엘타워 주차장 입구",
+    "Longitude": 127.0356121,
+    "Latitude": 37.48234264
+  },
+  {
+    "No": 34,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로 221 양재주차빌딩(양재역 환승주차장) 옆",
+    "Longitude": 127.0339314,
+    "Latitude": 37.48353149
+  },
+  {
+    "No": 35,
+    "FacilityType": "비대면흡연부스",
+    "Location": "바우뫼로21길 10 진입로 입구",
+    "Longitude": 127.0350229,
+    "Latitude": 37.47589342
+  },
+  {
+    "No": 36,
+    "FacilityType": "비대면흡연부스",
+    "Location": "바우뫼로27길 13 세븐일레븐 편의점 앞",
+    "Longitude": 127.0361156,
+    "Latitude": 37.4772768
+  },
+  {
+    "No": 37,
+    "FacilityType": "비대면흡연부스",
+    "Location": "강남대로27길 7-9 느린마을양조장 앞",
+    "Longitude": 127.0379602,
+    "Latitude": 37.47894469
+  },
+  {
+    "No": 38,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재동 261-22 양재천 족구장 기존 흡연구역",
+    "Longitude": 127.0416833,
+    "Latitude": 37.47610769
+  },
+  {
+    "No": 39,
+    "FacilityType": "라인형흡연구역",
+    "Location": "마방로10길 25 건물 주차장 기업은행 지주간판 도로",
+    "Longitude": 127.0438237,
+    "Latitude": 37.47566513
+  },
+  {
+    "No": 40,
+    "FacilityType": "비대면흡연부스",
+    "Location": "논현로 31 빌딩 앞 사거리 가각지점",
+    "Longitude": 127.0483165,
+    "Latitude": 37.47370726
+  },
+  {
+    "No": 41,
+    "FacilityType": "라인형흡연구역",
+    "Location": "논현로1길 23 아파트 외부 보도 가각지점",
+    "Longitude": 127.0504028,
+    "Latitude": 37.4715204
+  },
+  {
+    "No": 42,
+    "FacilityType": "라인형흡연구역",
+    "Location": "동산로16길 34 건물 앞 가각지점 보도(화단 옆)",
+    "Longitude": 127.0479008,
+    "Latitude": 37.47114129
+  },
+  {
+    "No": 43,
+    "FacilityType": "라인형흡연구역",
+    "Location": "논현로1길 83 앞 녹지 옆 기존 흡연구역",
+    "Longitude": 127.0478137,
+    "Latitude": 37.46965371
+  },
+  {
+    "No": 44,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로8길 77 동산마을구립주차장 내",
+    "Longitude": 127.0443487,
+    "Latitude": 37.47004601
+  },
+  {
+    "No": 45,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로6길 60-23 건물 후면 양재대로변",
+    "Longitude": 127.0449155,
+    "Latitude": 37.4675954
+  },
+  {
+    "No": 46,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로4길 5 카센터 앞 보도",
+    "Longitude": 127.0424817,
+    "Latitude": 37.46684346
+  },
+  {
+    "No": 47,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로6길 16 건물 앞 녹지사이 보도",
+    "Longitude": 127.0420314,
+    "Latitude": 37.4672001
+  },
+  {
+    "No": 48,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로8길 3 건물 앞 보도 끝지점",
+    "Longitude": 127.0413166,
+    "Latitude": 37.46783162
+  },
+  {
+    "No": 49,
+    "FacilityType": "라인형흡연구역",
+    "Location": "강남대로10길 21 건물 앞 녹지사이 보도",
+    "Longitude": 127.0404835,
+    "Latitude": 37.4686013
+  },
+  {
+    "No": 50,
+    "FacilityType": "라인형흡연구역",
+    "Location": "마방로2길 26 건물 앞 녹지사이 보도",
+    "Longitude": 127.0391407,
+    "Latitude": 37.47250456
+  },
+  {
+    "No": 51,
+    "FacilityType": "라인형흡연구역",
+    "Location": "양재동 221-3 건물 앞 녹지사이 보도",
+    "Longitude": 127.0350257,
+    "Latitude": 37.46046354
+  },
+  {
+    "No": 52,
+    "FacilityType": "라인형흡연구역",
+    "Location": "논현로 27 소호정 주차장",
+    "Longitude": 127.0486798,
+    "Latitude": 37.47325346
+  },
+  {
+    "No": 53,
+    "FacilityType": "비대면흡연부스",
+    "Location": "논현로 71 평가옥 앞",
+    "Longitude": 127.045622,
+    "Latitude": 37.47629069
+  },
+  {
+    "No": 54,
+    "FacilityType": "라인형흡연구역",
+    "Location": "동산로2길 27 한성생고기 앞",
+    "Longitude": 127.0426314,
+    "Latitude": 37.46873132
+  },
+  {
+    "No": 55,
+    "FacilityType": "비대면흡연부스",
+    "Location": "양재동 316 띠녹지 안",
+    "Longitude": 127.0392418,
+    "Latitude": 37.47072377
+  },
+  {
+    "No": 56,
+    "FacilityType": "비대면흡연부스",
+    "Location": "강남대로27 AT센터 앞",
+    "Longitude": 127.0397987,
+    "Latitude": 37.46547198
+  },
+  {
+    "No": 57,
+    "FacilityType": "비대면흡연부스",
+    "Location": "매헌로16길 32 희경재단 앞 녹지대",
+    "Longitude": 127.0359017,
+    "Latitude": 37.4663773
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  },
+  {
+    "No": "",
+    "FacilityType": "",
+    "Location": "",
+    "Longitude": "",
+    "Latitude": ""
+  }
+]
