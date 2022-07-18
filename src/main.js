@@ -1,10 +1,8 @@
 /* global kakao*/
 import "./App.css";
 import { useEffect, useState } from "react";
-import { markerList } from "./markerList";
 import pindata from "./pintest";
 import Pininfo from "./pininfo";
-import Button from "./Button";
 import Addpin from "./Addfin";
 
 const { kakao } = window;
@@ -160,7 +158,8 @@ function Main() {
     function addpin() {
       console.log("i HAVE TO CODE");
       document.getElementById("addpin").className = "info";
-      Addplace(marker.getPosition());
+      setPinla(marker.getPosition().Ma);
+      setPinma(marker.getPosition().La);
     }
 
     var iwContent = btn, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
@@ -196,17 +195,6 @@ function Main() {
     });
   }, [refresh]);
 
-  //장소추가
-  const Addplace = (prop) => {
-    var message = "클릭한 위치의 위도는 " + prop.La + " 이고, ";
-    message += "경도는 " + prop.Ma + " 입니다";
-    console.log(message);
-    setPinla(prop.La);
-    setPinma(prop.Ma);
-  };
-
-
-  
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
 
@@ -230,7 +218,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin />
+      <Addpin lat={pinla} lon={pinma} />
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo name={pinname} />

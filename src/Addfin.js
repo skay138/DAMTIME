@@ -2,11 +2,12 @@ import React from "react";
 import "./App.css";
 import Button from "./Button";
 
-function Addpin() {
+function Addpin({lat, lon}) {
+
+    console.log("보낼 데이터는 위도 : " + lat + "경도 : " + lon + "입니다.")
 
   return (
     <div id="addpin" className="info hide">
-        {/* <h3>{pinla}, {pinma}</h3> */}
         <h3>흡연구역을 등록해주세요</h3>
         <input type="text" id="pinName" placeholder="장소명 입력"></input>
         <Button name="등록" action="submit"/>
