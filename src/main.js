@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import pindata from "./pintest";
 import Pininfo from "./pininfo";
-import Addpin from "./Addfin";
+import Addpin from "./addfin";
 
 const { kakao } = window;
 
@@ -100,24 +100,30 @@ function Main() {
       var content = document.createElement("div");
       content.className = "overlay_info";
 
-      var address = document.createElement("span");
-      address.appendChild(document.createTextNode(el.Location));
-      address.id = "location_" + el.No;
-      content.appendChild(address);
-
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPinname(el.Location);
       };
+      
+      var atag = document.createElement("a");
+      var strong = document.createElement("strong");
+      strong.innerHTML = "상세정보";
+      atag.appendChild(strong);
+      var descdiv = document.createElement("div");
+      descdiv.className="desc";
+      var mapimg = document.createElement("img");
+      mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
+      descdiv.appendChild(mapimg);
 
-      /* 상세정보 구버젼
-      content += "    <a><strong>&nbsp상세정보</strong></a>";
-      content += '    <div class="desc">';
-      content +=
-        '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
-      content += '        <span class="address">' + el.Location + "</span>";
-      content += "    </div>";
-      content += "</div>"; */
+      var address = document.createElement("span");
+      address.className = "address";
+      address.appendChild(document.createTextNode(el.Location));
+      address.id = "location_" + el.No;
+      descdiv.appendChild(address);
+
+      content.appendChild(atag);
+      content.appendChild(descdiv);
+      
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
