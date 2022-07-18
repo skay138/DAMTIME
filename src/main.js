@@ -96,18 +96,26 @@ function Main() {
       });
 
       //오버레이
-      var content = '<div class="overlay_info" onclick="closeOverlay()">';
-      content += "    <a><strong>&nbsp상세정보</strong></a>";
-      content += '    <div class="desc">';
-      content +=
-        '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
-      content += '        <span class="address">' + el.Location + "</span>";
-      content += "    </div>";
-      content += "</div>";
+      var content = document.createElement('div');
+      content.className='overlay_info';
+      
+      var adress = document.createElement("span");
+      adress.appendChild(document.createTextNode(el.Location));
 
-      function closeOverlay(){
-        console.log("need to fix");
+      content.appendChild(adress);
+
+      content.onclick = function(){
+        console.log("hi")
+        document.getElementById("pininfo").className = "addpin";
       }
+
+      // content += "    <a><strong>&nbsp상세정보</strong></a>";
+      // content += '    <div class="desc">';
+      // content +=
+      //   '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+      // content += '        <span class="address">' + el.Location + "</span>";
+      // content += "    </div>";
+      // content += "</div>";
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
@@ -133,6 +141,7 @@ function Main() {
       });
     });
 
+
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
       position: map.getCenter(),
@@ -154,7 +163,7 @@ function Main() {
     }
 
     var iwContent = btn, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+      iwRemoveable = true; // removeable 속성을 true 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
@@ -198,6 +207,7 @@ function Main() {
   // 등록 창 닫기
   const cancel = () => {
     document.getElementById("addpin").className = "addpin hide";
+    document.getElementById("pininfo").className = "addpin hide";
     console.log("핀 등록 닫음");
   };
 
@@ -262,6 +272,7 @@ function Main() {
       {/* 여기부터는 핀정보입니다 */}
       <div id="pininfo" className="addpin hide">
         <h3 id="pinname"></h3>
+        <button onClick={cancel}>닫기</button>
       </div>
     </div>
   );
