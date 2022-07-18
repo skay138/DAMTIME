@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { markerList } from "./markerList";
 import pindata from "./pintest";
+import Pininfo from "./pininfo";
 
 const { kakao } = window;
 
@@ -95,27 +96,31 @@ function Main() {
         title: el.Location,
       });
 
+
       //오버레이
       var content = document.createElement('div');
       content.className='overlay_info';
       
-      var adress = document.createElement("span");
-      adress.appendChild(document.createTextNode(el.Location));
+      var address = document.createElement("span");
+      address.appendChild(document.createTextNode(el.Location));
+      address.id='location_' + el.No;
 
-      content.appendChild(adress);
+      content.appendChild(address);
 
-      content.onclick = function(){
-        console.log("hi")
-        document.getElementById("pininfo").className = "addpin";
+      content.onclick = function Infotest(){
+        console.log(address);
+        document.getElementById("pininfo").className = "pininfo";
+
       }
-
-      // content += "    <a><strong>&nbsp상세정보</strong></a>";
-      // content += '    <div class="desc">';
-      // content +=
-      //   '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
-      // content += '        <span class="address">' + el.Location + "</span>";
-      // content += "    </div>";
-      // content += "</div>";
+      
+      /* 상세정보 구버젼
+      content += "    <a><strong>&nbsp상세정보</strong></a>";
+      content += '    <div class="desc">';
+      content +=
+        '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+      content += '        <span class="address">' + el.Location + "</span>";
+      content += "    </div>";
+      content += "</div>"; */
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
@@ -207,7 +212,6 @@ function Main() {
   // 등록 창 닫기
   const cancel = () => {
     document.getElementById("addpin").className = "addpin hide";
-    document.getElementById("pininfo").className = "addpin hide";
     console.log("핀 등록 닫음");
   };
 
@@ -271,8 +275,7 @@ function Main() {
 
       {/* 여기부터는 핀정보입니다 */}
       <div id="pininfo" className="addpin hide">
-        <h3 id="pinname"></h3>
-        <button onClick={cancel}>닫기</button>
+        <Pininfo />
       </div>
     </div>
   );
