@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { markerList } from "./markerList";
 import pindata from "./pintest";
 import Pininfo from "./pininfo";
+import Button from "./Button";
+import Addpin from "./Addfin";
 
 const { kakao } = window;
 
@@ -96,22 +98,20 @@ function Main() {
         title: el.Location,
       });
 
-
       //오버레이
-      var content = document.createElement('div');
-      content.className='overlay_info';
-      
+      var content = document.createElement("div");
+      content.className = "overlay_info";
+
       var address = document.createElement("span");
       address.appendChild(document.createTextNode(el.Location));
-      address.id='location_' + el.No;
+      address.id = "location_" + el.No;
       content.appendChild(address);
 
-      content.onclick = function (){
-        document.getElementById("pininfo").className = "pininfo";
+      content.onclick = function () {
+        document.getElementById("pininfo").className = "info";
         setPinname(el.Location);
+      };
 
-      }
-      
       /* 상세정보 구버젼
       content += "    <a><strong>&nbsp상세정보</strong></a>";
       content += '    <div class="desc">';
@@ -133,8 +133,6 @@ function Main() {
         yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
-      
-
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         mapCustomOverlay.setMap(map);
@@ -144,7 +142,6 @@ function Main() {
         mapCustomOverlay.setMap(null);
       });
     });
-
 
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
@@ -162,7 +159,7 @@ function Main() {
 
     function addpin() {
       console.log("i HAVE TO CODE");
-      document.getElementById("addpin").className = "addpin";
+      document.getElementById("addpin").className = "info";
       Addplace(marker.getPosition());
     }
 
@@ -208,39 +205,8 @@ function Main() {
     setPinma(prop.Ma);
   };
 
-  // 등록 창 닫기
-  const cancel = () => {
-    document.getElementById("addpin").className = "addpin hide";
-    console.log("핀 등록 닫음");
-  };
 
-  // 등록버튼
-  const submit = () => {
-    var pinName = document.getElementById("pinName").value;
-    var newmarker = {
-      num: markerList.length + 1,
-      lat: pinla,
-      lon: pinma,
-      name: pinName,
-      imgsrc: "",
-    };
-
-    markerList.push(newmarker);
-    var last = markerList[markerList.length - 1];
-    console.log(last.num, last.name, last.lat, last.lon);
-
-    // 마커 업데이트
-    var lastloc = new kakao.maps.LatLng(last.lat, last.lon);
-    var lastmarker = new kakao.maps.Marker({
-      map: map,
-      position: lastloc,
-    });
-    lastmarker.setMap(map);
-    newmarker = {};
-    alert("흡연구역으로 등록되었습니다.");
-    cancel();
-  };
-
+  
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
 
@@ -264,16 +230,10 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <div id="addpin" className="addpin hide">
-        {/* <h3>{pinla}, {pinma}</h3> */}
-        <h3>흡연구역을 등록해주세요</h3>
-        <input type="text" id="pinName" placeholder="장소명 입력"></input>
-        <button onClick={submit}>등록</button>
-        <button onClick={cancel}>취소</button>
-      </div>
+      <Addpin />
 
       {/* 여기부터는 핀정보입니다 */}
-        <Pininfo name={pinname} />
+      <Pininfo name={pinname} />
     </div>
   );
 }

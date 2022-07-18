@@ -1,16 +1,13 @@
 import React from "react";
 import "./App.css";
+import Button from "./Button";
 
 function Pininfo({name}) {
-  function close() {
-    document.getElementById("pininfo").className = "pininfo hide";
-    console.log("상세보기 닫음");
-  }
 
   return (
-    <div id="pininfo" className="addpin hide">
+    <div id="pininfo" className="info hide">
       <h3>{name}</h3>
-      <button onClick={close}>닫기</button>
+      <Button name="닫기" action="close" />
     </div>
   );
 }
