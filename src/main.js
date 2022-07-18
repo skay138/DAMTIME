@@ -9,13 +9,13 @@ const { kakao } = window;
 
 function Main() {
   const [refresh, setRefresh] = useState(false); //refresh
-  const [pinla, setPinla] = useState(); //위도
-  const [pinma, setPinma] = useState(); //경도
+  const [pinla, setPinla] = useState(33.450701); //위도
+  const [pinma, setPinma] = useState(126.570667); //경도
+  const [pinname, setPinname] = useState("이름없음");
 
   //map 구현
 
   var map; // 외부접근 위해 전역변수로 설정
-  var mapCustomOverlay; //동일
 
   function geolocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
@@ -104,12 +104,11 @@ function Main() {
       var address = document.createElement("span");
       address.appendChild(document.createTextNode(el.Location));
       address.id='location_' + el.No;
-
       content.appendChild(address);
 
-      content.onclick = function Infotest(){
-        console.log(address);
+      content.onclick = function (){
         document.getElementById("pininfo").className = "pininfo";
+        setPinname(el.Location);
 
       }
       
@@ -274,9 +273,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 핀정보입니다 */}
-      <div id="pininfo" className="addpin hide">
-        <Pininfo />
-      </div>
+        <Pininfo name={pinname} />
     </div>
   );
 }
