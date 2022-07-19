@@ -45,7 +45,7 @@
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-.addpin {
+.info {
   z-index: 0;
   position: absolute;
   bottom: 0px;
@@ -56,9 +56,12 @@
   background-color: white;
 }
 
+
 .hide {
   display: none;
 }
+
+
 
 
 .overlay_info {
