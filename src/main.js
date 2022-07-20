@@ -1,9 +1,9 @@
 /* global kakao*/
 import "./App.css";
 import { useEffect, useState } from "react";
-import pindata from "./pintest";
+import axios from "axios";
 import Pininfo from "./pininfo";
-import Addpin from "./addfin";
+import Addpin from "./Addfin";
 
 const { kakao } = window;
 
@@ -12,6 +12,7 @@ function Main() {
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
   const [pinname, setPinname] = useState("이름없음");
+  const [pindata, setPindata] = useState([]);
 
   //map 구현
 
@@ -65,6 +66,12 @@ function Main() {
   }
 
   useEffect(() => {
+    axios.get("http://localhost:4000/api").then((res) => {
+      setPindata(res.data);
+    });
+  }, [refresh]);
+
+  useEffect(() => {
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -76,6 +83,7 @@ function Main() {
     geolocation(); //geolaction
 
     // 흡연구역 표시
+    
     pindata.forEach((el) => {
       var imageSrc =
           "https://img.icons8.com/material-rounded/96/000000/marker.png", // 마커이미지의 주소입니다
@@ -104,15 +112,16 @@ function Main() {
         document.getElementById("pininfo").className = "info";
         setPinname(el.Location);
       };
-      
+
       var atag = document.createElement("a");
       var strong = document.createElement("strong");
       strong.innerHTML = "상세정보";
       atag.appendChild(strong);
       var descdiv = document.createElement("div");
-      descdiv.className="desc";
+      descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
+      mapimg.src =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
       descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
@@ -123,7 +132,6 @@ function Main() {
 
       content.appendChild(atag);
       content.appendChild(descdiv);
-      
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
@@ -146,6 +154,8 @@ function Main() {
         mapCustomOverlay.setMap(null);
       });
     });
+
+    
 
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
@@ -199,7 +209,7 @@ function Main() {
       // 가져온 위치로 마커 이동
       marker.setPosition(latlng);
     });
-  }, [refresh]);
+  }, [refresh, pindata]);
 
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
