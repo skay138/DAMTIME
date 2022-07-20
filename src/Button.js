@@ -1,7 +1,9 @@
+import './button.css';
+
 export default function Button({ name, action }) {
   // 등록버튼
 
-  function submit () {
+  function submit() {
     var pinName = document.getElementById("pinName").value;
     console.log(pinName);
     // var newmarker = {
@@ -27,13 +29,28 @@ export default function Button({ name, action }) {
     // newmarker = {};
     alert("흡연구역으로 등록되었습니다.");
     close();
-  };
+  }
 
   function close() {
     document.getElementById("pininfo").className = "info hide";
-    document.getElementById("addpin").className = "info hide"
+    document.getElementById("addpin").className = "info hide";
     console.log("상세보기 닫음");
   }
 
-  return <button onClick={action === "close" ? close : submit}>{name}</button>;
+  function req() {
+    console.log("수정요청");
+  }
+
+  function select() {
+    switch (action) {
+      case "submit":
+        return submit();
+      case "req":
+        return req();
+      default:
+        return close();
+    }
+  }
+
+  return <button className="button" onClick={select}>{name}</button>;
 }

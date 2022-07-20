@@ -14,7 +14,7 @@ function Camera() {
     camera.capture = "camera";
 	var pic = document.createElement("img");
     pic.id = "pic";
-    pic.alt = "흡연구역을 촬영해주세요.";
+    pic.alt = "흡연구역을 촬영해주세요";
 
 
 	camera.addEventListener('change', function(e){
@@ -25,8 +25,8 @@ function Camera() {
 
     return (
         <div id="cameradiv">
-            <img id="pic" alt="흡연구역을 촬영해주세요."></img><br></br>
-            <input type="file" accept="image/*" capture="camera" id="camera" alt="흡연구역을 촬영해주세요"></input>
+            <img id="pic" alt="흡연구역을 촬영해주세요"></img><br/>
+            <input type="file" accept="image/*" capture="camera" id="camera"></input>
         </div>
     );
 }

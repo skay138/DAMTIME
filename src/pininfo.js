@@ -7,6 +7,7 @@ function Pininfo({name}) {
   return (
     <div id="pininfo" className="info hide">
       <h3>{name}</h3>
+      <Button name="수정요청" action='req' />
       <Button name="닫기" action="close" />
     </div>
   );
