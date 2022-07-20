@@ -135,9 +135,10 @@ function Main() {
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
-
+      
       // 커스텀 오버레이를 생성합니다
       var mapCustomOverlay = new kakao.maps.CustomOverlay({
+        id : el.No,
         clickable: true,
         position: position,
         content: content,
@@ -145,8 +146,10 @@ function Main() {
         yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
+
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
+        map.panTo(position)
         mapCustomOverlay.setMap(map);
       });
 
@@ -154,6 +157,7 @@ function Main() {
         mapCustomOverlay.setMap(null);
       });
     });
+    
 
     
 
