@@ -9,9 +9,13 @@ const { kakao } = window;
 
 function Main() {
   const [refresh, setRefresh] = useState(false); //refresh
+
+  //fin info
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
   const [pinname, setPinname] = useState("이름없음");
+
+  //pin api
   const [pindata, setPindata] = useState([]);
 
   //map 구현
@@ -72,6 +76,9 @@ function Main() {
   }, [refresh]);
 
   useEffect(() => {
+
+    console.log(pindata)
+
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
