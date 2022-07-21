@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
 
 let corsOptions = {
-    orogin : "*",
+    origin : "*",
     credential : true,
 };
 

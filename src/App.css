@@ -29,7 +29,7 @@
   position: absolute;
   left: 5px;
   bottom: 10px;
-  z-index: 10;
+  z-index: 1;
   border: none;
   background: none;
 }
@@ -46,7 +46,7 @@
 }
 
 .info {
-  z-index: 0;
+  z-index: 2;
   position: absolute;
   bottom: 0px;
   text-align: center;
