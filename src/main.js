@@ -149,13 +149,13 @@ function Main() {
   useEffect(() => {
     axios.get("http://localhost:4000/api").then((res) => {
       setPindata(res.data);
-    });
+    }).catch(error => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
     axios.get("http://localhost:4000/userpin").then((res) => {
       setUserpin(res.data);
-    });
+    }).catch(error => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
