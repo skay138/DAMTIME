@@ -193,7 +193,6 @@ function Main() {
     btn.onclick = addpin;
 
     function addpin() {
-      console.log("i HAVE TO CODE");
       document.getElementById("addpin").className = "info";
       setPinla(marker.getPosition().Ma);
       setPinma(marker.getPosition().La);
@@ -220,8 +219,8 @@ function Main() {
           : marker.setVisible(true);
         infowindow.close();
         //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
-        document.getElementById("addpin").className = "addpin hide"; //마커추가 숨기기
-        document.getElementById("pininfo").className = "addpin hide"; //마커정보 숨기기
+        document.getElementById("addpin").className = "info hide"; //마커추가 숨기기
+        document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
       }
 
       // 클릭한 위도, 경도 정보를 가져옵니다
@@ -230,7 +229,7 @@ function Main() {
       // 가져온 위치로 마커 이동
       marker.setPosition(latlng);
     });
-  }, [refresh, pindata]);
+  }, [refresh, pindata, userpin]);
 
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
