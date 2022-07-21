@@ -24,6 +24,7 @@ function Addpin({lat, lon}) {
       axios.post("/insert",state).then(function(res){
         console.log(res)
       })
+      
     }
 
 
