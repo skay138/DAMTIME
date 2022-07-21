@@ -70,7 +70,7 @@ function Main() {
       map.setCenter(locPosition);
     }
   }
-
+  
   //pinload
   function pinupload(data, pinimage) {
     data.forEach((el) => {
