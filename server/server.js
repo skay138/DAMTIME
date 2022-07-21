@@ -4,6 +4,7 @@ const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
+const { toHaveFormValues } = require("@testing-library/jest-dom/dist/matchers");
 
 let corsOptions = {
     origin : "*",
@@ -38,6 +39,17 @@ app.get("/api", (req, res) => {
       res.send(rows);
     }
   });
+});
+
+app.post("/insert", (req, res) => {
+  var Location = req.body.Location;
+  var lat = req.body.lat;
+  var lon = req.body.lon;
+
+  const sqlQuery = "INSERT INTO userpin (Location, Longitude, Latitude) VALUES (?,?,?);";
+  connection.query(sqlQuery, [Location, lon, lat], (err,result) =>{
+    res.send(result);
+  })
 });
 
 app.listen(port, () => {
