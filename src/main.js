@@ -17,11 +17,13 @@ function Main() {
 
   //pin api
   const [pindata, setPindata] = useState([]);
+  const [userpin, setUserpin] = useState([]);
 
   //map 구현
 
   var map; // 외부접근 위해 전역변수로 설정
 
+  //geolocation
   function geolocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
@@ -69,31 +71,10 @@ function Main() {
     }
   }
 
-  useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
-      setPindata(res.data);
-    });
-  }, [refresh]);
-
-  useEffect(() => {
-
-    console.log(pindata)
-
-    var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
-      mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 4, // 지도의 확대 레벨
-      };
-
-    map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-    geolocation(); //geolaction
-
-    // 흡연구역 표시
-    
-    pindata.forEach((el) => {
-      var imageSrc =
-          "https://img.icons8.com/material-rounded/96/000000/marker.png", // 마커이미지의 주소입니다
+  //pinload
+  function pinupload(data, pinimage) {
+    data.forEach((el) => {
+      var imageSrc = pinimage, // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
         imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
@@ -142,10 +123,10 @@ function Main() {
 
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
-      
+
       // 커스텀 오버레이를 생성합니다
       var mapCustomOverlay = new kakao.maps.CustomOverlay({
-        id : el.No,
+        id: el.No,
         clickable: true,
         position: position,
         content: content,
@@ -153,10 +134,9 @@ function Main() {
         yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
-
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
-        map.panTo(position)
+        map.panTo(position);
         mapCustomOverlay.setMap(map);
       });
 
@@ -164,9 +144,39 @@ function Main() {
         mapCustomOverlay.setMap(null);
       });
     });
-    
+  }
 
-    
+  useEffect(() => {
+    axios.get("http://localhost:4000/api").then((res) => {
+      setPindata(res.data);
+    });
+  }, [refresh]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/userpin").then((res) => {
+      setUserpin(res.data);
+    });
+  }, [refresh]);
+
+  useEffect(() => {
+    console.log(pindata);
+
+    var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 4, // 지도의 확대 레벨
+      };
+
+    map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    geolocation(); //geolaction
+
+    // 흡연구역 표시
+    pinupload(
+      pindata,
+      "https://img.icons8.com/material-rounded/96/000000/marker.png"
+    );
+    pinupload(userpin, "https://img.icons8.com/ios-filled/100/000000/marker-u.png");
 
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다

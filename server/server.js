@@ -41,10 +41,22 @@ app.get("/api", (req, res) => {
   });
 });
 
+app.get("/userpin", (req, res) => {
+  connection.query("SELECT * FROM userpin", function (err, rows, fields) {
+    if (err) {
+      console.log("불러오기 실패");
+    } else {
+      console.log("불러오기 성공");
+      res.send(rows);
+    }
+  });
+});
+
 app.post("/insert", (req, res) => {
   var Location = req.body.Location;
-  var lat = req.body.lat;
-  var lon = req.body.lon;
+  var lat = req.body.Latitude;
+  var lon = req.body.Longitude;
+  console.log(Location, lat, lon)
 
   const sqlQuery = "INSERT INTO userpin (Location, Longitude, Latitude) VALUES (?,?,?);";
   connection.query(sqlQuery, [Location, lon, lat], (err,result) =>{
