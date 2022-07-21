@@ -173,7 +173,7 @@ function Main() {
     // 흡연구역 표시
     pinupload(
       pindata,
-      "https://img.icons8.com/material-rounded/96/000000/marker.png"
+      "https://img.icons8.com/ios-filled/100/3498DB/marker-d.png"
     );
     pinupload(userpin, "https://img.icons8.com/ios-filled/100/000000/marker-u.png");
 
