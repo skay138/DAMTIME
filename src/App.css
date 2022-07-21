@@ -56,6 +56,11 @@
   background-color: white;
 }
 
+.info h3{
+  color:whitesmoke;
+  background-color: rgb(102, 40, 40);
+}
+
 
 .hide {
   display: none;
