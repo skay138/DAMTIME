@@ -51,23 +51,35 @@ function Addpin({ lat, lon }) {
     document.getElementById("addpin").className = "info hide";
   };
 
+  const cancel = () => {
+    document.getElementById("addpin").className = "info hide";
+    setLoc("");
+    setDetail("");
+  };
+
   return (
     <div id="addpin" className="info hide">
       <h4>흡연구역을 등록해주세요</h4>
       <Camera />
       <br />
-        <p className="p">기본주소(빈칸 시 직접 작성)</p>
-        <input onChange={handdleloc} type="text" value={loc}></input>
-        <br/>
-        <input onChange={handdledetail} type="text" value={detail} placeholder="상세주소입력"></input>
-        <br/><br/>
-        <input
-          className="button"
-          type="submit"
-          onClick={push}
-          value="등록"
-        ></input>
-        <Button name="취소" action="close" />
+      <p className="p">기본주소(빈칸 시 직접 작성)</p>
+      <input onChange={handdleloc} type="text" value={loc}></input>
+      <br />
+      <input
+        onChange={handdledetail}
+        type="text"
+        value={detail}
+        placeholder="상세주소입력"
+      ></input>
+      <br />
+      <br />
+      <input
+        className="button"
+        type="submit"
+        onClick={push}
+        value="등록"
+      ></input>
+      <button onClick={cancel}>취소</button>
     </div>
   );
 }

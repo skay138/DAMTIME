@@ -159,7 +159,6 @@ function Main() {
   }, [refresh]);
 
   useEffect(() => {
-    console.log(pindata);
 
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
@@ -186,6 +185,7 @@ function Main() {
     // 지도에 마커를 표시합니다
     marker.setMap(map);
     marker.setVisible(false);
+    
 
     //흡연구역등록
     let btn = document.createElement("div");
@@ -219,7 +219,6 @@ function Main() {
           : marker.setVisible(true);
         infowindow.close();
         //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
-        document.getElementById("addpin").className = "info hide"; //마커추가 숨기기
         document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
       }
 
