@@ -4,6 +4,7 @@ const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
+const { toHaveFormValues } = require("@testing-library/jest-dom/dist/matchers");
 
 let corsOptions = {
     origin : "*",
@@ -12,7 +13,7 @@ let corsOptions = {
 
 var connection = mysql.createConnection({
   /// 새로 추가된 부분
-  host: "127.0.0.1",
+  host: "localhost",
   user: "damdam", // mysql에 아이디를 넣는다.
   password: "1q2w3e4r", // mysql의 비밀번호를 넣는다.
   database: "pintest", //위에서 만든 데이터베이스의 이름을 넣는다.
