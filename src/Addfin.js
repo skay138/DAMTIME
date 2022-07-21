@@ -56,7 +56,6 @@ function Addpin({ lat, lon }) {
       <h4>흡연구역을 등록해주세요</h4>
       <Camera />
       <br />
-      <form>
         <p className="p">기본주소(빈칸 시 직접 작성)</p>
         <input onChange={handdleloc} type="text" value={loc}></input>
         <br/>
@@ -69,7 +68,6 @@ function Addpin({ lat, lon }) {
           value="등록"
         ></input>
         <Button name="취소" action="close" />
-      </form>
     </div>
   );
 }
