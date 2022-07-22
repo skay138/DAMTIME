@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
 
 let corsOptions = {
-    origin : "*",
-    credential : true,
+  origin: "*",
+  credential: true,
 };
 
 var connection = mysql.createConnection({
@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
-  console.log("requested")
+  console.log("requested");
 });
 
 app.get("/api", (req, res) => {
@@ -55,12 +55,16 @@ app.post("/insert", (req, res) => {
   var Location = req.body.Location;
   var lat = req.body.Latitude;
   var lon = req.body.Longitude;
-  console.log(Location, lat, lon)
+  var type = req.body.FacilityType;
+  var des = req.body.Description;
 
-  const sqlQuery = "INSERT INTO userpin (Location, Longitude, Latitude) VALUES (?,?,?);";
-  connection.query(sqlQuery, [Location, lon, lat], (err,result) =>{
+  console.log(Location, lat, lon, type);
+
+  const sqlQuery =
+    "INSERT INTO userpin (FacilityType,Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
+  connection.query(sqlQuery, [type, Location, lon, lat, des], (err, result) => {
     res.send(result);
-  })
+  });
 });
 
 app.listen(port, () => {

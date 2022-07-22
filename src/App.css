@@ -45,22 +45,6 @@
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-.info {
-  z-index: 2;
-  position: absolute;
-  bottom: 0px;
-  text-align: center;
-  width: 100%;
-  height: 500px;
-  font-size: 20px;
-  background-color: white;
-}
-
-.info h3{
-  color:whitesmoke;
-  background-color: rgb(102, 40, 40);
-}
-
 
 .hide {
   display: none;

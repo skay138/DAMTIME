@@ -14,6 +14,8 @@ function Main() {
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
   const [pinname, setPinname] = useState("이름없음");
+  const [lotype, setLotype] = useState("기타");
+  const [lodes, setLodes] = useState('');
 
   //pin api
   const [pindata, setPindata] = useState([]);
@@ -68,6 +70,7 @@ function Main() {
 
       // 지도 중심좌표를 접속위치로 변경합니다
       map.setCenter(locPosition);
+
     }
   }
   
@@ -99,6 +102,8 @@ function Main() {
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPinname(el.Location);
+        setLotype(el.FacilityType);
+        setLodes(el.Description);
       };
 
       var atag = document.createElement("a");
@@ -147,13 +152,13 @@ function Main() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
+    axios.get("http://bagng.asuscomm.com:4000/api").then((res) => {
       setPindata(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/userpin").then((res) => {
+    axios.get("http://bagng.asuscomm.com:4000/userpin").then((res) => {
       setUserpin(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
@@ -169,6 +174,8 @@ function Main() {
     map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
     geolocation(); //geolaction
+
+    document.getElementById('currentlo').onclick = geolocation;
 
     // 흡연구역 표시
     pinupload(
@@ -193,7 +200,7 @@ function Main() {
     btn.onclick = addpin;
 
     function addpin() {
-      document.getElementById("addpin").className = "info";
+      document.getElementById("addpin").className = "add";
       setPinla(marker.getPosition().Ma);
       setPinma(marker.getPosition().La);
     }
@@ -243,7 +250,6 @@ function Main() {
         <button
           className="currentlocation"
           id="currentlo"
-          onClick={geolocation}
         >
           <img
             src="https://img.icons8.com/sf-black-filled/64/000000/location-update.png"
@@ -253,10 +259,10 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin lat={pinla} lon={pinma} />
+      <Addpin pinlat={pinla} pinlon={pinma} />
 
       {/* 여기부터는 핀정보입니다 */}
-      <Pininfo name={pinname} />
+      <Pininfo name={pinname} type={lotype} des={lodes}/>
     </div>
   );
 }

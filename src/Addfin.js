@@ -2,17 +2,25 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./addfin.css";
-import Button from "./Button";
 import Camera from "./camera";
 
 const { kakao } = window;
 
-function Addpin({ lat, lon }) {
+function Addpin({ pinlat, pinlon }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
 
+  const state = {
+    No: 0,
+    FacilityType: "개방형흡연부스",
+    Location: "",
+    Longitude: pinlon,
+    Latitude: pinlat,
+    Description: "",
+  };
+
   var geocoder = new kakao.maps.services.Geocoder();
-  var coord = new kakao.maps.LatLng(lat, lon);
+  var coord = new kakao.maps.LatLng(pinlat, pinlon);
   var callback = function (result, status) {
     if (status === kakao.maps.services.Status.OK) {
       if (
@@ -25,20 +33,22 @@ function Addpin({ lat, lon }) {
   };
   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 
-  const state = {
-    No: 0,
-    FacilityType: "",
-    Location: "",
-    Longitude: lon,
-    Latitude: lat,
-  };
-
-  const handdleloc = (e) => {
+  const handleloc = (e) => {
     setLoc(e.target.value);
   };
 
-  const handdledetail = (e) => {
+  const handledetail = (e) => {
     setDetail(e.target.value);
+  };
+
+  const handlesel = (e) => {
+    state.FacilityType = e.target.value;
+
+    console.log(state.FacilityType);
+  };
+
+  const handledes = (e) => {
+    state.Description = e.target.value;
   };
 
   const push = () => {
@@ -48,38 +58,52 @@ function Addpin({ lat, lon }) {
     });
 
     alert("흡연구역으로 등록되었습니다.");
-    document.getElementById("addpin").className = "info hide";
+    document.getElementById("addpin").className = "add hide";
   };
 
   const cancel = () => {
-    document.getElementById("addpin").className = "info hide";
+    document.getElementById("addpin").className = "add hide";
     setLoc("");
     setDetail("");
   };
 
   return (
-    <div id="addpin" className="info hide">
-      <h4>흡연구역을 등록해주세요</h4>
+    <div id="addpin" className="add hide">
+      <h3><p>흡연구역을 등록해주세요</p></h3>
       <Camera />
-      <br />
-      <p className="p">기본주소(빈칸 시 직접 작성)</p>
-      <input onChange={handdleloc} type="text" value={loc}></input>
-      <br />
-      <input
-        onChange={handdledetail}
-        type="text"
-        value={detail}
-        placeholder="상세주소입력"
-      ></input>
-      <br />
-      <br />
-      <input
-        className="button"
-        type="submit"
-        onClick={push}
-        value="등록"
-      ></input>
-      <button onClick={cancel}>취소</button>
+      <form>
+        <p className="p">주소입력(빈칸 시 직접 작성)</p>
+        <input onChange={handleloc} type="text" value={loc}></input>
+        <br />
+        <input
+          onChange={handledetail}
+          type="text"
+          value={detail}
+          placeholder="상세주소입력"
+        ></input>
+        <br />
+        타입선택
+        <select onChange={handlesel}>
+          <option value="개방형흡연부스">개방형흡연부스</option>
+          <option value="부분개방형흡연실">부분개방형흡연실</option>
+          <option value="폐쇄형흡연부스">폐쇄형흡연부스</option>
+          <option value="라인형흡연구역">라인형흡연구역</option>
+          <option value="비대면흡연부스">비대면흡연부스</option>
+          <option value="기타">기타</option>
+        </select>
+        <br />
+        <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
+        <br />
+        <input
+          className="button"
+          type="submit"
+          onClick={push}
+          value="등록"
+        ></input>
+      </form>
+      <button className="button" onClick={cancel}>
+        취소
+      </button>
     </div>
   );
 }
