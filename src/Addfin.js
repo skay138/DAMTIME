@@ -53,7 +53,7 @@ function Addpin({ pinlat, pinlon }) {
 
   const push = () => {
     state.Location = `${loc} ${detail}`;
-    axios.post("/insert", state).then(function (res) {
+    axios.post("http://bagng.asuscomm.com:4000/insert", state).then(function (res) {
       console.log(res);
     });
 

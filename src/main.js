@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
+import Report from "./reportform";
 
 const { kakao } = window;
 
@@ -263,6 +264,9 @@ function Main() {
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo name={pinname} type={lotype} des={lodes}/>
+
+      {/* 수정요청 테스트입니다 */}
+      <Report />
     </div>
   );
 }
