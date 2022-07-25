@@ -1,0 +1,12 @@
+.outdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.mapdiv {
+    width: 80%;
+    height: 300px;
+}
+

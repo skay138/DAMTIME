@@ -1,9 +1,11 @@
 import { isDOMComponent } from 'react-dom/test-utils';
 import './button.css';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Button({ name, action }) {
   // 등록버튼
-
+  const navigate = useNavigate();
 
   function close() {
     document.getElementById("pininfo").className = "info hide";
@@ -13,13 +15,21 @@ export default function Button({ name, action }) {
 
   function req() {
     //console.log("수정요청");
-    document.getElementById("report").className = "report";
+    navigate("/report/");
   }
+  function submit() {
+    // 수정등록
+    alert("요청되었습니다.");
+    navigate("/");
+  }
+  
 
   function select() {
     switch (action) {
       case "req":
         return req();
+      case "submit":
+        return submit();
       default:
         return close();
     }

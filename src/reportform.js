@@ -1,20 +1,36 @@
 import React, {useState} from "react";
 import Button from "./Button";
+import ReportMap from "./ReportMap";
 import "./pininfo.css";
 
 
-function Report(){
+const Report = () => {
    
     const selectList = ["흡연구역 이름", "장소변경", "상세정보 수정", "흡연구역이 없음"];
     const [Selected, setSelected] = useState("흡연구역 이름");
     const getValue = (e) => {
         setSelected(e.target.value);
     }
+    const explain = () => {
+        if (Selected === "장소변경")
+        {
+            return (
+                <div id="mapdiv">
+                    <ReportMap />
+                </div>
+            );
+        }
+        else {return (
+            <div>
+                <textarea></textarea>
+            </div>
+        );}
+    }
 
 
     return (
-    <div id="report" className="report hide">
-        <h3>수정 요청</h3>
+    <div id="report" className="report">
+        <h1>수정 요청</h1>
         <form>
             <select id="type" className="options" onChange={ getValue } value = {Selected}>
                 {selectList.map((item)=>(
@@ -24,10 +40,10 @@ function Report(){
                 ))}
             </select>
             <p>신고유형 : {Selected}</p>
-            <div id="reasondiv">
-                <textarea id="reason"></textarea>
+            <div id="explaindiv">
+                {explain()}
             </div>
-            <Button name="요청" />
+            <Button name="요청" action="submit" />
             <Button name="닫기" action="close" />
         </form>
     </div>

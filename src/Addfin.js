@@ -59,6 +59,7 @@ function Addpin({ pinlat, pinlon }) {
 
     alert("흡연구역으로 등록되었습니다.");
     document.getElementById("addpin").className = "add hide";
+
   };
 
   const cancel = () => {
