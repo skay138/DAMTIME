@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 const Report = () => {
   const selectList = [
     "흡연구역 이름",
-    "장소변경",
+    "위치수정",
     "상세정보 수정",
     "흡연구역이 없음",
   ];
@@ -19,7 +19,7 @@ const Report = () => {
     setSelected(e.target.value);
   };
   const explain = () => {
-    if (Selected === "장소변경") {
+    if (Selected === "위치수정") {
       return (
         <div id="mapdiv">
           <ReportMap pin={pin} />
