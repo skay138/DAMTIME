@@ -11,10 +11,12 @@ const Report = () => {
     "상세정보 수정",
     "흡연구역이 없음",
   ];
+
   const [Selected, setSelected] = useState("흡연구역 이름");
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const pin = location.state;
+  console.log(pin);
 
   const getValue = (e) => {
     setSelected(e.target.value);
@@ -68,4 +70,5 @@ const Report = () => {
     </div>
   );
 };
+
 export default Report;

@@ -1,6 +1,6 @@
 import { isDOMComponent } from "react-dom/test-utils";
 import "./button.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Button({ name, action }) {
   // 등록버튼
@@ -16,7 +16,7 @@ export default function Button({ name, action }) {
   }
 
   function req() {
-    navigate("/report/");
+    console.log("hi")
   }
   function submit() {
     // 수정등록
