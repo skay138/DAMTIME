@@ -10,12 +10,12 @@ const { kakao } = window;
 function Main() {
   const [refresh, setRefresh] = useState(false); //refresh
 
-  //fin info
+  //addfin
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
-  const [pinname, setPinname] = useState("이름없음");
-  const [lotype, setLotype] = useState("기타");
-  const [lodes, setLodes] = useState('');
+
+  //fin info
+  const [pin, setPin] = useState([]);
 
   //pin api
   const [pindata, setPindata] = useState([]);
@@ -101,9 +101,7 @@ function Main() {
 
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
-        setPinname(el.Location);
-        setLotype(el.FacilityType);
-        setLodes(el.Description);
+        setPin(el);
       };
 
       var atag = document.createElement("a");
@@ -263,7 +261,7 @@ function Main() {
       <Addpin pinlat={pinla} pinlon={pinma} />
 
       {/* 여기부터는 핀정보입니다 */}
-      <Pininfo name={pinname} type={lotype} des={lodes}/>
+      <Pininfo pin={pin}/>
 
     </div>
   );
