@@ -3,7 +3,6 @@ import "./App.css";
 import "./pininfo.css";
 import Button from "./Button";
 import { Link } from "react-router-dom";
-import Report from "./reportform";
 
 function Pininfo({ pin }) {
   return (
