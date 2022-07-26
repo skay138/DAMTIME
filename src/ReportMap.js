@@ -10,13 +10,13 @@ const ReportMap = ({pin}) => {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(pin.Latitude, pin.Longitude), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
+        level: 2, // 지도의 확대 레벨
       };
 
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
     // 마커가 표시될 위치입니다
-    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+    var markerPosition = new kakao.maps.LatLng(pin.Latitude, pin.Longitude);
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({

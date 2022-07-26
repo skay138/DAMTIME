@@ -79,7 +79,7 @@ function Main() {
     data.forEach((el) => {
       var imageSrc = pinimage, // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
-        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+        imageOption = { offset: new kakao.maps.Point(15, 30) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
       // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
       var markerImage = new kakao.maps.MarkerImage(
@@ -133,8 +133,8 @@ function Main() {
         clickable: true,
         position: position,
         content: content,
-        xAnchor: 0.56, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
-        yAnchor: 1.5, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
+        xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+        yAnchor: 1.25, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
       //마커의 클릭이벤트
@@ -151,13 +151,13 @@ function Main() {
 
   //bagng.asuscomm.com <-> localhost
   useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
+    axios.get("http://bagng.asuscomm.com:4000/api").then((res) => {
       setPindata(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/userpin").then((res) => {
+    axios.get("http://bagng.asuscomm.com:4000/userpin").then((res) => {
       setUserpin(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);

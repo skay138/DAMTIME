@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Report = () => {
   const selectList = [
@@ -13,6 +13,7 @@ const Report = () => {
   ];
   const [Selected, setSelected] = useState("흡연구역 이름");
   const location = useLocation();
+  const navigate = useNavigate();
   const pin = location.state;
 
   const getValue = (e) => {
@@ -34,6 +35,10 @@ const Report = () => {
     }
   };
 
+  const push = () => {
+    alert("수정요청등록");
+    navigate("/");
+  };
   return (
     <div id="report" className="report">
       <h1>수정 요청</h1>
@@ -52,8 +57,13 @@ const Report = () => {
         </select>
         <p>신고유형 : {Selected}</p>
         <div id="explaindiv">{explain()}</div>
-        <input className="button" type="submit" value="요청"></input>
-        <Button name="닫기" action="close" />
+        <input
+          className="button"
+          type="submit"
+          value="요청"
+          onClick={push}
+        ></input>
+        <Button name="닫기" action="home" />
       </form>
     </div>
   );

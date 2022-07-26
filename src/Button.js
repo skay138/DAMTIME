@@ -1,7 +1,6 @@
-import { isDOMComponent } from 'react-dom/test-utils';
-import './button.css';
+import { isDOMComponent } from "react-dom/test-utils";
+import "./button.css";
 import { useNavigate } from "react-router-dom";
-
 
 export default function Button({ name, action }) {
   // 등록버튼
@@ -12,8 +11,11 @@ export default function Button({ name, action }) {
     document.getElementById("addpin").className = "add hide";
   }
 
+  function home() {
+    navigate("/");
+  }
+
   function req() {
-    //console.log("수정요청");
     navigate("/report/");
   }
   function submit() {
@@ -21,7 +23,6 @@ export default function Button({ name, action }) {
     alert("요청되었습니다.");
     navigate("/");
   }
-  
 
   function select() {
     switch (action) {
@@ -29,10 +30,16 @@ export default function Button({ name, action }) {
         return req();
       case "submit":
         return submit();
+      case "home":
+        return home();
       default:
         return close();
     }
   }
 
-  return <button className="button" onClick={select}>{name}</button>;
+  return (
+    <button className="button" onClick={select}>
+      {name}
+    </button>
+  );
 }
