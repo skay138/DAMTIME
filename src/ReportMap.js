@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./newmap.css";
 const { kakao } = window;
 
-const ReportMap = () => {
+const ReportMap = ({pin}) => {
   const [clklat, setLat] = useState(33.450701);
   const [clklon, setLon] = useState(126.570667);
 
   useEffect(() => {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(pin.Latitude, pin.Longitude), // 지도의 중심좌표
         level: 3, // 지도의 확대 레벨
       };
 
@@ -43,10 +43,10 @@ const ReportMap = () => {
     <div className="outdiv">
       <div id="map" className="mapdiv"></div>
       <br/>
-      <p>
+      {/* <p>
         경도:{clklat}
         <br></br> 위도:{clklon}
-      </p>
+      </p> */}
     </div>
   );
 };

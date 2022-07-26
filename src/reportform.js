@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
+import { useLocation } from "react-router-dom";
 
 const Report = () => {
   const selectList = [
@@ -11,6 +12,9 @@ const Report = () => {
     "흡연구역이 없음",
   ];
   const [Selected, setSelected] = useState("흡연구역 이름");
+  const location = useLocation();
+  const pin = location.state;
+
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -18,7 +22,7 @@ const Report = () => {
     if (Selected === "장소변경") {
       return (
         <div id="mapdiv">
-          <ReportMap />
+          <ReportMap pin={pin} />
         </div>
       );
     } else {
