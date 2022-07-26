@@ -11,7 +11,6 @@ function Addpin({ pinlat, pinlon }) {
   const [detail, setDetail] = useState("");
 
   const state = {
-    No: 0,
     FacilityType: "개방형흡연부스",
     Location: "",
     Longitude: pinlon,
