@@ -7,7 +7,7 @@ function Admin() {
     email : "",
     
   };
-
+  
   return (
     <div id="admin">
       <div id="member">{}</div>
