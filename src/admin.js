@@ -1,17 +1,18 @@
 import React from "react";
 
+function Admin() {
+  const member = {
+    id : "",
+    pwd : "",
+    email : "",
+    
+  };
 
-function Admin () {
-
-   
-
-    return (
-        <div id="admin">
-            <div id="member">
-                { }
-            </div>
-        </div>
-    );
+  return (
+    <div id="admin">
+      <div id="member">{}</div>
+    </div>
+  );
 }
 
 export default Admin;
