@@ -24,8 +24,8 @@ function Addpin({ pinlat, pinlon }) {
   var callback = function (result, status) {
     if (status === kakao.maps.services.Status.OK) {
       if (
-        result[0].road_address != null &&
-        result[0].road_address != "제주특별자치도 제주시 첨단로 242"
+        result[0].road_address !== null &&
+        result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
       ) {
         setLoc(result[0].road_address.address_name);
       }
@@ -53,7 +53,7 @@ function Addpin({ pinlat, pinlon }) {
 
   const push = () => {
     state.Location = `${loc} ${detail}`;
-    axios.post("http://bagng.asuscomm.com:4000/insert", state).then(function (res) {
+    axios.post("/insert", state).then(function (res) {
       console.log(res);
     });
 
