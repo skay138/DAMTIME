@@ -32,7 +32,7 @@ const ReportMap = ({ pin }) => {
       var latlng = mouseEvent.latLng;
       setLat(latlng.getLat());
       setLon(latlng.getLng());
-
+      
       // 가져온 위치로 마커 이동
       marker.setPosition(latlng);
     });

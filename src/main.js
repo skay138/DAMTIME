@@ -24,6 +24,7 @@ function Main() {
   //map 구현
 
   var map; // 외부접근 위해 전역변수로 설정
+  
 
   //geolocation
   function geolocation() {
@@ -50,6 +51,8 @@ function Main() {
     }
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
+
+
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
         map: map,

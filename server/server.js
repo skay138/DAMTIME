@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 4000; // <- 3000에서 다른 숫자로 변경
+const port = 3306; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
@@ -12,10 +12,11 @@ let corsOptions = {
 
 var connection = mysql.createConnection({
   /// 새로 추가된 부분
-  host: "localhost",
-  user: "damdam", // mysql에 아이디를 넣는다.
-  password: "1q2w3e4r", // mysql의 비밀번호를 넣는다.
-  database: "pintest", //위에서 만든 데이터베이스의 이름을 넣는다.
+  host: "damtabase.cvg2imyxpe0d.ap-northeast-2.rds.amazonaws.com",
+  port:3306,
+  user: "root", // mysql에 아이디를 넣는다.
+  password: "songkiwon0612", // mysql의 비밀번호를 넣는다.
+  database: "testDB", //위에서 만든 데이터베이스의 이름을 넣는다.
 });
 
 connection.connect();
@@ -61,8 +62,23 @@ app.post("/insert", (req, res) => {
   console.log(Location, lat, lon, type);
 
   const sqlQuery =
-    "INSERT INTO userpin (FacilityType,Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
+    "INSERT INTO testTable (FacilityType,Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
   connection.query(sqlQuery, [type, Location, lon, lat, des], (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post("/report", (req, res) => {
+  var selected = req.body.selected;
+  var lat  = req.body.lat;
+  var lon = req.body.lon;
+
+
+  console.log(selected, lat, lon);
+
+  const sqlQuery =
+    "INSERT INTO report (selected,lat, lon) VALUES (?,?,?);";
+  connection.query(sqlQuery, [selected, lat, lon], (err, result) => {
     res.send(result);
   });
 });

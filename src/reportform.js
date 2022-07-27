@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Button from "./Button";
 import ReportMap from "./ReportMap";
@@ -12,12 +13,20 @@ const Report = () => {
     "흡연구역이 없음",
   ];
 
+  const state ={
+    //임의의 변수입니다.
+    pininfo : pin.No,
+    selected : Selected,
+    lat : "테스트",
+    lon : "테스트",
+    text : ""
+  }
+
   const [Selected, setSelected] = useState("흡연구역 이름");
+
   const navigate = useNavigate();
   const location = useLocation();
   const pin = location.state;
-  console.log(pin);
-
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -38,6 +47,9 @@ const Report = () => {
   };
 
   const push = () => {
+    axios.post("http://bagng.asuscomm.com:4000/report", state).then(function (res) {
+      console.log(res);
+    });
     alert("수정요청등록");
     navigate("/");
   };
