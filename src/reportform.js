@@ -47,7 +47,7 @@ const Report = () => {
   };
 
   const push = () => {
-    axios.post("http://bagng.asuscomm.com:4000/report", state).then(function (res) {
+    axios.post("/report", state).then(function (res) {
       console.log(res);
     });
     alert("수정요청등록");

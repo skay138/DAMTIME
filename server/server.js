@@ -15,8 +15,8 @@ var connection = mysql.createConnection({
   host: "damtabase.cvg2imyxpe0d.ap-northeast-2.rds.amazonaws.com",
   port:3306,
   user: "root", // mysql에 아이디를 넣는다.
-  password: "songkiwon0612", // mysql의 비밀번호를 넣는다.
-  database: "testDB", //위에서 만든 데이터베이스의 이름을 넣는다.
+  password: "dnjsrl0612", // mysql의 비밀번호를 넣는다.
+  database: "dampin", //위에서 만든 데이터베이스의 이름을 넣는다.
 });
 
 connection.connect();
