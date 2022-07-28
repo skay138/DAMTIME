@@ -34,8 +34,6 @@ function Login() {
     axios.post("/damlogin", loginId).then(function (res) {
       console.log(res);
     });
-    
-    alert("로그인 되었습니다");
     document.getElementById("logining").className = "dam login";
   }
 
