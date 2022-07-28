@@ -3,9 +3,10 @@ import "./newmap.css";
 const { kakao } = window;
 var map; var marker;
 
-const ReportMap = ({ pin }) => {
-  const [clklat, setLat] = useState(33.450701);
-  const [clklon, setLon] = useState(126.570667);
+const ReportMap = ({ pin, clklat, setLat, clklon, setLon }) => {
+  // const [clklat, setLat] = useState(33.450701);
+  // const [clklon, setLon] = useState(126.570667);
+  
   console.log(clklat, clklon);
 
   useEffect(() => {

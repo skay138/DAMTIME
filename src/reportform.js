@@ -5,8 +5,12 @@ import ReportMap from "./ReportMap";
 import "./pininfo.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Report = () => {
+const Report = (props) => {
 
+  // 수정요청 좌표
+  const [clklat, setLat] = useState(33.450701);
+  const [clklon, setLon] = useState(126.570667);
+  
   const selectList = [
     "흡연구역 이름",
     "위치수정",
@@ -20,8 +24,8 @@ const Report = () => {
     //임의의 변수입니다.
     pininfo : 1,
     selected : Selected,
-    lat : 33.450701,
-    lon : 126.570667,
+    lat : clklat,
+    lon : clklon,
     text : "plz"
   }
 
@@ -36,7 +40,7 @@ const Report = () => {
     if (Selected === "위치수정") {
       return (
         <div id="mapdiv">
-          <ReportMap pin={pin} />
+          <ReportMap pin={pin} setLat={setLat} setLon={setLon} clklat={clklat} clklon={clklon} />
         </div>
       );
     } else {
@@ -54,7 +58,9 @@ const Report = () => {
     });
     alert("수정요청등록");
     navigate("/");
+    console.log(state);
   };
+
   return (
     <div id="report" className="report">
       <h1>수정 요청</h1>
