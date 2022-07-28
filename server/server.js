@@ -68,6 +68,31 @@ app.post("/insert", (req, res) => {
   });
 });
 
+app.post("/damlogin", (req, res)=>{
+  var id = req.body.userid;
+  var pw = req.body.userpw;
+  
+  console.log(id, pw);
+  
+  const sqlQuery = 
+    "INSERT INTO login (userid, userpw) VALUES (?,?);";
+  connection.query(sqlQuery, [id, pw], (err, result) =>{
+    res.send(result);
+  });
+});
+
+app.get("/getlogin", (req, res) => {
+  connection.query("SELECT * FROM login", function (err, rows, fields) {
+    if (err) {
+      console.log("불러오기 실패");
+    } else {
+      console.log("불러오기 성공");
+      res.send(rows);
+    }
+  });
+});
+
+
 app.post("/report", (req, res) => {
   var selected = req.body.selected;
   var lat  = req.body.lat;
@@ -76,7 +101,7 @@ app.post("/report", (req, res) => {
   console.log(selected, lat, lon);
 
   const sqlQuery =
-    "INSERT INTO report (selected,lat, lon) VALUES (?,?,?);";
+    "INSERT INTO report (selected, lat, lon) VALUES (?,?,?);";
   connection.query(sqlQuery, [selected, lat, lon], (err, result) => {
     res.send(result);
   });
