@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3306; // <- 3000에서 다른 숫자로 변경
+const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
