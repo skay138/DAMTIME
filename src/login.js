@@ -32,32 +32,34 @@ function Login() {
 
   return(
     <div id="logining" className="damlogin">
+      <h1>DAMTIME</h1>
+      <div className='damback'>
       <h2>Login</h2>
       <form>
-        <label htmlFor='input_id'>ID : </label>
+        <label htmlFor='input_id'>User : </label>
         <input 
         type='email' 
         name='input_id' 
         value={inputId} 
         onChange={handleInputId}
-        placeholder="email" />
+        placeholder="Type your e-mail" />
         <br />
-        <label htmlFor='input_pw'>PW : </label>
+        <label htmlFor='input_pw'>Pass : </label>
         <input 
         type='password' 
         name='input_pw' 
         value={inputPw} 
         onChange={handleInputPw}
-        placeholder="password" />
-        <br />
+        placeholder="Type your password" />
+        <br /><br/>
         <input 
-        className="button" 
+        className="butto" 
         type="submit"
         onClick={onClickLogin}
-        value="로그인"
+        value="LOGIN"
         ></input>
         <Link to="/register/">
-        <Button name="회원가입"></Button>
+        <Button className="text" name="Or Sign Up Using"></Button>
         </Link>
         {/* 구 회원가입 버튼
         <input 
@@ -68,6 +70,7 @@ function Login() {
         ></input> */}
 
         </form>
+        </div>
     </div>
   );
 
