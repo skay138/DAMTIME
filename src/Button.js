@@ -32,8 +32,10 @@ export default function Button({ name, action }) {
         return submit();
       case "home":
         return home();
-      default:
+      case "close":
         return close();
+      default:
+        return console.log("할일을 잃은 버튼..");
     }
   }
 
