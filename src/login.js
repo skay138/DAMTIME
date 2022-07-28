@@ -20,9 +20,18 @@ function Login() {
   }
 
     //Login 버튼 클릭 이벤트
+  const onClickRegister = () => {
+    console.log('click register');
+    axios.post("/damregister", loginId).then(function (res) {
+      console.log(res);
+    });
+    
+    document.getElementById("logining").className = "dam login";
+  }
+  
   const onClickLogin = () => {
     console.log('click login');
-    axios.post("/damregister", loginId).then(function (res) {
+    axios.post("/damlogin", loginId).then(function (res) {
       console.log(res);
     });
     
@@ -61,6 +70,13 @@ function Login() {
         onClick={onClickLogin}
         value="로그인"
         ></input>
+        <input 
+        className="button" 
+        type="submit"
+        onClick={onClickRegister}
+        value="회원가입"
+        ></input>
+        
         </form>
     </div>
   );

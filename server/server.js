@@ -69,18 +69,35 @@ app.post("/insert", (req, res) => {
 });
 
 app.post("/damregister", (req, res) => {
-  var id = req.body.userid;
-  var pw = req.body.userpw;
+  
+  const id = req.body.userid;
+  const pw = req.body.userpw;
   
   console.log(id, pw);
   
-  const sqlQuery = 
-    "INSERT INTO login (userid, userpw) VALUES (?,?);";
-  connection.query(sqlQuery, [id, pw], (err, result) =>{
-    res.send(result);
-  });
+  connection.query("select userid from login where userid=?", [id], function (err, rows) {
+    if(rows.length){
+      console.log(err);
+    }else{
+      const sqlQuery = "insert into login (userid, userpw) values (?,?);";
+      connection.query(sqlQuery, [id, pw], (err, result) => {
+        res.send(result);
+        console.log(rows);
+      });
+    }
+  })
 });
 
+app.post("/damlogin", (req, res) => {
+  const id = req.body.userid;
+  const pw = req.body.userpw;
+  
+  const sqlQuery =
+    "INSERT INTO login (userid, userpw) VALUES (?,?);";
+  connection.query(sqlQuery, [id, pw], (err, result) => {
+    res.send(result); //로그인
+});
+});
 
 
 app.post("/report", (req, res) => {
