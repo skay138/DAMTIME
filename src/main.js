@@ -167,9 +167,9 @@ function Main() {
 
   useEffect(() => {
 
-    axios.get('/api').then((res)=>{
-      console.log(res.data)
-    })
+    // axios.get('/api').then((res)=>{
+    //   console.log(res.data)
+    // })
 
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
