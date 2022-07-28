@@ -62,7 +62,7 @@ app.post("/insert", (req, res) => {
   console.log(Location, lat, lon, type);
 
   const sqlQuery =
-    "INSERT INTO userpin (FacilityType,Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
+    "INSERT INTO userpin (FacilityType, Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
   connection.query(sqlQuery, [type, Location, lon, lat, des], (err, result) => {
     res.send(result);
   });
