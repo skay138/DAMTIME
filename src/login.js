@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Button from './Button';
 
 function Login() {
   const [inputId, setInputId] = useState('')
@@ -20,30 +22,13 @@ function Login() {
   }
 
     //Login 버튼 클릭 이벤트
-  const onClickRegister = () => {
-    console.log('click register');
-    axios.post("/damregister", loginId).then(function (res) {
-      console.log(res);
-    });
-    
-    document.getElementById("logining").className = "dam login";
-  }
-  
   const onClickLogin = () => {
     console.log('click login');
     axios.post("/damlogin", loginId).then(function (res) {
       console.log(res);
     });
-    document.getElementById("logining").className = "dam login";
   }
 
-    //렌더링 후 첫 호출되는 함수
-
-  // useEffect(() => {
-  //   axios.get('/use_inform/login')
-  //   .then(res => console.log(res))
-  //   .catch()
-  // },[])
 
   return(
     <div id="logining" className="damlogin">
@@ -71,12 +56,16 @@ function Login() {
         onClick={onClickLogin}
         value="로그인"
         ></input>
+        <Link to="/register/">
+        <Button name="회원가입"></Button>
+        </Link>
+        {/* 구 회원가입 버튼
         <input 
         className="button" 
         type="submit"
         onClick={onClickRegister}
         value="회원가입"
-        ></input>
+        ></input> */}
 
         </form>
     </div>
