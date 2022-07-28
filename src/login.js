@@ -7,7 +7,7 @@ function Login() {
 
   const loginId = {
     userid: "",
-    userpw: ""
+    userpw: "",
   }
   
     //input data의 변화가 있을때마다 value값 useState화
@@ -31,26 +31,39 @@ function Login() {
   }
 
     //렌더링 후 첫 호출되는 함수
-  useEffect(() => {
-    axios.get('/use_inform/login')
-    .then(res => console.log(res))
-    .catch()
-  },[])
+  // useEffect(() => {
+  //   axios.get('/use_inform/login')
+  //   .then(res => console.log(res))
+  //   .catch()
+  // },[])
 
   return(
-    <div id='logining' className='dam login'>
+    <div id="logining" className="dam login">
       <h2>Login</h2>
       <form>
         <label htmlFor='input_id'>ID : </label>
-        <input type='text' name='input_id' value={inputId} onChange={handleInputId} />
-      
+        <input 
+        type='text' 
+        name='input_id' 
+        value={inputId} 
+        onChange={handleInputId} />
+        <br />
         <label htmlFor='input_pw'>PW : </label>
-        <input type='password' name='input_pw' value={inputPw} onChange={handleInputPw} />
-  
-        <button type='submit' onClick={onClickLogin}>Login</button>
+        <input 
+        type='password' 
+        name='input_pw' 
+        value={inputPw} 
+        onChange={handleInputPw} />
+        <br />
+        <input 
+        className="button" 
+        type="submit"
+        onClick={onClickLogin}
+        value="로그인"
+        ></input>
         </form>
     </div>
-  )
+  );
 }
 
 export default Login;

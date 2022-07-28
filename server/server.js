@@ -68,7 +68,7 @@ app.post("/insert", (req, res) => {
   });
 });
 
-app.post("/damlogin", (req, res)=>{
+app.post("/damlogin", (req, res) => {
   var id = req.body.userid;
   var pw = req.body.userpw;
   
