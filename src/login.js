@@ -39,6 +39,16 @@ function Login() {
     document.getElementById("logining").className = "dam login";
   }
 
+  const onClickRegister = () => {
+    console.log('click register');
+    axios.post("/damregister", loginId).then(function (res){
+      console.log(res);
+    });
+
+    alert("회원가입 되었습니다.");
+    document.getElementById("logining").className ="dam register";
+  }
+
     //렌더링 후 첫 호출되는 함수
 
   // useEffect(() => {
@@ -48,7 +58,7 @@ function Login() {
   // },[])
 
   return(
-    <div id="logining" className="dam login">
+    <div id="logining" className="damlogin">
       <h2>Login</h2>
       <container>
         <label htmlFor='input_id'>ID : </label>
