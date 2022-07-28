@@ -6,6 +6,7 @@ import "./pininfo.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Report = () => {
+
   const selectList = [
     "흡연구역 이름",
     "위치수정",
@@ -15,18 +16,19 @@ const Report = () => {
 
   const [Selected, setSelected] = useState("흡연구역 이름");
 
-  // const state ={
-  //   //임의의 변수입니다.
-  //   pininfo : 1,
-  //   selected : Selected,
-  //   lat : "테스트",
-  //   lon : "테스트",
-  //   text : ""
-  // }
+  const state ={
+    //임의의 변수입니다.
+    pininfo : 1,
+    selected : Selected,
+    lat : 33.450701,
+    lon : 126.570667,
+    text : "plz"
+  }
 
   const navigate = useNavigate();
   const location = useLocation();
   const pin = location.state;
+  // console.log(pin);
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -47,9 +49,9 @@ const Report = () => {
   };
 
   const push = () => {
-    // axios.post("/report", state).then(function (res) {
-    //   console.log(res);
-    // });
+    axios.post("/report", state).then(function (res) {
+      console.log(res);
+    });
     alert("수정요청등록");
     navigate("/");
   };
