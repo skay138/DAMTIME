@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
   user: "root", // mysql에 아이디를 넣는다.
   port: 3306,
   password: "dnjsrl0612", // mysql의 비밀번호를 넣는다.
-  database: "testDB", //위에서 만든 데이터베이스의 이름을 넣는다.
+  database: "dambase", //위에서 만든 데이터베이스의 이름을 넣는다.
 });
 
 connection.connect();
@@ -85,3 +85,7 @@ app.post("/report", (req, res) => {
 app.listen(port, () => {
   console.log(`Connected at http://localhost:${port}`);
 });
+
+//FROM pro AS A 
+// INNER JOIN info AS B 
+// ON A.num = B.num; -> 다른 데이블 값 가져오기
