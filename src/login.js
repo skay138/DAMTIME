@@ -40,6 +40,7 @@ function Login() {
   }
 
     //렌더링 후 첫 호출되는 함수
+
   // useEffect(() => {
   //   axios.get('/use_inform/login')
   //   .then(res => console.log(res))
@@ -49,7 +50,7 @@ function Login() {
   return(
     <div id="logining" className="dam login">
       <h2>Login</h2>
-      <form>
+      <container>
         <label htmlFor='input_id'>ID : </label>
         <input 
         type='text' 
@@ -80,6 +81,7 @@ function Login() {
         </form>
     </div>
   );
+
 }
 
 export default Login;
