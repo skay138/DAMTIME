@@ -1,77 +1,92 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
   
   const [account, setAccount] = useState({No:"", userid:"", userpw:"", username:""});
   const [checkpw, setChckpw] = useState("");
+  const navigate = useNavigate();
 
-//     //Login 버튼 클릭 이벤트
-//   const onClickRegister = () => {
-//     console.log('account');
-//     if (checkpw === account.userpw){
-//         axios.post("/damregister", account).then(function (res) {
-//         console.log(res);
-//         });
-//     }
-//     else
-//         alert("비밀번호를 확인해주세요");
-//   }
+  //회원가입 버튼
+  const onClickRegister = (e) => {
+    e.preventDefault();
+    setAccount({ No:"", userid:"", userpw:"", username:""});
+    if (checkpw === account.userpw){   // 비밀번호 확인
+        axios.post("/damregister", account).then(function (res) {
+        console.log(res);
+        res.data === "중복된 아이디입니다"  // 중복된 아이디면
+        ? alert("중복된 아이디입니다.")     // 알림만 뜨고 화면은 안넘어감
+        : navigate("/");               // 중복되지 않았으면 메인페이지로 넘어감
+        });
+    }
+    else
+        alert("비밀번호를 확인해주세요");
+  }
+
+  const handleChange = (e) => {
+    const renewAccount = {
+        ...account,
+        [e.target.name]: e.target.value,
+    };
+    console.log(renewAccount);
+    setAccount(renewAccount);
+  }
   
-//   const getinput = (e) => {
-//     setAccount(e.target.value);
-//   }
-  
+  const handleCHKPW = (e) => {
+    setChckpw(e.target.value);
+  }
 
   return(
     <div id="register" className="damlogin">
-        최윤호 대머리
-      {/* <h2>Login</h2>
+        
+      <h2>회원가입</h2>
       <form>
-        <label htmlFor='nick'>닉네임 : </label>
+        <label>이름 :
         <input 
         type='text' 
-        name='input_nick' 
-        value={account.username}
-        onChange={getinput}
+        name='username' 
+        defaultValue={account.username}
+        onChange={handleChange}
         placeholder="닉네임" />
-        <br />
+        </label><br />
 
-        <label htmlFor='input_id'>ID : </label>
+        <label>이메일 :
         <input 
         type='email' 
-        name='input_id' 
-        value={account.userid}
-        onChange={getinput}
+        name='userid' 
+        defaultValue={account.userid}
+        onChange={handleChange}
         placeholder="email" />
-        <br />
+        </label><br />
 
-        <label htmlFor='input_pw'>PW : </label>
+        <label>비밀번호 :
         <input 
         type='password' 
-        name='input_pw' 
-        value={account.userpw}
-        onChange={getinput}
+        name='userpw' 
+        defaultValue={account.userpw}
+        onChange={handleChange}
         placeholder="password" />
-        <br />
+        </label><br />
 
-        <label htmlFor='check_pw'>PW : </label>
+        <label>비밀번호 확인 : </label>
         <input 
         type='password' 
         name='checkpw' 
-        value={setChckpw(this.target.value)}
+        defaultValue={checkpw}
+        onChange={handleCHKPW}
         placeholder="password" />
         <br />
 
 
         <input 
         className="button" 
-        type="submit"
+        type="Submit"
         onClick={onClickRegister}
-        value="회원가입"
-        ></input>
+        defaultValue="회원가입"
+         />
 
-        </form> */}
+        </form>
     </div>
   );
 
