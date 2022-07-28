@@ -11,7 +11,7 @@ function Pininfo({ pin }) {
       <p>타입 : {pin.FacilityType}</p>
       <p>{pin.Description ? `추가설명 : ${pin.Description}` : null}</p>
       <Link to="/report/" state={pin}>
-        <Button name="수정요청" action="req"></Button>
+        <Button name="수정요청"></Button>
       </Link>
       <Button name="닫기" action="close" />
     </div>

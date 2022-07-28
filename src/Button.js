@@ -16,7 +16,7 @@ export default function Button({ name, action }) {
   }
 
   function req() {
-    navigate("/report");
+    console.log("Link did my job");
   }
   function submit() {
     // 수정등록
