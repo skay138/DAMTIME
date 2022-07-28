@@ -1,13 +1,13 @@
-import React from 'react';
-import Login from '@components/Login';
+// import React from 'react';
+// import Login from '@components/Login';
 
-function Loginform () {
+// function Loginform () {
     
-    return (
-        <div>
-            <Login />
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <Login />
+//         </div>
+//     )
+// }
 
-export default Loginform;
+// export default Loginform;

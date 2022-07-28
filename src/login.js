@@ -22,12 +22,22 @@ function Login() {
     //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
     console.log('click login');
-    axios.post("/damregister", loginId).then(function (res) {
+    axios.post("/damlogin", loginId).then(function (res) {
       console.log(res);
     });
     
     alert("로그인 되었습니다");
     document.getElementById("logining").className = "dam login";
+  }
+
+  const onClickRegister = () => {
+    console.log('click register');
+    axios.post("/damregister", loginId).then(function (res){
+      console.log(res);
+    });
+
+    alert("회원가입 되었습니다.");
+    document.getElementById("logining").className ="dam register";
   }
 
     //렌더링 후 첫 호출되는 함수
@@ -39,7 +49,7 @@ function Login() {
   // },[])
 
   return(
-    <div id="logining" className="dam login">
+    <div id="logining" className="damlogin">
       <h2>Login</h2>
       <container>
         <label htmlFor='input_id'>ID : </label>
