@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 4000; // <- 3000에서 다른 숫자로 변경
+const port = 3306; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
   user: "root", // mysql에 아이디를 넣는다.
   port: 3306,
   password: "dnjsrl0612", // mysql의 비밀번호를 넣는다.
-  database: "testDB", //위에서 만든 데이터베이스의 이름을 넣는다.
+  database: "dampin", //위에서 만든 데이터베이스의 이름을 넣는다.
 });
 
 connection.connect();
