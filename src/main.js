@@ -15,7 +15,15 @@ function Main() {
   const [pinma, setPinma] = useState(126.570667); //경도
 
   //fin info
-  const [pin, setPin] = useState([]);
+  const [pin, setPin] = useState(
+    {
+      "No": "",
+      "FacilityType": "",
+      "Location": "",
+      "Longitude": "",
+      "Latitude": ""
+    }
+  );
 
   //pin api
   const [pindata, setPindata] = useState([]);
@@ -102,6 +110,7 @@ function Main() {
       var content = document.createElement("div");
       content.className = "overlay_info";
 
+      
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPin(el);
@@ -154,7 +163,7 @@ function Main() {
 
   //bagng.asuscomm.com <-> localhost
   useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
+    axios.get("http://localhost:4000/seocho").then((res) => {
       setPindata(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
