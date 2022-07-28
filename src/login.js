@@ -36,20 +36,32 @@ function Login() {
     .then(res => console.log(res))
     .catch()
   },[])
+  const register = () => {
+    console.log('click reg');
+    axios.post("/damlogin", loginId).then(function(res) {
+      console.log(res);
+    });
+    alert("가입을 환영합니다");
+    document.getElementById("logining").className= "dam login";
+    
+  }
 
   return(
-    <div id='logining' className='dam login'>
-      <h2>Login</h2>
-      <form>
+    <container id='logining' className='damlogin'>
+     <h2>Login</h2>
+      <div>
         <label htmlFor='input_id'>ID : </label>
-        <input type='text' name='input_id' value={inputId} onChange={handleInputId} />
-      
+        <input type='text' name='input_id' value={inputId} onChange={handleInputId} placeholder="아이디를 입력해주세요"/>
+      </div>
+      <div>
         <label htmlFor='input_pw'>PW : </label>
-        <input type='password' name='input_pw' value={inputPw} onChange={handleInputPw} />
-  
-        <button type='submit' onClick={onClickLogin}>Login</button>
-        </form>
-    </div>
+        <input type='password' name='input_pw' value={inputPw} onChange={handleInputPw} placeholder='비밀번호를 입력해주세요'/>
+      </div>
+      <div>
+        <button className='btn1' type='button' onClick={onClickLogin}>Sign in</button>
+        <button className='btn2' type='button' >Sign up</button>
+      </div>
+    </container>
   )
 }
 
