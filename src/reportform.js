@@ -5,7 +5,7 @@ import ReportMap from "./ReportMap";
 import "./pininfo.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Report = (props) => {
+const Report = () => {
 
   // 수정요청 좌표
   const [clklat, setLat] = useState(33.450701);
