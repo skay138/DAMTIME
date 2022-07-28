@@ -77,7 +77,7 @@ app.post("/damregister", (req, res) => {
   
   connection.query("select userid from login where userid=?", [id], function (err, rows) {
     if(rows.length){
-      console.log(err);
+      console.log(rows);
     }else{
       const sqlQuery = "insert into login (userid, userpw) values (?,?);";
       connection.query(sqlQuery, [id, pw], (err, result) => {
