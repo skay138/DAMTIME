@@ -13,16 +13,16 @@ const Report = () => {
     "흡연구역이 없음",
   ];
 
-  const state ={
-    //임의의 변수입니다.
-    pininfo : pin.No,
-    selected : Selected,
-    lat : "테스트",
-    lon : "테스트",
-    text : ""
-  }
-
   const [Selected, setSelected] = useState("흡연구역 이름");
+
+  // const state ={
+  //   //임의의 변수입니다.
+  //   pininfo : 1,
+  //   selected : Selected,
+  //   lat : "테스트",
+  //   lon : "테스트",
+  //   text : ""
+  // }
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,9 +47,9 @@ const Report = () => {
   };
 
   const push = () => {
-    axios.post("/report", state).then(function (res) {
-      console.log(res);
-    });
+    // axios.post("/report", state).then(function (res) {
+    //   console.log(res);
+    // });
     alert("수정요청등록");
     navigate("/");
   };
