@@ -154,7 +154,7 @@ function Main() {
 
   //bagng.asuscomm.com <-> localhost
   useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
+    axios.get("http://localhost:4000/seocho").then((res) => {
       setPindata(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
