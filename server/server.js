@@ -68,6 +68,38 @@ app.post("/insert", (req, res) => {
   });
 });
 
+app.post("/damregister", (req, res) => {
+  
+  const id = req.body.userid;
+  const pw = req.body.userpw;
+  
+  console.log(id, pw);
+  
+  connection.query("select userid from login where userid=?", [id], function (err, rows) {
+    if(rows.length){
+      console.log(err);
+    }else{
+      const sqlQuery = "insert into login (userid, userpw) values (?,?);";
+      connection.query(sqlQuery, [id, pw], (err, result) => {
+        res.send(result);
+        console.log(rows);
+      });
+    }
+  })
+});
+
+app.post("/damlogin", (req, res) => {
+  const id = req.body.userid;
+  const pw = req.body.userpw;
+  
+  const sqlQuery =
+    "INSERT INTO login (userid, userpw) VALUES (?,?);";
+  connection.query(sqlQuery, [id, pw], (err, result) => {
+    res.send(result); //로그인
+});
+});
+
+
 app.post("/report", (req, res) => {
   var selected = req.body.selected;
   var lat  = req.body.lat;
@@ -76,7 +108,7 @@ app.post("/report", (req, res) => {
   console.log(selected, lat, lon);
 
   const sqlQuery =
-    "INSERT INTO report (selected,lat, lon) VALUES (?,?,?);";
+    "INSERT INTO report (selected, lat, lon) VALUES (?,?,?);";
   connection.query(sqlQuery, [selected, lat, lon], (err, result) => {
     res.send(result);
   });
