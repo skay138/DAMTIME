@@ -48,20 +48,22 @@ function Login() {
   return(
     <div id="logining" className="damlogin">
       <h2>Login</h2>
-      <container>
+      <form>
         <label htmlFor='input_id'>ID : </label>
         <input 
-        type='text' 
+        type='email' 
         name='input_id' 
         value={inputId} 
-        onChange={handleInputId} />
+        onChange={handleInputId}
+        placeholder="email" />
         <br />
         <label htmlFor='input_pw'>PW : </label>
         <input 
         type='password' 
         name='input_pw' 
         value={inputPw} 
-        onChange={handleInputPw} />
+        onChange={handleInputPw}
+        placeholder="password" />
         <br />
         <input 
         className="button" 
@@ -76,7 +78,7 @@ function Login() {
         value="회원가입"
         ></input>
 
-        </container>
+        </form>
     </div>
   );
 
