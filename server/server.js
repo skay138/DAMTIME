@@ -68,7 +68,7 @@ app.post("/insert", (req, res) => {
   });
 });
 
-app.post("/damlogin", (req, res) => {
+app.post("/damregister", (req, res) => {
   var id = req.body.userid;
   var pw = req.body.userpw;
   
@@ -81,16 +81,6 @@ app.post("/damlogin", (req, res) => {
   });
 });
 
-app.get("/getlogin", (req, res) => {
-  connection.query("SELECT * FROM login", function (err, rows, fields) {
-    if (err) {
-      console.log("불러오기 실패");
-    } else {
-      console.log("불러오기 성공");
-      res.send(rows);
-    }
-  });
-});
 
 
 app.post("/report", (req, res) => {

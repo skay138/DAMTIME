@@ -6,8 +6,8 @@ function Login() {
   const [inputPw, setInputPw] = useState('')
 
   const loginId = {
-    userid: "",
-    userpw: "",
+    userid: inputId,
+    userpw: inputPw,
   }
   
     //input data의 변화가 있을때마다 value값 useState화
@@ -22,7 +22,7 @@ function Login() {
     //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
     console.log('click login');
-    axios.post("/damlogin", loginId).then(function (res) {
+    axios.post("/damregister", loginId).then(function (res) {
       console.log(res);
     });
     
