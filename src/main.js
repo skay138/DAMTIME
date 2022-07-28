@@ -154,13 +154,21 @@ function Main() {
 
   //bagng.asuscomm.com <-> localhost
   useEffect(() => {
+<<<<<<< HEAD
     axios.get("http://localhost:4000/api").then((res) => {
+=======
+    axios.get("localhost:4000/api").then((res) => {
+>>>>>>> 2a1151a035ab5d88b325ca02d2545b97aa68b1de
       setPindata(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get("http://localhost:4000/userpin").then((res) => {
+=======
+    axios.get("localhost:4000/userpin").then((res) => {
+>>>>>>> 2a1151a035ab5d88b325ca02d2545b97aa68b1de
       setUserpin(res.data);
     }).catch(error => console.log(error));
   }, [refresh]);
