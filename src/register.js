@@ -24,7 +24,7 @@ function Register() {
         console.log(res);
         res.data === "중복된 아이디입니다" // 중복된 아이디면
           ? alert("중복된 아이디입니다.") // 알림만 뜨고 화면은 안넘어감
-          : navigate("/"); // 중복되지 않았으면 메인페이지로 넘어감
+          : navigate("/login"); // 중복되지 않았으면 메인페이지로 넘어감
       });
     } else alert("비밀번호를 확인해주세요");
   };
@@ -65,7 +65,6 @@ function Register() {
             defaultValue={account.userid}
             onChange={handleChange}
             placeholder="email"
-            required
           />
         </label>
         <br />
@@ -98,7 +97,7 @@ function Register() {
           onClick={onClickRegister}
           defaultValue="회원가입"
         />
-        <Link to="/login">
+        <Link to="/">
           <Button name="돌아가기"></Button>
         </Link>
       </form>

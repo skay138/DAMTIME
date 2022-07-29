@@ -96,7 +96,7 @@ app.post("/damlogin", (req, res) => {
 
   connection.query("select userid from login where userid=?;", [id], function (err, idck) {
     if(idck.length){
-      connection.query("select userpw from login where userpw=?;", [pw], function (err, pwck) {
+      connection.query("select userpw from login where userid=? AND userpw=?;", [id, pw], function (err, pwck) {
         if(pwck.length){
           res.send(true);
         }else{

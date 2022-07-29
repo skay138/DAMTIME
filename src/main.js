@@ -4,10 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
+import { useLocation } from "react-router-dom";
 
 const { kakao } = window;
 
 function Main() {
+  
+  //로그인 시 정보받기
+  const { state } = useLocation();
+  console.log(state);
+
   const [refresh, setRefresh] = useState(false); //refresh
 
   //addfin
@@ -15,15 +21,13 @@ function Main() {
   const [pinma, setPinma] = useState(126.570667); //경도
 
   //fin info
-  const [pin, setPin] = useState(
-    {
-      "No": "",
-      "FacilityType": "",
-      "Location": "",
-      "Longitude": "",
-      "Latitude": ""
-    }
-  );
+  const [pin, setPin] = useState({
+    No: "",
+    FacilityType: "",
+    Location: "",
+    Longitude: "",
+    Latitude: "",
+  });
 
   //pin api
   const [pindata, setPindata] = useState([]);
@@ -32,7 +36,6 @@ function Main() {
   //map 구현
 
   var map; // 외부접근 위해 전역변수로 설정
-  
 
   //geolocation
   function geolocation() {
@@ -59,8 +62,6 @@ function Main() {
     }
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
-
-
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
         map: map,
@@ -81,10 +82,9 @@ function Main() {
 
       // 지도 중심좌표를 접속위치로 변경합니다
       map.setCenter(locPosition);
-
     }
   }
-  
+
   //pinload
   function pinupload(data, pinimage) {
     data.forEach((el) => {
@@ -110,7 +110,6 @@ function Main() {
       var content = document.createElement("div");
       content.className = "overlay_info";
 
-      
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPin(el);
@@ -163,19 +162,24 @@ function Main() {
 
   //bagng.asuscomm.com <-> localhost
   useEffect(() => {
-    axios.get("http://localhost:4000/seocho").then((res) => {
-      setPindata(res.data);
-    }).catch(error => console.log(error));
+    axios
+      .get("http://localhost:4000/seocho")
+      .then((res) => {
+        setPindata(res.data);
+      })
+      .catch((error) => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/userpin").then((res) => {
-      setUserpin(res.data);
-    }).catch(error => console.log(error));
+    axios
+      .get("http://localhost:4000/userpin")
+      .then((res) => {
+        setUserpin(res.data);
+      })
+      .catch((error) => console.log(error));
   }, [refresh]);
 
   useEffect(() => {
-
     // axios.get('/api').then((res)=>{
     //   console.log(res.data)
     // })
@@ -190,14 +194,17 @@ function Main() {
 
     geolocation(); //geolaction
 
-    document.getElementById('currentlo').onclick = geolocation;
+    document.getElementById("currentlo").onclick = geolocation;
 
     // 흡연구역 표시
     pinupload(
       pindata,
       "https://img.icons8.com/ios-filled/100/3498DB/marker-d.png"
     );
-    pinupload(userpin, "https://img.icons8.com/ios-filled/100/000000/marker-u.png");
+    pinupload(
+      userpin,
+      "https://img.icons8.com/ios-filled/100/000000/marker-u.png"
+    );
 
     var marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
@@ -207,7 +214,6 @@ function Main() {
     // 지도에 마커를 표시합니다
     marker.setMap(map);
     marker.setVisible(false);
-    
 
     //흡연구역등록
     let btn = document.createElement("div");
@@ -262,10 +268,7 @@ function Main() {
           DAMTIME
         </div>
         <div id="myMap" className="Mapstyle"></div>
-        <button
-          className="currentlocation"
-          id="currentlo"
-        >
+        <button className="currentlocation" id="currentlo">
           <img
             src="https://img.icons8.com/sf-black-filled/64/000000/location-update.png"
             width="50px"
@@ -277,8 +280,7 @@ function Main() {
       <Addpin pinlat={pinla} pinlon={pinma} />
 
       {/* 여기부터는 핀정보입니다 */}
-      <Pininfo pin={pin}/>
-
+      <Pininfo pin={pin} />
     </div>
   );
 }

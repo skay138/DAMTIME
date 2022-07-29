@@ -57,7 +57,7 @@ const Report = () => {
       console.log(res);
     });
     alert("수정요청등록");
-    navigate("/");
+    navigate("/main");
     console.log(state);
   };
 

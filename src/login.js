@@ -30,7 +30,7 @@ function Login() {
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
         if (res.data == true) {
-          navigate("/");
+          navigate("/main", {state : loginId.userid});
           console.log(res.data);
         } else {
           alert(res.data);
@@ -68,7 +68,7 @@ function Login() {
         <button className="butto" onClick={onClickLogin} value="LOGIN">
           login
         </button>
-        <Link to='/'>
+        <Link to='/main'>
         <button className="button">비회원으로 이용</button>
         </Link>
         <Link to="/register/">
