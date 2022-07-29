@@ -12,6 +12,8 @@ function Login() {
     userpw: inputPw,
   };
 
+  const navigate = useNavigate();
+
   //input data의 변화가 있을때마다 value값 useState화
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -25,8 +27,10 @@ function Login() {
   const onClickLogin = () => {
     axios.post("/damlogin", loginId).then(function (res) {
       if (res.data == true) {
-        console.log(res.data)
-      } else console.log("로그인실패");
+        navigate("/");
+      } else {
+        alert(res.data)
+      }
     });
   };
 

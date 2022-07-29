@@ -100,7 +100,7 @@ app.post("/damlogin", (req, res) => {
         if(pwck.length){
           res.send(true);
         }else{
-          res.send(false);
+          res.send("아이디나 비밀번호가 잘못되었습니다.");
         }
       })
     }
