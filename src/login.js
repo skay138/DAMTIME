@@ -25,13 +25,18 @@ function Login() {
 
   //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    axios.post("/damlogin", loginId).then(function (res) {
-      if (res.data == true) {
-        navigate("/");
-      } else {
-        alert(res.data)
-      }
-    });
+    if (loginId.userid == "" || loginId.userpw == "") {
+      alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
+    } else {
+      axios.post("/damlogin", loginId).then(function (res) {
+        if (res.data == true) {
+          navigate("/");
+          console.log(res.data);
+        } else {
+          alert(res.data);
+        }
+      });
+    }
   };
 
   return (
@@ -63,16 +68,12 @@ function Login() {
         <button className="butto" onClick={onClickLogin} value="LOGIN">
           login
         </button>
-        <Link to="/register/">
-          <Button className="text" name="Sign Up"></Button>
+        <Link to='/'>
+        <button className="button">비회원으로 이용</button>
         </Link>
-        {/* 구 회원가입 버튼
-        <input 
-        className="button" 
-        type="submit"
-        onClick={onClickRegister}
-        value="회원가입"
-        ></input> */}
+        <Link to="/register/">
+          <Button className="text" name="회원가입"></Button>
+        </Link>
       </div>
     </div>
   );

@@ -94,15 +94,20 @@ app.post("/damlogin", (req, res) => {
   const pw = req.body.userpw;
   
 
-  connection.query("select 1 from login where userid=?;", [id], function (err, idck) {
+  connection.query("select userid from login where userid=?;", [id], function (err, idck) {
     if(idck.length){
       connection.query("select userpw from login where userpw=?;", [pw], function (err, pwck) {
         if(pwck.length){
           res.send(true);
         }else{
-          res.send("아이디나 비밀번호가 잘못되었습니다.");
+          res.send("비밀번호가 일치하지 않습니다.");
+          console.log(idck)
         }
       })
+    }
+    else{
+      res.send("아이디가 존재하지 않습니다.")
+      console.log(idck)
     }
   })
 });
