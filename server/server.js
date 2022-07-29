@@ -93,30 +93,18 @@ app.post("/damlogin", (req, res) => {
   const id = req.body.userid;
   const pw = req.body.userpw;
   
-  //로그인 성공 시 true, 실패 시 false
-  var LND = false;
-  
-  connection.query("select userid from login where userid=?;", [id], function (err, rows) {
-    if(rows.length){
-      connection.query("select userpw from login where userpw=?;", [pw], function (err, rows) {
-        if(rows.length){
-          res.send("로그인 되었습니다");
-          LND = true;
-          console.log(LND);
-          res.send(LND);
+
+  connection.query("select 1 from login where userid=?;", [id], function (err, idck) {
+    if(idck.length){
+      connection.query("select userpw from login where userpw=?;", [pw], function (err, pwck) {
+        if(pwck.length){
+          res.send(true);
         }else{
-          res.send("아이디 혹은 비밀번호가 일치하지 않습니다");
-          
+          res.send(false);
         }
       })
     }
   })
-  
-//   const sqlQuery =
-//     "INSERT INTO login (userid, userpw) VALUES (?,?);";
-//   connection.query(sqlQuery, [id, pw], (err, result) => {
-//     res.send(result); //로그인
-// });
 });
 
 
