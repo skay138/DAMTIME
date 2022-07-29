@@ -7,6 +7,7 @@ function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
+
   const loginId = {
     userid: inputId,
     userpw: inputPw,
@@ -24,13 +25,14 @@ function Login() {
   };
 
   //Login 버튼 클릭 이벤트
-  const onClickLogin = () => {
+  const onClickLogin = (e) => {
+    e.preventDefault();
     if (loginId.userid == "" || loginId.userpw == "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
         if (res.data == true) {
-          navigate("/main", {state : loginId.userid});
+          navigate("/main", { state: loginId.userid });
           console.log(res.data);
         } else {
           alert(res.data);
@@ -62,18 +64,18 @@ function Login() {
             onChange={handleInputPw}
             placeholder="Type your password"
           />
+          <br />
+          <br />
+          <button className="butto" onClick={onClickLogin} value="LOGIN">
+            login
+          </button>
+          <Link to="/main">
+            <button className="button">비회원으로 이용</button>
+          </Link>
+          <Link to="/register/">
+            <Button className="text" name="회원가입"></Button>
+          </Link>
         </form>
-        <br />
-        <br />
-        <button className="butto" onClick={onClickLogin} value="LOGIN">
-          login
-        </button>
-        <Link to='/main'>
-        <button className="button">비회원으로 이용</button>
-        </Link>
-        <Link to="/register/">
-          <Button className="text" name="회원가입"></Button>
-        </Link>
       </div>
     </div>
   );

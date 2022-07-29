@@ -17,14 +17,13 @@ function Register() {
   //회원가입 버튼
   const onClickRegister = (e) => {
     e.preventDefault();
-    setAccount({ No: "", userid: "", userpw: "", username: "" });
     if (checkpw === account.userpw) {
       // 비밀번호 확인
       axios.post("/damregister", account).then(function (res) {
         console.log(res);
         res.data === "중복된 아이디입니다" // 중복된 아이디면
           ? alert("중복된 아이디입니다.") // 알림만 뜨고 화면은 안넘어감
-          : navigate("/login"); // 중복되지 않았으면 메인페이지로 넘어감
+          : alert("회원가입이 완료되었습니다."); navigate("/"); // 중복되지 않았으면 메인페이지로 넘어감
       });
     } else alert("비밀번호를 확인해주세요");
   };
