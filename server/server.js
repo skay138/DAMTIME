@@ -72,21 +72,30 @@ app.post("/damregister", (req, res) => {
   
   const id = req.body.userid;
   const pw = req.body.userpw;
+  const name = req.body.username;
   
-  console.log(id, pw);
+  console.log(id, pw, name);
   
-  connection.query("select userid from login where userid=?;", [id], function (err, rows) {
-    if(rows.length){
-      console.log(rows);
-      res.send("중복된 아이디입니다");
-    }else{
-      const sqlQuery = "insert into login (userid, userpw) values (?,?);";
-      connection.query(sqlQuery, [id, pw], (err, result) => {
-        res.send(result);
+  
+  
+  if(id === ""){
+    res.send("아이디 오류");
+  }else{
+    connection.query("select userid from login where userid=?;", [id], function (err, rows) {
+      if(rows.length){
+        console.log(rows);
+        res.send("중복된 아이디입니다");
+      }else if(pw <= 8){
+        res.send("비밀번호 오류");
+      }else{
+        const sqlQuery = "insert into login (username, userid, userpw) values (?,?,?);";
+      connection.query(sqlQuery, [name, id, pw], (err, result) => {
+        res.send("회원가입 성공");
         console.log(rows);
       });
-    }
-  })
+      }
+    })
+  }
 });
 
 app.post("/damlogin", (req, res) => {

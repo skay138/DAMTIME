@@ -21,10 +21,18 @@ function Register() {
     if (checkpw === account.userpw) {
       // 비밀번호 확인
       axios.post("/damregister", account).then(function (res) {
-        console.log(res);
-        res.data === "중복된 아이디입니다" // 중복된 아이디면
-          ? alert("중복된 아이디입니다.") // 알림만 뜨고 화면은 안넘어감
-          : navigate("/main"); // 중복되지 않았으면 메인페이지로 넘어감
+        console.log(res.data);
+        
+        if(res.data === "아이디 오류"){
+          alert("아이디를 입력하세요"); //아이디가 없으면 
+        }else if (res.data === "중복된 아이디입니다") { //아이디가 중복되면
+          alert("중복된 아이디입니다.");
+        }else if (res.data === "비밀번호 오류") {
+          alert("비밀번호를 8자리 이상으로 해주세요");
+        }else if (res.data === "회원가입 성공"){ 
+          alert("회원가입 되었습니다.");
+          navigate("/main");
+        }
       });
     } else alert("비밀번호를 확인해주세요");
   };
