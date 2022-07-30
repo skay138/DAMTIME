@@ -24,7 +24,7 @@ function Register() {
         console.log(res);
         res.data === "중복된 아이디입니다" // 중복된 아이디면
           ? alert("중복된 아이디입니다.") // 알림만 뜨고 화면은 안넘어감
-          : navigate("/login"); // 중복되지 않았으면 메인페이지로 넘어감
+          : navigate("/main"); // 중복되지 않았으면 메인페이지로 넘어감
       });
     } else alert("비밀번호를 확인해주세요");
   };

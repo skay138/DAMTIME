@@ -25,11 +25,11 @@ function Login() {
 
   //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    if (loginId.userid == "" || loginId.userpw == "") {
+    if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
-        if (res.data == true) {
+        if (res.data === true) {
           navigate("/main", {state : loginId.userid});
           console.log(res.data);
         } else {
@@ -65,7 +65,7 @@ function Login() {
         </form>
         <br />
         <br />
-        <button className="butto" onClick={onClickLogin} value="LOGIN">
+        <button className="button" onClick={onClickLogin} value="LOGIN">
           login
         </button>
         <Link to='/main'>
