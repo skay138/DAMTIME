@@ -16,12 +16,14 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .damback {
-  margin-top: 50%;
+  /* 마진이 %일 필요가 없고 패딩이 없으니 너무 답답함, 좌우 마진도 없으면 radius 넣는 의미가 퇴색됨 */
+  margin: 30px 15px 0px 15px;
   background: white;
   /* 사이즈 구분용 색 변경 */
-  margin-left: 0;
   font-size: 20px;
   border-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 30px;
 }
 .text {
   background: none;
@@ -41,4 +43,12 @@
   background: linear-gradient(270deg, transparent, #dc7d09);
 
   color: white;
+}
+.register {
+  text-align: left;
+  background-color: aliceblue;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
+  padding: 5px 30px 15px 30px;
 }

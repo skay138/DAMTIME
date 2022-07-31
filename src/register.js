@@ -51,8 +51,9 @@ function Register() {
   };
 
   return (
-    <div id="register" className="damlogin">
-      <h2>회원가입</h2>
+    <div id="register" className="register">
+      <div>
+      <h2>회원가입(css 임시)</h2>
       <form>
         <label>
           이름 :
@@ -109,6 +110,7 @@ function Register() {
           <Button name="돌아가기"></Button>
         </Link>
       </form>
+      </div>
     </div>
   );
 }

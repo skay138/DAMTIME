@@ -12,7 +12,11 @@ function Main() {
   
   //로그인 시 정보받기
   const { state } = useLocation();
-  console.log(state);
+  localStorage.setItem('loginID', JSON.stringify({state}));
+  var loginID = localStorage.getItem('loginID');
+  console.log(loginID);
+  
+  
 
   const [refresh, setRefresh] = useState(false); //refresh
 
