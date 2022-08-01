@@ -4,19 +4,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
-import { useLocation } from "react-router-dom";
 
 const { kakao } = window;
 
 function Main() {
-  
   //로그인 시 정보받기
-  const { state } = useLocation();
-  localStorage.setItem('loginID', JSON.stringify({state}));
-  var loginID = localStorage.getItem('loginID');
-  console.log(loginID);
-  
-  
+
+  const userid = sessionStorage.getItem("loginId");
+  console.log(userid);
 
   const [refresh, setRefresh] = useState(false); //refresh
 
@@ -164,7 +159,7 @@ function Main() {
     });
   }
 
-  //bagng.asuscomm.com <-> localhost
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/seocho")
@@ -184,9 +179,7 @@ function Main() {
   }, [refresh]);
 
   useEffect(() => {
-    // axios.get('/api').then((res)=>{
-    //   console.log(res.data)
-    // })
+
 
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
@@ -222,12 +215,18 @@ function Main() {
     //흡연구역등록
     let btn = document.createElement("div");
     btn.textContent = "흡연구역 등록";
+    
     btn.onclick = addpin;
 
     function addpin() {
-      document.getElementById("addpin").className = "add";
-      setPinla(marker.getPosition().Ma);
-      setPinma(marker.getPosition().La);
+      if (userid === 'non'){
+        alert("비로그인 상태입니다.")
+      }
+      else{
+        document.getElementById("addpin").className = "add";
+        setPinla(marker.getPosition().Ma);
+        setPinma(marker.getPosition().La);
+      }
     }
 
     var iwContent = btn, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다

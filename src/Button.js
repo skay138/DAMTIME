@@ -12,7 +12,7 @@ export default function Button({ name, action }) {
   }
 
   function home() {
-    navigate("/");
+    navigate("/main");
   }
 
   function req() {
@@ -21,7 +21,7 @@ export default function Button({ name, action }) {
   function submit() {
     // 수정등록
     alert("요청되었습니다.");
-    navigate("/");
+    navigate("/main");
   }
 
   function select() {

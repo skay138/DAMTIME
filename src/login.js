@@ -15,6 +15,8 @@ function Login() {
 
   const navigate = useNavigate();
 
+  let sessionStorage = window.sessionStorage;
+
   //input data의 변화가 있을때마다 value값 useState화
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -31,14 +33,19 @@ function Login() {
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
         if (res.data === true) {
-          navigate("/main", {state : loginId.userid});
-          console.log(res.data);
+          navigate("/main");
+          sessionStorage.setItem("loginId",loginId.userid);
         } else {
           alert(res.data);
         }
       });
     }
   };
+
+  const nonmember = () =>{
+    sessionStorage.setItem("loginId", "non");
+    navigate('/main');
+  }
 
   return (
     <div id="logining" className="damlogin">
@@ -68,9 +75,7 @@ function Login() {
           <button className="butto" onClick={onClickLogin} value="LOGIN">
             login
           </button>
-          <Link to="/main">
-            <button className="button">비회원으로 이용</button>
-          </Link>
+            <button className="button" onClick={nonmember}>비회원으로 이용</button>
           <Link to="/register/">
             <Button className="text" name="회원가입"></Button>
           </Link>
