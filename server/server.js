@@ -4,6 +4,7 @@ const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
+const crypto = require("crypto");
 
 let corsOptions = {
   origin: "*",
@@ -69,68 +70,88 @@ app.post("/insert", (req, res) => {
 });
 
 app.post("/damregister", (req, res) => {
-  
   const id = req.body.userid;
   const pw = req.body.userpw;
-  const name = req.body.username;
-  
-  console.log(id, pw, name);
-  
-  
-  
-  if(id === ""){
-    res.send("아이디 오류");
-  }else{
-    connection.query("select userid from login where userid=?;", [id], function (err, rows) {
-      if(rows.length){
-        console.log(rows);
-        res.send("중복된 아이디입니다");
-      }else if(pw <= 8){
-        res.send("비밀번호 오류");
-      }else{
-        const sqlQuery = "insert into login (username, userid, userpw) values (?,?,?);";
-      connection.query(sqlQuery, [name, id, pw], (err, result) => {
-        res.send("회원가입 성공");
-        console.log(rows);
-      });
+
+  connection.query(
+    "select userid from login where userid=?;",
+    [id],
+    function (err, idck) {
+      if (idck.length) {
+        res.send("아이디중복");
+      } else {
+        crypto.randomBytes(64, (err, buf) => {
+          //salt는 생성하는 해시값 이외에 추가적인 암호화 값
+          const salt = buf.toString("base64");
+          console.log("salt :: ", salt);
+          //crypto.pbkdf2의 salt 뒤 숫자 파라미터는 임의의 값으로 주어준다.
+          crypto.pbkdf2(pw, salt, 1203947, 64, "sha512", (err, key) => {
+            console.log("password :: ", key.toString("base64")); // 'dWhPkH6c4X1Y71A/DrAHhML3DyKQdEkUOIaSmYCI7xZkD5bLZhPF0dOSs2YZA/Y4B8XNfWd3DHIqR5234RtHzw=='
+
+            // 쿼리 작성하여 전달
+            const sql =
+              "INSERT INTO login (userid, userpw, salt) values (?,?,?);";
+            const param = [id, key.toString("base64"), salt];
+            connection.query(sql, param, (err, data) => {
+              if (!err) {
+                res.send("success");
+              } else {
+                res.send(err);
+              }
+            });
+          });
+        });
       }
-    })
-  }
+    }
+  );
 });
 
 app.post("/damlogin", (req, res) => {
   const id = req.body.userid;
   const pw = req.body.userpw;
-  
 
-  connection.query("select userid from login where userid=?;", [id], function (err, idck) {
-    if(idck.length){
-      connection.query("select userpw from login where userid=? AND userpw=?;", [id, pw], function (err, pwck) {
-        if(pwck.length){
-          res.send(true);
-        }else{
-          res.send("비밀번호가 일치하지 않습니다.");
-          console.log(idck)
-        }
-      })
+  connection.query(
+    "select userid from login where userid=?;",
+    [id],
+    function (err, idck) {
+      if (idck.length) {
+        connection.query(
+          "select userpw , salt from login where userid=?;",
+          [id],
+          function (err, pwck) {
+            crypto.pbkdf2(
+              pw,
+              pwck[0].salt,
+              1203947,
+              64,
+              "sha512",
+              (err, key) => {
+                console.log(
+                  "비밀번호 일치 여부 :: ",
+                  key.toString("base64") === pwck[0].userpw
+                );
+                // true : 아이디, 비밀번호 일치
+                // false : 아이디 일치, 비밀번호 불일치
+                res.send(key.toString("base64") === pwck[0].userpw);
+              }
+            );
+          }
+        );
+      } else {
+        res.send("아이디가 존재하지 않습니다.");
+      }
     }
-    else{
-      res.send("아이디가 존재하지 않습니다.")
-      console.log(idck)
-    }
-  })
+  );
 });
-
 
 app.post("/report", (req, res) => {
   var selected = req.body.selected;
-  var lat  = req.body.lat;
+  var lat = req.body.lat;
   var lon = req.body.lon;
 
   console.log(selected, lat, lon);
 
-  const sqlQuery =
-    "INSERT INTO report (selected, lat, lon) VALUES (?,?,?);";
+  const sqlQuery = "INSERT INTO report (selected, lat, lon) VALUES (?,?,?);";
   connection.query(sqlQuery, [selected, lat, lon], (err, result) => {
     res.send(result);
   });
@@ -140,6 +161,6 @@ app.listen(port, () => {
   console.log(`Connected at http://localhost:${port}`);
 });
 
-//FROM pro AS A 
-// INNER JOIN info AS B 
+//FROM pro AS A
+// INNER JOIN info AS B
 // ON A.num = B.num; -> 다른 데이블 값 가져오기
