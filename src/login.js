@@ -25,14 +25,13 @@ function Login() {
   };
 
   //Login 버튼 클릭 이벤트
-  const onClickLogin = (e) => {
-    e.preventDefault();
-    if (loginId.userid == "" || loginId.userpw == "") {
+  const onClickLogin = () => {
+    if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
-        if (res.data == true) {
-          navigate("/main", { state: loginId.userid });
+        if (res.data === true) {
+          navigate("/main", {state : loginId.userid});
           console.log(res.data);
         } else {
           alert(res.data);
