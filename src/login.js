@@ -7,12 +7,17 @@ function Login() {
   const [inputId, setInputId] = useState('')
   const [inputPw, setInputPw] = useState('')
 
+
   const loginId = {
     userid: inputId,
     userpw: inputPw,
-  }
-  
-    //input data의 변화가 있을때마다 value값 useState화
+  };
+
+  const navigate = useNavigate();
+
+  let sessionStorage = window.sessionStorage;
+
+  //input data의 변화가 있을때마다 value값 useState화
   const handleInputId = (e) => {
     setInputId(e.target.value);
   }
@@ -23,14 +28,27 @@ function Login() {
 
     //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    console.log('click login');
-    axios.post("/damlogin", loginId).then(function (res) {
-      console.log(res);
-    });
+
+    if (loginId.userid === "" || loginId.userpw === "") {
+      alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
+    } else {
+      axios.post("/damlogin", loginId).then(function (res) {
+        if (res.data === true) {
+          navigate("/main");
+          sessionStorage.setItem("loginId",loginId.userid);
+        } else {
+          alert(res.data);
+        }
+      });
+    }
+  };
+
+  const nonmember = () =>{
+    sessionStorage.setItem("loginId", "non");
+    navigate('/main');
   }
 
-
-  return(
+return(
     <div id="logining" className="damlogin">
       <br/><h1>DAMTIME</h1>
       <div className='damback2'>
@@ -62,22 +80,14 @@ function Login() {
         value="LOGIN"
         ></input></form></fieldset>
         <br/><br/><form>
-        <Link to='/main'>
+          <Link to='/main'>
           <input type='button' className="text" value="Using for Non remember"></input>
         </Link><br/>
         <Link to="/register/">
         <input type='button' className="text" value="Or Sign Up Using"></input>
         </Link>
-        {/* 구 회원가입 버튼
-        <input 
-        className="button" 
-        type="submit"
-        onClick={onClickRegister}
-        value="회원가입"
-        ></input> */}
-
         </form>
-        </div>
+      </div>
     </div>
   );
 
