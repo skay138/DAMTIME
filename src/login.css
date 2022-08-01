@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Jura:400');
 .damlogin {
-  background: #ceeafa;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  animation: Gradient 15s ease infinite;
   color: rgb(0, 0, 0);
+  box-sizing: border-box;
   border: none;
   height: 100%;
   width: 100%;
@@ -13,23 +16,59 @@
   text-align: center;
   position: absolute;
   font-size: 30px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Jura, Arial; font-weight: 400;
 }
+
+
 .damback {
-  /* 마진이 %일 필요가 없고 패딩이 없으니 너무 답답함, 좌우 마진도 없으면 radius 넣는 의미가 퇴색됨 */
+  /* 마진이 %일 필요가 없고 패딩이 없으니 너무 답답함, 좌우 마진도 없으면 radius 넣는 의미가 퇴색됨
   margin: 30px 15px 0px 15px;
   background: white;
   /* 사이즈 구분용 색 변경 */
-  font-size: 20px;
+  /* font-size: 20px;
   border-radius: 15px;
   padding-top: 5px;
-  padding-bottom: 30px;
+  padding-bottom: 30px; */
 }
 .text {
-  background: none;
+  /* background: none;
   border: none;
   font-style: italic;
-  text-decoration: underline;
+  text-decoration: underline; */
+  padding: 10px;
+      border:1px solid rgba(0,0,0,0);
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      width: 56%;
+}
+.damback2 {
+   margin-top: 30%;
+    background-color: rgba(255, 255, 255, 0.608);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.tit{
+    margin-bottom: 5px;
+      text-align: center;
+      text-shadow: 0 4px 16px #fff;
+      font-size: 22px;
+      font-weight: 100;
+    padding: 5px;
+        background-color: rgba(255, 255, 255, 0.767);
+        border-radius: 5px;
+}
+.tit2 {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 30px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+a.hover {
+        background-color: #eef;
+        border: 1px solid #aaf;
 }
 .butto {
   display: block;
@@ -39,10 +78,11 @@
   font-size: medium;
   overflow: hidden;
   margin: 0 auto;
-  width: 200px;
-  background: linear-gradient(270deg, transparent, #dc7d09);
+  width: 56%;
+  background-color: rgba(255, 255, 255, 0.608);
+  /* background: linear-gradient(270deg, transparent, #dc7d09); */
 
-  color: white;
+  color: black;
 }
 .register {
   text-align: left;
