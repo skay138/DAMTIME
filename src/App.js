@@ -3,6 +3,7 @@ import Main from "./main.js";
 import { Route, Routes } from "react-router-dom";
 import Report from "./reportform";
 import Login from "./login";
+import EntryPage from './Logi.js'
 import Register from "./register";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route path="/report/" element={<Report />} />
       <Route path="/" element={<Login />} />
       <Route path="/register/" element={<Register />} />
+      <Route path="/test" element={<EntryPage />} />
     </Routes>
   );
 }

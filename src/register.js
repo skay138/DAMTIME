@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
-import Button from "./Button";
 
 function Register() {
   const [account, setAccount] = useState({
@@ -56,17 +55,6 @@ function Register() {
         <h2>회원가입(css 임시)</h2>
         <form>
           <label>
-            이름 :
-            <input
-              type="text"
-              name="username"
-              defaultValue={account.username}
-              onChange={handleChange}
-              placeholder="닉네임"
-            />
-          </label>
-          <br />
-          <label>
             이메일 :
             <input
               type="email"
@@ -87,6 +75,11 @@ function Register() {
               onChange={handleChange}
               placeholder="password"
             />
+            <p>
+              {account.userpw.length < 8
+                ? "비밀번호는 8자 이상을 요구합니다"
+                : "8자 이상입니다."}
+            </p>
           </label>
           <br />
 
@@ -98,11 +91,21 @@ function Register() {
             onChange={handleCHKPW}
             placeholder="password"
           />
+          <p>
+            {checkpw === "" ? null : checkpw === account.userpw
+              ? "비밀번호가 일치합니다"
+              : "비밀번호가 일치하지 않습니다"}
+          </p>
           <br />
 
-          <input type='button' onClick={onClickRegister} className="text" value="submit"></input>
+          <input
+            type="button"
+            onClick={onClickRegister}
+            className="text"
+            value="submit"
+          ></input>
           <Link to="/">
-            <input type='button' className="text" value="back"></input>
+            <input type="button" className="text" value="back"></input>
           </Link>
         </form>
       </div>

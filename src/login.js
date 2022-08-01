@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -75,11 +75,11 @@ function Login() {
             <br />
             <br />
             <button
-              className="butto"
+              className="loginbtn"
               type="submit"
               onClick={onClickLogin}
               value="LOGIN"
-            ></button>
+            >LOGIN</button>
         </fieldset>
         <br />
         <br />
@@ -87,14 +87,14 @@ function Login() {
             onClick={nonmember}
               type="button"
               className="text"
-              value="Using for Non remember"
+              value="Enter by Non-member"
             ></input>
           <br />
           <Link to="/register/">
             <input
               type="button"
               className="text"
-              value="Or Sign Up Using"
+              value="Sign Up"
             ></input>
           </Link>
 

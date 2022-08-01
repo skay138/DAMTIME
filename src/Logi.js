@@ -1,42 +1,105 @@
-// return(
-//     <div id="logining" className="damlogin">
-//       <br/><h1>DAMTIME</h1>
-//       <div className='damback2'>
-//       <h2>Welcome Back!</h2>
-//       <fieldset className='tit'>
-        
-//       <form>
-//       <legend className='tit2'>Log In</legend>
-//         <label htmlFor='input_id'>User : </label>
-//         <input 
-//         type='email' 
-//         name='input_id' 
-//         value={inputId} 
-//         onChange={handleInputId}
-//         placeholder="Type your e-mail" />
-//         <br />
-//         <label htmlFor='input_pw'>Pass : </label>
-//         <input 
-//         type='password' 
-//         name='input_pw' 
-//         value={inputPw} 
-//         onChange={handleInputPw}
-//         placeholder="Type your password" />
-//         <br /><br/>
-//         <input 
-//         className="butto" 
-//         type="submit"
-//         onClick={onClickLogin}
-//         value="LOGIN"
-//         ></input></form></fieldset>
-//         <br/><br/><form>
-//           <Link to='/main'>
-//           <input type='button' className="text" value="Using for Non remember"></input>
-//         </Link><br/>
-//         <Link to="/register/">
-//         <input type='button' className="text" value="Or Sign Up Using"></input>
-//         </Link>
-//         </form>
-//       </div>
-//     </div>
-//   );
+import { useEffect, useState } from "react";
+import "./logi.css";
+
+function EntryPage() {
+  const [state, setState] = useState({ currentView: "logIn" });
+
+  const changeView = (view) => {
+    setState({
+      currentView: view,
+    });
+  };
+
+  const currentView = () => {
+    switch (state.currentView) {
+      case "signUp":
+        return (
+          <form>
+            <h2>회원가입</h2>
+            <fieldset>
+              <legend>Create Account</legend>
+              <ul>
+                <li>
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" id="userid" required />
+                </li>
+                <li>
+                  <label htmlFor="password">비밀번호:</label>
+                  <input type="password" id="password" required />
+                </li>
+                <li>
+                  <label htmlFor="password">비밀번호 확인:</label>
+                  <input type="password" id="passwordchk" required />
+                </li>
+              </ul>
+            </fieldset>
+            <button>Submit</button>
+            <button type="button" onClick={() => changeView("logIn")}>
+              로그인 페이지로
+            </button>
+          </form>
+        );
+      case "logIn":
+        return (
+          <form>
+            <h2>DAMTIME</h2>
+            <fieldset>
+              <legend>Log In</legend>
+              <ul>
+                <li>
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="email"
+                    id="userid"
+                    placeholder="type your email"
+                    required
+                  />
+                </li>
+                <li>
+                  <label htmlFor="password">Password:</label>
+                  <input type="password" id="password" required />
+                </li>
+                <li>
+                  <i />
+                  <a onClick={() => changeView("PWReset")} href="#">
+                    Forgot Password?
+                  </a>
+                </li>
+              </ul>
+            </fieldset>
+            <button>Login</button>
+            <button type="button" onClick={() => changeView("signUp")}>
+              Create an Account
+            </button>
+          </form>
+        );
+      case "PWReset":
+        return (
+          <form>
+            <h2>Reset Password</h2>
+            <fieldset>
+              <legend>Password Reset</legend>
+              <ul>
+                <li>
+                  <em>A reset link will be sent to your inbox!</em>
+                </li>
+                <li>
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" id="userid" required />
+                </li>
+              </ul>
+            </fieldset>
+            <button>Send Reset Link</button>
+            <button type="button" onClick={() => changeView("logIn")}>
+              Go Back
+            </button>
+          </form>
+        );
+      default:
+        break;
+    }
+  };
+  return <section id="entry-page">{currentView()}</section>;
+}
+
+export default EntryPage;
