@@ -12,7 +12,7 @@ function EntryPage() {
     });
   };
 
-  //로그인 변수들
+  //아이디
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
@@ -37,7 +37,8 @@ function EntryPage() {
   };
 
   //Login 버튼 클릭 이벤트
-  const onClickLogin = () => {
+  const onClickLogin = (e) => {
+    e.preventDefault();
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
@@ -61,24 +62,29 @@ function EntryPage() {
   };
 
   //회원가입 버튼
-  const onClickRegister = () => {
-    if (checkpw === inputPw) {
-      // 비밀번호 확인
-      if (inputPw.length < 8) {
-        alert("비밀번호를 8자리 이상 입력해주세요.");
-      } else {
-        axios.post("/damregister", loginId).then(function (res) {
-          console.log(res.data);
+  const onClickRegister = (e) => {
+    e.preventDefault();
+    if (inputId !== "") {
+      if (checkpw === inputPw) {
+        // 비밀번호 확인
+        if (inputPw.length < 8) {
+          alert("비밀번호를 8자리 이상 입력해주세요.");
+        } else {
+          axios.post("/damregister", loginId).then(function (res) {
+            console.log(res.data);
 
-          if (res.data === "아이디중복") {
-            alert("중복된 아이디입니다."); //아이디가 없으면
-          } else if (res.data === "success") {
-            alert("회원가입 되었습니다.");
-            navigate("/");
-          }
-        });
-      }
-    } else alert("비밀번호가 일치하지 않습니다.");
+            if (res.data === "아이디중복") {
+              alert("중복된 아이디입니다."); //아이디가 없으면
+            } else if (res.data === "success") {
+              alert("회원가입 되었습니다.");
+              changeView("logIn");
+            }
+          });
+        }
+      } else alert("비밀번호가 일치하지 않습니다.");
+    } else {
+      alert("이메일을 입력해주세요.");
+    }
   };
 
   const handleCHKPW = (e) => {
