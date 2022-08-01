@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Jura&family=Noto+Sans+KR:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
 * {
   font-family: "Jura", sans-serif;
   font-weight: 400;
@@ -101,6 +101,20 @@ section#entry-page form button {
 section#entry-page form button:hover {
   background-color: #eef;
   border: 1px solid #aaf;
+}
+.loginbtn {
+  display: block;
+  position: relative;
+  border-radius: 25px;
+  height: 45px;
+  font-size: medium;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 56%;
+  background-color: rgba(255, 255, 255, 0.608);
+  /* background: linear-gradient(270deg, transparent, #dc7d09); */
+
+  color: black;
 }
 
 @media only screen and (min-width: 420px) {
