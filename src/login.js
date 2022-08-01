@@ -7,7 +7,6 @@ function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
-
   const loginId = {
     userid: inputId,
     userpw: inputPw,
@@ -34,52 +33,55 @@ function Login() {
       axios.post("/damlogin", loginId).then(function (res) {
         if (res.data === true) {
           navigate("/main");
-          sessionStorage.setItem("loginId",loginId.userid);
+          sessionStorage.setItem("loginId", loginId.userid);
+        } else if (res.data === false) {
+          alert("비밀번호가 일치하지 않습니다.");
         } else {
+          console.log(res);
           alert(res.data);
         }
       });
     }
   };
 
-  const nonmember = () =>{
+  const nonmember = () => {
     sessionStorage.setItem("loginId", "non");
-    navigate('/main');
-  }
+    navigate("/main");
+  };
 
   return (
     <div id="logining" className="damlogin">
       <h1>DAMTIME</h1>
       <div className="damback">
         <h2>Login</h2>
-        <form>
-          <label htmlFor="input_id">User : </label>
-          <input
-            type="email"
-            name="input_id"
-            value={inputId}
-            onChange={handleInputId}
-            placeholder="Type your e-mail"
-          />
-          <br />
-          <label htmlFor="input_pw">Pass : </label>
-          <input
-            type="password"
-            name="input_pw"
-            value={inputPw}
-            onChange={handleInputPw}
-            placeholder="Type your password"
-          />
-          <br />
-          <br />
-          <button className="butto" onClick={onClickLogin} value="LOGIN">
-            login
-          </button>
-            <button className="button" onClick={nonmember}>비회원으로 이용</button>
-          <Link to="/register/">
-            <Button className="text" name="회원가입"></Button>
-          </Link>
-        </form>
+        <label htmlFor="input_id">User : </label>
+        <input
+          type="email"
+          name="input_id"
+          value={inputId}
+          onChange={handleInputId}
+          placeholder="Type your e-mail"
+        />
+        <br />
+        <label htmlFor="input_pw">Pass : </label>
+        <input
+          type="password"
+          name="input_pw"
+          value={inputPw}
+          onChange={handleInputPw}
+          placeholder="Type your password"
+        />
+        <br />
+        <br />
+        <button className="butto" onClick={onClickLogin} value="LOGIN">
+          login
+        </button>
+        <button className="button" onClick={nonmember}>
+          비회원으로 이용
+        </button>
+        <Link to="/register/">
+          <Button className="text" name="회원가입"></Button>
+        </Link>
       </div>
     </div>
   );
