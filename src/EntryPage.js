@@ -108,6 +108,7 @@ function EntryPage() {
                   <input
                     type="email"
                     id="userid"
+                    value={inputId}
                     onChange={handleInputId}
                     placeholder="email"
                     autoComplete="off"
@@ -124,6 +125,7 @@ function EntryPage() {
                   <input
                     type="password"
                     id="password"
+                    value={inputPw}
                     onChange={handleInputPw}
                     placeholder="password"
                     required
@@ -154,7 +156,7 @@ function EntryPage() {
               </ul>
             </fieldset>
             <button type="button" onClick={onClickRegister} value="submit">
-              Submit
+              회원가입
             </button>
             <button onClick={() => changeView("logIn")}>로그인 페이지로</button>
           </form>
@@ -185,6 +187,7 @@ function EntryPage() {
                     required
                     value={inputPw}
                     onChange={handleInputPw}
+                    placeholder="password"
                   />
                 </li>
                 <li>
@@ -209,7 +212,7 @@ function EntryPage() {
               type="button"
               value="Enter by Non-member"
             >
-              Enter by Non-member
+              비로그인으로 이용
             </button>
             <button type="button" onClick={() => changeView("signUp")}>
               회원가입하기
