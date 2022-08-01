@@ -12,7 +12,7 @@ function EntryPage() {
     });
   };
 
-  //로그인
+  //로그인 변수들
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
@@ -20,6 +20,8 @@ function EntryPage() {
     userid: inputId,
     userpw: inputPw,
   };
+
+  const [checkpw, setChckpw] = useState("");
 
   const navigate = useNavigate();
 
@@ -58,6 +60,31 @@ function EntryPage() {
     navigate("/main");
   };
 
+  //회원가입 버튼
+  const onClickRegister = () => {
+    if (checkpw === inputPw) {
+      // 비밀번호 확인
+      if (inputPw.length < 8) {
+        alert("비밀번호를 8자리 이상 입력해주세요.");
+      } else {
+        axios.post("/damregister", loginId).then(function (res) {
+          console.log(res.data);
+
+          if (res.data === "아이디중복") {
+            alert("중복된 아이디입니다."); //아이디가 없으면
+          } else if (res.data === "success") {
+            alert("회원가입 되었습니다.");
+            navigate("/");
+          }
+        });
+      }
+    } else alert("비밀번호가 일치하지 않습니다.");
+  };
+
+  const handleCHKPW = (e) => {
+    setChckpw(e.target.value);
+  };
+
   const currentView = () => {
     switch (state.currentView) {
       case "signUp":
@@ -69,26 +96,52 @@ function EntryPage() {
               <ul>
                 <li>
                   <label htmlFor="email">Email:</label>
-                  <input type="email" id="userid" required />
+                  <input
+                    type="email"
+                    id="userid"
+                    onChange={handleInputId}
+                    placeholder="email"
+                    required
+                  />
                 </li>
                 <li>
                   <label htmlFor="password">비밀번호:</label>
-                  <input type="password" id="password" required />
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={handleInputPw}
+                    placeholder="password"
+                    required
+                  />
+                  <p>
+                    {inputPw.length < 8
+                      ? "비밀번호는 8자 이상을 요구합니다"
+                      : "8자 이상입니다."}
+                  </p>
                 </li>
                 <li>
                   <label htmlFor="password">비밀번호 확인:</label>
-                  <input type="password" id="passwordchk" required />
+                  <input
+                    type="password"
+                    id="passwordchk"
+                    onChange={handleCHKPW}
+                    placeholder="password"
+                    required
+                  />
+                  <p>
+                    {checkpw === ""
+                      ? null
+                      : checkpw === inputPw
+                      ? "비밀번호가 일치합니다"
+                      : "비밀번호가 일치하지 않습니다"}
+                  </p>
                 </li>
               </ul>
             </fieldset>
-            <button>Submit</button>
-            <button
-              className="loginbtn"
-              type="button"
-              onClick={() => changeView("logIn")}
-            >
-              로그인 페이지로
+            <button type="button" onClick={onClickRegister} value="submit">
+              Submit
             </button>
+            <button onClick={() => changeView("logIn")}>로그인 페이지로</button>
           </form>
         );
       case "logIn":
@@ -126,7 +179,7 @@ function EntryPage() {
                   </a>
                 </li>
               </ul>
-              <br/>
+              <br />
               <button
                 className="loginbtn"
                 type="submit"
