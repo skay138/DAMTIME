@@ -65,7 +65,7 @@ function Login() {
         </form>
         <br />
         <br />
-        <button className="button" onClick={onClickLogin} value="LOGIN">
+        <button className="butto" onClick={onClickLogin} value="LOGIN">
           login
         </button>
         <Link to='/main'>
