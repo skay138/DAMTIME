@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import Button from "./Button";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Button from './Button';
 
 function Login() {
-  const [inputId, setInputId] = useState("");
-  const [inputPw, setInputPw] = useState("");
+  const [inputId, setInputId] = useState('')
+  const [inputPw, setInputPw] = useState('')
+
 
   const loginId = {
     userid: inputId,
@@ -20,72 +21,77 @@ function Login() {
   //input data의 변화가 있을때마다 value값 useState화
   const handleInputId = (e) => {
     setInputId(e.target.value);
-  };
+  }
 
   const handleInputPw = (e) => {
     setInputPw(e.target.value);
-  };
+  }
 
-  //Login 버튼 클릭 이벤트
+    //Login 버튼 클릭 이벤트
   const onClickLogin = () => {
+
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
       axios.post("/damlogin", loginId).then(function (res) {
         if (res.data === true) {
           navigate("/main");
-          sessionStorage.setItem("loginId", loginId.userid);
-        } else if (res.data === false) {
-          alert("비밀번호가 일치하지 않습니다.");
+          sessionStorage.setItem("loginId",loginId.userid);
         } else {
-          console.log(res);
           alert(res.data);
         }
       });
     }
   };
 
-  const nonmember = () => {
+  const nonmember = () =>{
     sessionStorage.setItem("loginId", "non");
-    navigate("/main");
-  };
+    navigate('/main');
+  }
 
-  return (
+return(
     <div id="logining" className="damlogin">
-      <h1>DAMTIME</h1>
-      <div className="damback">
-        <h2>Login</h2>
-        <label htmlFor="input_id">User : </label>
-        <input
-          type="email"
-          name="input_id"
-          value={inputId}
-          onChange={handleInputId}
-          placeholder="Type your e-mail"
-        />
+      <br/><h1>DAMTIME</h1>
+      <div className='damback2'>
+      <h2>Welcome Back!</h2>
+      <fieldset className='tit'>
+        
+      <form>
+      <legend className='tit2'>Log In</legend>
+        <label htmlFor='input_id'>User : </label>
+        <input 
+        type='email' 
+        name='input_id' 
+        value={inputId} 
+        onChange={handleInputId}
+        placeholder="Type your e-mail" />
         <br />
-        <label htmlFor="input_pw">Pass : </label>
-        <input
-          type="password"
-          name="input_pw"
-          value={inputPw}
-          onChange={handleInputPw}
-          placeholder="Type your password"
-        />
-        <br />
-        <br />
-        <button className="butto" onClick={onClickLogin} value="LOGIN">
-          login
-        </button>
-        <button className="button" onClick={nonmember}>
-          비회원으로 이용
-        </button>
+        <label htmlFor='input_pw'>Pass : </label>
+        <input 
+        type='password' 
+        name='input_pw' 
+        value={inputPw} 
+        onChange={handleInputPw}
+        placeholder="Type your password" />
+        <br /><br/>
+        <input 
+        className="butto" 
+        type="submit"
+        onClick={onClickLogin}
+        value="LOGIN"
+        ></input></form></fieldset>
+        <br/><br/><form>
+          <Link to='/main'>
+          <input type='button' className="text" value="Using for Non remember"></input>
+        </Link><br/>
         <Link to="/register/">
-          <Button className="text" name="회원가입"></Button>
+        <input type='button' className="text" value="Or Sign Up Using"></input>
         </Link>
+        </form>
       </div>
     </div>
   );
+
 }
 
 export default Login;

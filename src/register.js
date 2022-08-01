@@ -100,11 +100,9 @@ function Register() {
           />
           <br />
 
-          <button className="button" onClick={onClickRegister}>
-            회원가입
-          </button>
+          <input type='button' onClick={onClickRegister} className="text" value="submit"></input>
           <Link to="/">
-            <Button name="돌아가기"></Button>
+            <input type='button' className="text" value="back"></input>
           </Link>
         </form>
       </div>
