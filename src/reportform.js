@@ -10,6 +10,7 @@ const Report = () => {
   // 수정요청 좌표
   const [clklat, setLat] = useState(33.450701);
   const [clklon, setLon] = useState(126.570667);
+  const [text, setInputText] = useState("");
   
   const selectList = [
     "흡연구역 이름",
@@ -26,7 +27,7 @@ const Report = () => {
     selected : Selected,
     lat : clklat,
     lon : clklon,
-    text : "plz"
+    text : text
   }
 
   const navigate = useNavigate();
@@ -46,10 +47,14 @@ const Report = () => {
     } else {
       return (
         <div>
-          <textarea></textarea>
+          <textarea onChange={handleText} value={text}></textarea>
         </div>
       );
     }
+  };
+  
+  const handleText = (e) => {
+    setInputText(e.target.value);
   };
 
   const push = () => {

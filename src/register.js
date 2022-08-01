@@ -17,6 +17,7 @@ function Register() {
   //회원가입 버튼
   const onClickRegister = (e) => {
     e.preventDefault();
+    setAccount({ No: "", userid: "", userpw: "", username: "" });
     if (checkpw === account.userpw) {
       // 비밀번호 확인
       if (account.userpw.length < 8) {
