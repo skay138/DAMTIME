@@ -54,7 +54,6 @@ function Login() {
       <p className="damtime">DAMTIME</p>
       <div className="damback2">
         <fieldset className="tit">
-          <form>
             <legend className="tit2">Log In</legend>
             <label htmlFor="input_id">User : </label>
             <input
@@ -75,13 +74,12 @@ function Login() {
             />
             <br />
             <br />
-            <input
+            <button
               className="butto"
               type="submit"
               onClick={onClickLogin}
               value="LOGIN"
-            ></input>
-          </form>
+            ></button>
         </fieldset>
         <br />
         <br />
