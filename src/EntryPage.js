@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import "./logi.css";
+import { useNavigate } from "react-router-dom";
+import "./EntryPage.css";
 
 function EntryPage() {
   const [state, setState] = useState({ currentView: "logIn" });
@@ -11,11 +11,12 @@ function EntryPage() {
       currentView: view,
     });
   };
+  const emailRegex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   //아이디
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
-
   const loginId = {
     userid: inputId,
     userpw: inputPw,
@@ -64,7 +65,11 @@ function EntryPage() {
   //회원가입 버튼
   const onClickRegister = (e) => {
     e.preventDefault();
-    if (inputId !== "") {
+    if (inputId === "") {
+      alert("이메일을 입력하세요.");
+    } else if (!emailRegex.test(inputId)) {
+      alert("이메일 형식이 아닙니다.");
+    } else {
       if (checkpw === inputPw) {
         // 비밀번호 확인
         if (inputPw.length < 8) {
@@ -82,8 +87,6 @@ function EntryPage() {
           });
         }
       } else alert("비밀번호가 일치하지 않습니다.");
-    } else {
-      alert("이메일을 입력해주세요.");
     }
   };
 
@@ -107,8 +110,14 @@ function EntryPage() {
                     id="userid"
                     onChange={handleInputId}
                     placeholder="email"
+                    autoComplete="off"
                     required
                   />
+                  <p>
+                    {emailRegex.test(inputId)
+                      ? "이메일 형식입니다."
+                      : "이메일 형식이 아닙니다."}
+                  </p>
                 </li>
                 <li>
                   <label htmlFor="password">비밀번호:</label>
