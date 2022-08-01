@@ -19,6 +19,9 @@
   font-family: Jura, Arial; font-weight: 400;
 }
 
+.damtime{
+  font-size: 50px;
+}
 
 /* .damback {
   /* 마진이 %일 필요가 없고 패딩이 없으니 너무 답답함, 좌우 마진도 없으면 radius 넣는 의미가 퇴색됨
@@ -92,3 +95,4 @@ a.hover {
   height: 100%;
   padding: 5px 30px 15px 30px;
 }
+
