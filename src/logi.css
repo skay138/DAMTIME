@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400&display=swap");
 * {
-  font-family: "Jura", sans-serif;
-  font-weight: 400;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 300;
 }
 
 body {
@@ -91,6 +91,11 @@ section#entry-page form fieldset ul li input {
 section#entry-page form fieldset ul li input:hover {
   border: 1px solid #aaf;
 }
+section#entry-page form fieldset ul li p {
+  font-size: 13px;
+  opacity: 70%;
+}
+
 section#entry-page form button {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0);

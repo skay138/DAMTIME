@@ -101,7 +101,7 @@ function EntryPage() {
               <legend>Create Account</legend>
               <ul>
                 <li>
-                  <label htmlFor="email">Email:</label>
+                  <label htmlFor="email">이메일:</label>
                   <input
                     type="email"
                     id="userid"
@@ -219,7 +219,7 @@ function EntryPage() {
                 </li>
                 <li>
                   <label htmlFor="email">Email:</label>
-                  <input type="email" id="userid" required />
+                  <input type="email" id="userid" value={inputId} required />
                 </li>
               </ul>
             </fieldset>
