@@ -61,6 +61,11 @@ function Register() {
     if(e.target.name === "userid")
     {
       setEmail(renewAccount.userid);
+      if (!emailRegex.test(email)) {
+        setIsEmail(false);
+      } else {
+        setIsEmail(true)
+      }
       //console.log(email);
     }
   };
@@ -83,6 +88,11 @@ function Register() {
               onChange={handleChange}
               placeholder="email"
             />
+            <p>
+              {isEmail === true
+              ? "이메일 형식입니다."
+              : "이메일 형식이 아닙니다."}
+            </p>
           </label>
           <br />
 
