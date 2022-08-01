@@ -6,7 +6,7 @@ import Camera from "./camera";
 
 const { kakao } = window;
 
-function Addpin({ pinlat, pinlon }) {
+function Addpin({ pinlat, pinlon, userid }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
 
@@ -16,6 +16,7 @@ function Addpin({ pinlat, pinlon }) {
     Longitude: pinlon,
     Latitude: pinlat,
     Description: "",
+    Userid: userid,
   };
 
   var geocoder = new kakao.maps.services.Geocoder();

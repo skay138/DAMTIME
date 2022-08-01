@@ -280,7 +280,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin pinlat={pinla} pinlon={pinma} />
+      <Addpin pinlat={pinla} pinlon={pinma} userid={userid}/>
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />
