@@ -204,7 +204,7 @@ function EntryPage() {
                 onClick={onClickLogin}
                 value="LOGIN"
               >
-                Login
+                로그인
               </button>
             </fieldset>
             <button
