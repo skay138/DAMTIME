@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const { kakao } = window;
 
 const Report = () => {
+  const userid = sessionStorage.getItem("loginId");
   const navigate = useNavigate();
   const location = useLocation();
   const pin = location.state;
@@ -21,18 +22,20 @@ const Report = () => {
     "흡연구역 이름",
     "위치수정",
     "상세정보 수정",
-    "흡연구역이 없음",
+    "삭제 요청",
   ];
 
   const [Selected, setSelected] = useState("흡연구역 이름");
 
-  const state ={
-    pininfo : loc,
-    selected : Selected,
-    lat : clklat,
-    lon : clklon,
-    text : text,
-  }
+  const state = {
+    pinNo: pin.No,
+    pininfo: loc,
+    selected: Selected,
+    lat: clklat,
+    lon: clklon,
+    text: text,
+    userid: userid,
+  };
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
   var geocoder = new kakao.maps.services.Geocoder();
   var coord = new kakao.maps.LatLng(clklat, clklon);
@@ -48,6 +51,10 @@ const Report = () => {
   };
   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 
+  const handdleChange = (e) => {
+    setLoc(e.target.value);
+  };
+
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -55,21 +62,29 @@ const Report = () => {
     if (Selected === "위치수정") {
       return (
         <div id="mapdiv">
-          <ReportMap pin={pin} setLat={setLat} setLon={setLon} clklat={clklat} clklon={clklon} />
-          <textarea value={state.pininfo}></textarea>
+          <ReportMap
+            pin={pin}
+            setLat={setLat}
+            setLon={setLon}
+            clklat={clklat}
+            clklon={clklon}
+          />
+          <textarea value={state.pininfo} onChange={handdleChange}></textarea>
         </div>
       );
     } else if (Selected === "흡연구역 이름") {
       return (
         <div>
-          <textarea defaultValue={pin.Location} onChange={handleText}></textarea>
+          <textarea
+            defaultValue={pin.Location}
+            onChange={handleText}
+          ></textarea>
         </div>
       );
-    }
-    else {
+    } else {
       return (
         <div>
-          <textarea onChange={handleText} value={text} ></textarea>
+          <textarea onChange={handleText} value={text}></textarea>
         </div>
       );
     }
@@ -105,7 +120,7 @@ const Report = () => {
           ))}
         </select>
         <p>신고유형 : {Selected}</p>
-        <div id="explaindiv" >{explain()}</div>
+        <div id="explaindiv">{explain()}</div>
         <input
           className="button"
           type="submit"

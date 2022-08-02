@@ -16,7 +16,7 @@ function Addpin({ pinlat, pinlon, userid }) {
     Longitude: pinlon,
     Latitude: pinlat,
     Description: "",
-    Userid: userid,
+    UserId: userid,
   };
 
   var geocoder = new kakao.maps.services.Geocoder();
