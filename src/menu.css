@@ -1,0 +1,15 @@
+.show-menu {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    transition: 0.3s;
+}
+    
+.hide-menu {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    left: -300px;
+    transition: 0.3s;
+}
