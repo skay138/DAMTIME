@@ -5,13 +5,18 @@ import ReportMap from "./ReportMap";
 import "./pininfo.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Report = () => {
+const { kakao } = window;
 
+const Report = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pin = location.state;
   // 수정요청 좌표
-  const [clklat, setLat] = useState(33.450701);
-  const [clklon, setLon] = useState(126.570667);
+  const [clklat, setLat] = useState(pin.Latitude);
+  const [clklon, setLon] = useState(pin.Longitude);
   const [text, setInputText] = useState("");
-  
+  const [loc, setLoc] = useState("");
+  console.log(pin);
   const selectList = [
     "흡연구역 이름",
     "위치수정",
@@ -22,18 +27,27 @@ const Report = () => {
   const [Selected, setSelected] = useState("흡연구역 이름");
 
   const state ={
-    //임의의 변수입니다.
-    pininfo : 1,
+    pininfo : loc,
     selected : Selected,
     lat : clklat,
     lon : clklon,
-    text : text
+    text : text,
   }
+  // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
+  var geocoder = new kakao.maps.services.Geocoder();
+  var coord = new kakao.maps.LatLng(clklat, clklon);
+  var callback = function (result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      if (
+        result[0].road_address !== null &&
+        result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
+      ) {
+        setLoc(result[0].road_address.address_name);
+      }
+    }
+  };
+  geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const pin = location.state;
-  // console.log(pin);
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -42,17 +56,25 @@ const Report = () => {
       return (
         <div id="mapdiv">
           <ReportMap pin={pin} setLat={setLat} setLon={setLon} clklat={clklat} clklon={clklon} />
+          <textarea value={state.pininfo}></textarea>
         </div>
       );
-    } else {
+    } else if (Selected === "흡연구역 이름") {
       return (
         <div>
-          <textarea onChange={handleText} value={text}></textarea>
+          <textarea defaultValue={pin.Location} onChange={handleText}></textarea>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div>
+          <textarea onChange={handleText} value={text} ></textarea>
         </div>
       );
     }
   };
-  
+
   const handleText = (e) => {
     setInputText(e.target.value);
   };
@@ -83,7 +105,7 @@ const Report = () => {
           ))}
         </select>
         <p>신고유형 : {Selected}</p>
-        <div id="explaindiv">{explain()}</div>
+        <div id="explaindiv" >{explain()}</div>
         <input
           className="button"
           type="submit"
