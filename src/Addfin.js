@@ -59,7 +59,6 @@ function Addpin({ pinlat, pinlon, userid }) {
 
     alert("흡연구역으로 등록되었습니다.");
     document.getElementById("addpin").className = "add hide";
-
   };
 
   const cancel = () => {
@@ -70,9 +69,13 @@ function Addpin({ pinlat, pinlon, userid }) {
 
   return (
     <div id="addpin" className="add hide">
-      <h3><p>흡연구역을 등록해주세요</p></h3>
+      <h3>
+        <p>흡연구역 등록</p>
+      </h3>
+      <br />
       <Camera />
       <form>
+      <br />
         <p className="p">주소입력(빈칸 시 직접 작성)</p>
         <input onChange={handleloc} type="text" value={loc}></input>
         <br />
@@ -82,7 +85,7 @@ function Addpin({ pinlat, pinlon, userid }) {
           value={detail}
           placeholder="상세주소입력"
         ></input>
-        <br />
+        <br /><br />
         타입선택
         <select onChange={handlesel}>
           <option value="개방형흡연부스">개방형흡연부스</option>
@@ -96,7 +99,7 @@ function Addpin({ pinlat, pinlon, userid }) {
         <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
         <br />
         <input
-          className="button"
+          className="button addpinbtn"
           type="submit"
           onClick={push}
           value="등록"
