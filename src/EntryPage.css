@@ -90,7 +90,6 @@ section#entry-page form fieldset ul li input {
 }
 section#entry-page form fieldset ul li input:hover {
   border: 1px solid #aaf;
-  font-size: 16px;
 }
 section#entry-page form fieldset ul li p {
   font-size: 13px;
