@@ -54,6 +54,7 @@ app.get("/userpin", (req, res) => {
 });
 
 app.post("/insert", (req, res) => {
+  var User = req.body.UserId;
   var Location = req.body.Location;
   var lat = req.body.Latitude;
   var lon = req.body.Longitude;
@@ -63,10 +64,14 @@ app.post("/insert", (req, res) => {
   console.log(Location, lat, lon, type);
 
   const sqlQuery =
-    "INSERT INTO userpin (FacilityType, Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?);";
-  connection.query(sqlQuery, [type, Location, lon, lat, des], (err, result) => {
-    res.send(result);
-  });
+    "INSERT INTO userpin (UserId ,FacilityType, Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?,?);";
+  connection.query(
+    sqlQuery,
+    [User, type, Location, lon, lat, des],
+    (err, result) => {
+      res.send(result);
+    }
+  );
 });
 
 app.post("/damregister", (req, res) => {
@@ -145,16 +150,24 @@ app.post("/damlogin", (req, res) => {
 });
 
 app.post("/report", (req, res) => {
-  var selected = req.body.selected;
+  var No = req.body.pinNo;
+  var reporttype = req.body.selected;
+  var loc = req.body.pininfo;
   var lat = req.body.lat;
   var lon = req.body.lon;
+  var text = req.body.text;
+  var userid = req.body.userid
 
-  console.log(selected, lat, lon);
 
-  const sqlQuery = "INSERT INTO report (selected, lat, lon) VALUES (?,?,?);";
-  connection.query(sqlQuery, [selected, lat, lon], (err, result) => {
-    res.send(result);
-  });
+  const sqlQuery =
+    "INSERT INTO report (pinNo, type, Location, lat, lon, Description, UserId) VALUES (?,?,?,?,?,?,?);";
+  connection.query(
+    sqlQuery,
+    [No, reporttype, loc, lat, lon, text, userid],
+    (err, result) => {
+      res.send(result);
+    }
+  );
 });
 
 app.listen(port, () => {

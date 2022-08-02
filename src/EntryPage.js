@@ -169,7 +169,7 @@ function EntryPage() {
               <legend>Log In</legend>
               <ul>
                 <li>
-                  <label htmlFor="username">Username:</label>
+                  <label htmlFor="username">이메일:</label>
                   <input
                     type="email"
                     id="userid"
@@ -180,7 +180,7 @@ function EntryPage() {
                   />
                 </li>
                 <li>
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password">비밀번호:</label>
                   <input
                     type="password"
                     id="password"
