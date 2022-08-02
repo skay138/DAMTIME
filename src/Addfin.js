@@ -9,6 +9,7 @@ const { kakao } = window;
 function Addpin({ pinlat, pinlon, userid }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
+  const [fileUrl, setFileUrl] = useState("");//뭔지 몰라서 끼워놨어요
 
   const state = {
     FacilityType: "개방형흡연부스",
