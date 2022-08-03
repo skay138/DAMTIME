@@ -171,13 +171,21 @@ app.post("/report", (req, res) => {
   );
 });
 
-app.listen(port, () => {
-  console.log(`Connected at http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Connected at http://localhost:${port}`);
+// });
+
+const options = {
+  ca: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/cert.pem')
+};
+
+https.createServer(options ,app).listen(port, () => {
+    console.log(`Connected at http://localhost:${port}`);
 });
 
-// https.createServer(app).listen(port, () => {
-//     console.log(`Connected at http://localhost:${port}`);
-// });
+
 
 //FROM pro AS A
 // INNER JOIN info AS B
