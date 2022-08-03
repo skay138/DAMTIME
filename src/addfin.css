@@ -39,5 +39,10 @@ form {
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 0px;
+  bottom: 40%;
+}
+.cnclbtn {
+  position: absolute;
+  left: 14.7%;
+  bottom: 30%;
 }

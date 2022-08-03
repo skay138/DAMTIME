@@ -17,7 +17,7 @@ function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
     Latitude: pinlat,
     Description: "",
     UserId: userid,
-    ImgUrl: "",
+    ImgUrl: fileUrl,
   };
 
   var geocoder = new kakao.maps.services.Geocoder();
@@ -52,11 +52,6 @@ function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
     state.Description = e.target.value;
   };
 
-  const handleImg = () => {
-    state.ImgUrl = fileUrl;
-    console.log(fileUrl, state.ImgUrl);
-  }
-
   const push = () => {
     state.Location = `${loc} ${detail}`;
     axios.post("https://damtime.kro.kr:4000/insert", state).then(function (res) {
@@ -79,7 +74,7 @@ function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
         <p>흡연구역 등록</p>
       </h3>
       <br />
-      <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} onChange={handleImg} />
+      <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} />
       <form>
       <br />
         <p className="p">주소입력(빈칸 시 직접 작성)</p>
@@ -109,10 +104,10 @@ function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
           type="submit"
           onClick={push}
         >등록</button>
-      </form>
-      <button className="button" onClick={cancel}>
+        <button className="button" onClick={cancel}>
         취소
-      </button>
+        </button>
+      </form>
     </div>
   );
 }
