@@ -1,5 +1,5 @@
 .show-menu {
-    width: 300px;
+    width: 150px;
     height: 100%;
     position: absolute;
     left: 0px;
@@ -7,9 +7,9 @@
 }
     
 .hide-menu {
-    width: 300px;
+    width: 150px;
     height: 100%;
     position: absolute;
-    left: -300px;
+    left: -150px;
     transition: 0.3s;
 }

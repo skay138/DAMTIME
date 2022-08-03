@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
+import Menu from "./menu";
 
 const { kakao } = window;
 
@@ -282,6 +283,9 @@ function Main() {
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />
+      
+      {/* 이건 햄버거 메뉴입니다 */}
+      <Menu />
     </div>
   );
 }
