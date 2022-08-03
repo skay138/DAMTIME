@@ -31,7 +31,7 @@ function Main() {
     Latitude: "",
     Description: "",
     UserId: userid,
-    ImgUrl: fileUrl,
+    ImgUrl: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png",
   });
 
   //pin api
@@ -122,6 +122,7 @@ function Main() {
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPin(el);
+        console.log(fileUrl, el.ImgUrl);
       };
 
       var atag = document.createElement("a");
@@ -131,8 +132,7 @@ function Main() {
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      console.log(fileUrl, el.ImgUrl);
-      el.ImgUrl !== ""
+      el.ImgUrl 
       ? mapimg.src = el.ImgUrl
       : mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
       descdiv.appendChild(mapimg);
