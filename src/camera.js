@@ -32,7 +32,7 @@ function Camera() {
     return (
         <div id="cameradiv">
             <img id="pic" alt="" src={fileUrl} /><br/>
-            <input type='file' accept='image/jpg,image/png,image/jpeg,image/gif' capture="camera" 
+            <input type='file' accept='image/*' capture="camera" 
             id='camera' onChange={handleFileOnChange} 
             />
         </div>
