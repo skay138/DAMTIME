@@ -7,13 +7,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
 const crypto = require("crypto");
-const path = require("path");
 
-//404에러 수정
-app.use(express.static(__dirname));
-app.get("*", function (req, res) {
-	res.sendFile(path.resolve(__dirname, "index.html"));
-});
 
 let corsOptions = {
   origin: "*",
