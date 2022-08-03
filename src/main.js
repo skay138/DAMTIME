@@ -20,6 +20,9 @@ function Main() {
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
 
+  // 카메라에서 변환할 이미지
+  const [fileUrl, setFileUrl] = useState("");
+
   //fin info
   const [pin, setPin] = useState({
     FacilityType: "",
@@ -28,7 +31,7 @@ function Main() {
     Latitude: "",
     Description: "",
     UserId: userid,
-    ImgUrl: "",
+    ImgUrl: fileUrl,
   });
 
   //pin api
@@ -128,9 +131,9 @@ function Main() {
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      el.ImgUrl === ""
-      ?mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png"
-      :mapimg.src = el.ImgUrl;
+      el.ImgUrl
+      ? mapimg.src = el.ImgUrl
+      : mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
       descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
@@ -282,7 +285,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
+      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} fileUrl={fileUrl} setFileUrl={setFileUrl} />
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />

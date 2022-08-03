@@ -9,11 +9,6 @@ function Pininfo({ pin }) {
 
   const userid = sessionStorage.getItem("loginId");
 
-  var imgsrc = pin.ImgUrl;
-  console.log(pin.ImgUrl);
-  console.log(imgsrc);
-  
-
   const modify = () => {
     if (userid === "non") {
       alert("비로그인상태입니다.");
@@ -25,7 +20,7 @@ function Pininfo({ pin }) {
   return (
     <div id="pininfo" className="info hide">
       <div>{pin.Location}</div>
-      <div><img src={ imgsrc } alt="" /></div>
+      <img src={pin.ImgUrl} alt="" />
       <p>타입 : {pin.FacilityType}</p>
       <p>{pin.Description ? `추가설명 : ${pin.Description}` : null}</p>
       <button className="button" name="수정요청" onClick={modify}>
