@@ -6,10 +6,9 @@ import Camera from "./camera";
 
 const { kakao } = window;
 
-function Addpin({ pinlat, pinlon, userid }) {
+function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  const [fileUrl, setFileUrl] = useState("");
 
   const state = {
     FacilityType: "개방형흡연부스",
