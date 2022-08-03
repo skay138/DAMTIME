@@ -9,7 +9,6 @@ const Menu = () => {
   
     return(
     <div>
-    <h3>테스트중입니다</h3> 
     <Hamburger size={20} direction="right" toggled={isOpen} toggle={setOpen} />        
     
     <ul className={isOpen ? "show-menu" : "hide-menu"}>
