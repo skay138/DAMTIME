@@ -159,7 +159,6 @@ function Main() {
     });
   }
 
-
   useEffect(() => {
     axios
       .get("http://146.56.135.217:4000/seocho")
@@ -167,9 +166,7 @@ function Main() {
         setPindata(res.data);
       })
       .catch((error) => console.log(error));
-  }, [refresh]);
 
-  useEffect(() => {
     axios
       .get("http://146.56.135.217:4000/userpin")
       .then((res) => {
@@ -179,7 +176,6 @@ function Main() {
   }, [refresh]);
 
   useEffect(() => {
-
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -214,14 +210,13 @@ function Main() {
     //흡연구역등록
     let btn = document.createElement("div");
     btn.textContent = "흡연구역 등록";
-    
+
     btn.onclick = addpin;
 
     function addpin() {
-      if (userid === 'non'){
-        alert("비로그인 상태입니다.")
-      }
-      else{
+      if (userid === "non") {
+        alert("비로그인 상태입니다.");
+      } else {
         document.getElementById("addpin").className = "add";
         setPinla(marker.getPosition().Ma);
         setPinma(marker.getPosition().La);
@@ -279,7 +274,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin pinlat={pinla} pinlon={pinma} userid={userid}/>
+      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />
