@@ -75,7 +75,7 @@ function EntryPage() {
         if (inputPw.length < 8) {
           alert("비밀번호를 8자리 이상 입력해주세요.");
         } else {
-          axios.post("https://damtime.kro.kr/damregister", loginId).then(function (res) {
+          axios.post("https://damtime.kro.kr:4000/damregister", loginId).then(function (res) {
             console.log(res.data);
 
             if (res.data === "아이디중복") {
