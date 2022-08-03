@@ -43,7 +43,7 @@ function EntryPage() {
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
-      axios.post("http://146.56.135.217:4000/damlogin", loginId).then(function (res) {
+      axios.post("https://damtime.kro.kr:4000/damlogin", loginId).then(function (res) {
         if (res.data === true) {
           navigate("/main");
           sessionStorage.setItem("loginId", loginId.userid);
@@ -75,7 +75,7 @@ function EntryPage() {
         if (inputPw.length < 8) {
           alert("비밀번호를 8자리 이상 입력해주세요.");
         } else {
-          axios.post("/damregister", loginId).then(function (res) {
+          axios.post("https://damtime.kro.kr/damregister", loginId).then(function (res) {
             console.log(res.data);
 
             if (res.data === "아이디중복") {

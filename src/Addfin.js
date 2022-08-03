@@ -55,7 +55,7 @@ function Addpin({ pinlat, pinlon, userid }) {
 
   const push = () => {
     state.Location = `${loc} ${detail}`;
-    axios.post("http://146.56.135.217:4000/insert", state).then(function (res) {
+    axios.post("https://damtime.kro.kr:4000/insert", state).then(function (res) {
       console.log(res);
     });
 
