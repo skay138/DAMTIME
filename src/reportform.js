@@ -121,12 +121,12 @@ const Report = () => {
         </select>
         <p>신고유형 : {Selected}</p>
         <div id="explaindiv">{explain()}</div>
-        <input
+        <button
           className="button"
           type="submit"
           value="요청"
           onClick={push}
-        ></input>
+        ></button>
         <Button name="닫기" action="home" />
       </form>
     </div>

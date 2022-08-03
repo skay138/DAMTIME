@@ -100,12 +100,12 @@ function Addpin({ pinlat, pinlon, userid }) {
         <br />
         <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
         <br />
-        <input
+        <button
           className="button addpinbtn"
           type="submit"
           onClick={push}
           value="등록"
-        ></input>
+        ></button>
       </form>
       <button className="button" onClick={cancel}>
         취소
