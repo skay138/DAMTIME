@@ -9,7 +9,7 @@ const Menu = () => {
   
     return(
     <div>
-    <Hamburger size={20} direction="right" toggled={isOpen} toggle={setOpen} z-index="15" />        
+    <Hamburger size={20} direction="right" toggled={isOpen} toggle={setOpen} />        
     
     <ul className={isOpen ? "show-menu" : "hide-menu"}>
             <li ><Link to="/">첫화면</Link></li>
