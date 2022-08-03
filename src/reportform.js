@@ -95,7 +95,7 @@ const Report = () => {
   };
 
   const push = () => {
-    axios.post("http://localhost:4000/report", state).then(function (res) {
+    axios.post("http://146.56.135.217:4000/report", state).then(function (res) {
       console.log(res);
     });
     alert("수정요청등록");

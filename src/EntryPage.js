@@ -43,7 +43,7 @@ function EntryPage() {
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
-      axios.post("http://localhost:4000/damlogin", loginId).then(function (res) {
+      axios.post("http://146.56.135.217:4000/damlogin", loginId).then(function (res) {
         if (res.data === true) {
           navigate("/main");
           sessionStorage.setItem("loginId", loginId.userid);
