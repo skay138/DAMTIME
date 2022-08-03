@@ -104,7 +104,7 @@ function Addpin({ pinlat, pinlon, userid, fileUrl, setFileUrl }) {
           type="submit"
           onClick={push}
         >등록</button>
-        <button className="button" onClick={cancel}>
+        <button className="button cnclbtn" onClick={cancel}>
         취소
         </button>
       </form>
