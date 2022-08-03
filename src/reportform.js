@@ -124,9 +124,8 @@ const Report = () => {
         <button
           className="button"
           type="submit"
-          value="요청"
           onClick={push}
-        ></button>
+        >요청</button>
         <Button name="닫기" action="home" />
       </form>
     </div>

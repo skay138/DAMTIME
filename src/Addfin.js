@@ -104,8 +104,7 @@ function Addpin({ pinlat, pinlon, userid }) {
           className="button addpinbtn"
           type="submit"
           onClick={push}
-          value="등록"
-        ></button>
+        >등록</button>
       </form>
       <button className="button" onClick={cancel}>
         취소
