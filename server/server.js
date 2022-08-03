@@ -92,7 +92,7 @@ app.post("/damregister", (req, res) => {
           const salt = buf.toString("base64");
           console.log("salt :: ", salt);
           //crypto.pbkdf2의 salt 뒤 숫자 파라미터는 임의의 값으로 주어준다.
-          crypto.pbkdf2(pw, salt, 1203947, 64, "sha512", (err, key) => {
+          crypto.pbkdf2(pw, salt, 10, 64, "sha512", (err, key) => {
             console.log("password :: ", key.toString("base64")); // 'dWhPkH6c4X1Y71A/DrAHhML3DyKQdEkUOIaSmYCI7xZkD5bLZhPF0dOSs2YZA/Y4B8XNfWd3DHIqR5234RtHzw=='
 
             // 쿼리 작성하여 전달
@@ -129,7 +129,7 @@ app.post("/damlogin", (req, res) => {
             crypto.pbkdf2(
               pw,
               pwck[0].salt,
-              1203947,
+              10,
               64,
               "sha512",
               (err, key) => {
