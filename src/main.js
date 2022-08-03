@@ -162,7 +162,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/seocho")
+      .get("146.56.135.217:4000/seocho")
       .then((res) => {
         setPindata(res.data);
       })
@@ -171,7 +171,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/userpin")
+      .get("146.56.135.217:4000/userpin")
       .then((res) => {
         setUserpin(res.data);
       })
