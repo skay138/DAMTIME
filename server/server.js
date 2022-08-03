@@ -1,4 +1,5 @@
 const express = require("express");
+const https = require('https');
 const app = express();
 const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
@@ -170,8 +171,12 @@ app.post("/report", (req, res) => {
   );
 });
 
-app.listen(port, () => {
-  console.log(`Connected at http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Connected at http://localhost:${port}`);
+// });
+
+https.createServer(app).listen(port, () => {
+    console.log(`Connected at http://localhost:${port}`);
 });
 
 //FROM pro AS A
