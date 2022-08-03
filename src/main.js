@@ -122,7 +122,7 @@ function Main() {
       content.onclick = function () {
         document.getElementById("pininfo").className = "info";
         setPin(el);
-        console.log(fileUrl, el.ImgUrl);
+        console.log(el.ImgUrl);
       };
 
       var atag = document.createElement("a");
