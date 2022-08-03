@@ -86,7 +86,7 @@ function Main() {
 
   //pinload
   function pinupload(data, pinimage) {
-    data.forEach((el) => {
+    Array.from(data).forEach((el) => {
       var imageSrc = pinimage, // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
         imageOption = { offset: new kakao.maps.Point(15, 30) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
@@ -162,7 +162,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("146.56.135.217:4000/seocho")
+      .get("http://146.56.135.217:4000/seocho")
       .then((res) => {
         setPindata(res.data);
       })
@@ -171,7 +171,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("146.56.135.217:4000/userpin")
+      .get("http://146.56.135.217:4000/userpin")
       .then((res) => {
         setUserpin(res.data);
       })
