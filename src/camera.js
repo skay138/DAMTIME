@@ -3,8 +3,8 @@ import "./App.css";
 // npm i browser-image-compression 했어요
 import imageCompression from 'browser-image-compression';
 
-function Camera() {
-    const [fileUrl, setFileUrl] = useState("");
+function Camera( fileUrl, setFileUrl) {
+    // const [fileUrl, setFileUrl] = useState("");
    
     const handleFileOnChange = async (e) => {
         var file = e.target.files[0];	// 입력받은 file객체

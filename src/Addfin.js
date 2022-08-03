@@ -9,7 +9,7 @@ const { kakao } = window;
 function Addpin({ pinlat, pinlon, userid }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  const [fileUrl, setFileUrl] = useState("");//뭔지 몰라서 끼워놨어요
+  const [fileUrl, setFileUrl] = useState("");
 
   const state = {
     FacilityType: "개방형흡연부스",
@@ -18,7 +18,7 @@ function Addpin({ pinlat, pinlon, userid }) {
     Latitude: pinlat,
     Description: "",
     UserId: userid,
-    // ImgUrl: fileUrl,
+    ImgUrl: fileUrl,
   };
 
   var geocoder = new kakao.maps.services.Geocoder();

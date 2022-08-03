@@ -22,11 +22,13 @@ function Main() {
 
   //fin info
   const [pin, setPin] = useState({
-    No: "",
     FacilityType: "",
     Location: "",
     Longitude: "",
     Latitude: "",
+    Description: "",
+    UserId: userid,
+    ImgUrl: "",
   });
 
   //pin api
@@ -126,8 +128,9 @@ function Main() {
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      mapimg.src =
-        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
+      el.ImgUrl === ""
+      ?mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png"
+      :mapimg.src = el.ImgUrl;
       descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
@@ -272,8 +275,8 @@ function Main() {
         <div id="myMap" className="Mapstyle"></div>
         <button className="currentlocation" id="currentlo">
           <img
-            src="https://img.icons8.com/sf-black-filled/64/000000/location-update.png"
-            width="50px"
+            src="public/my_location.png"
+            width="50px" alt=""
           />
         </button>
       </div>
