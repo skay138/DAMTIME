@@ -161,14 +161,14 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("https://146.56.135.217:4000/seocho")
+      .get("http://146.56.135.217:4000/seocho")
       .then((res) => {
         setPindata(res.data);
       })
       .catch((error) => console.log(error));
 
     axios
-      .get("https://146.56.135.217:4000/userpin")
+      .get("http://146.56.135.217:4000/userpin")
       .then((res) => {
         setUserpin(res.data);
       })
