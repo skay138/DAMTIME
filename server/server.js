@@ -171,13 +171,13 @@ app.post("/report", (req, res) => {
   );
 });
 
-// app.listen(port, () => {
-//   console.log(`Connected at http://localhost:${port}`);
-// });
-
-https.createServer(app).listen(port, () => {
-    console.log(`Connected at http://localhost:${port}`);
+app.listen(port, () => {
+  console.log(`Connected at http://localhost:${port}`);
 });
+
+// https.createServer(app).listen(port, () => {
+//     console.log(`Connected at http://localhost:${port}`);
+// });
 
 //FROM pro AS A
 // INNER JOIN info AS B
