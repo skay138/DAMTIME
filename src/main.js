@@ -276,9 +276,8 @@ function Main() {
         </div>
         <div id="myMap" className="Mapstyle"></div>
         <button className="currentlocation" id="currentlo">
-          <img src="public/my_location.png" width="50px" alt="" />
+          <img src="https://img.icons8.com/ios-filled/50/000000/location-update.png" width="45px"/>
         </button>
-        {/* 이건 햄버거 메뉴입니다 */}
         <Menu />
       </div>
 
