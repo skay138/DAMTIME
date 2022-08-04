@@ -1,24 +1,24 @@
 .show-menu {
-    padding-top: 20px;
+  padding-top: 20px;
   width: 150px;
   height: 100%;
   position: absolute;
   left: 0px;
   transition: 0.3s;
   background-color: #ceeafa;
-  top: 28px;
+  top: 25px;
   opacity: 90%;
 }
 
 .hide-menu {
-    padding-top: 20px;
+  padding-top: 20px;
   width: 150px;
   height: 100%;
   position: absolute;
   left: -200px;
   transition: 0.3s;
   background-color: #ceeafa;
-  top: 28px;
+  top: 25px;
   opacity: 90%;
 }
 

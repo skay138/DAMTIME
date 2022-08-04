@@ -28,7 +28,8 @@ function Main() {
     Latitude: "",
     Description: "",
     UserId: userid,
-    ImgUrl: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png",
+    ImgUrl:
+      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png",
   });
 
   //pin api
@@ -128,9 +129,10 @@ function Main() {
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      el.ImgUrl 
-      ? mapimg.src = el.ImgUrl
-      : mapimg.src = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
+      el.ImgUrl
+        ? (mapimg.src = el.ImgUrl)
+        : (mapimg.src =
+            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png");
       descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
@@ -274,11 +276,10 @@ function Main() {
         </div>
         <div id="myMap" className="Mapstyle"></div>
         <button className="currentlocation" id="currentlo">
-          <img
-            src="public/my_location.png"
-            width="50px" alt=""
-          />
+          <img src="public/my_location.png" width="50px" alt="" />
         </button>
+        {/* 이건 햄버거 메뉴입니다 */}
+        <Menu />
       </div>
 
       {/* 여기부터는 addpin입니다 */}
@@ -286,9 +287,6 @@ function Main() {
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />
-      
-      {/* 이건 햄버거 메뉴입니다 */}
-      <Menu />
     </div>
   );
 }
