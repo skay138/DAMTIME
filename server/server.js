@@ -1,13 +1,12 @@
 const express = require("express");
-const https = require('https');
-const fs = require('fs');
+const https = require("https");
+const fs = require("fs");
 const app = express();
 const port = 4000; // <- 3000에서 다른 숫자로 변경
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
 const crypto = require("crypto");
-
 
 let corsOptions = {
   origin: "*",
@@ -128,22 +127,15 @@ app.get("/damlogin", (req, res) => {
           "select userpw , salt from login where userid=?;",
           [id],
           function (err, pwck) {
-            crypto.pbkdf2(
-              pw,
-              pwck[0].salt,
-              10,
-              64,
-              "sha512",
-              (err, key) => {
-                console.log(
-                  "비밀번호 일치 여부 :: ",
-                  key.toString("base64") === pwck[0].userpw
-                );
-                // true : 아이디, 비밀번호 일치
-                // false : 아이디 일치, 비밀번호 불일치
-                res.send(key.toString("base64") === pwck[0].userpw);
-              }
-            );
+            crypto.pbkdf2(pw, pwck[0].salt, 10, 64, "sha512", (err, key) => {
+              console.log(
+                "비밀번호 일치 여부 :: ",
+                key.toString("base64") === pwck[0].userpw
+              );
+              // true : 아이디, 비밀번호 일치
+              // false : 아이디 일치, 비밀번호 불일치
+              res.send(key.toString("base64") === pwck[0].userpw);
+            });
           }
         );
       } else {
@@ -160,8 +152,7 @@ app.post("/report", (req, res) => {
   var lat = req.body.lat;
   var lon = req.body.lon;
   var text = req.body.text;
-  var userid = req.body.userid
-
+  var userid = req.body.userid;
 
   const sqlQuery =
     "INSERT INTO report (pinNo, type, Location, lat, lon, Description, UserId) VALUES (?,?,?,?,?,?,?);";
@@ -174,16 +165,14 @@ app.post("/report", (req, res) => {
   );
 });
 
-app.get("/getmypin", (req, res)=>{
+app.get("/getmypin", (req, res) => {
   var userid = req.body;
+  console.err(userid)
 
-  const sqlQuery="SELECT * FROM userpin Where userid = ?,"
-  connection.query(
-    sqlQuery,
-    [userid],(err, result)=>{
-      res.send(result);
-    }
-  );
+  const sqlQuery = "SELECT * FROM userpin Where userid = ?,";
+  connection.query(sqlQuery, [userid], (err, result) => {
+    res.send(result);
+  });
 });
 
 // app.listen(port, () => {
@@ -191,16 +180,14 @@ app.get("/getmypin", (req, res)=>{
 // });
 
 const options = {
-  ca: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/fullchain.pem'),
-  key: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/damtime.kro.kr/cert.pem')
+  ca: fs.readFileSync("/etc/letsencrypt/live/damtime.kro.kr/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/damtime.kro.kr/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/damtime.kro.kr/cert.pem"),
 };
 
-https.createServer(options ,app).listen(port, () => {
-    console.log(`Connected at http://localhost:${port}`);
+https.createServer(options, app).listen(port, () => {
+  console.log(`Connected at http://localhost:${port}`);
 });
-
-
 
 //FROM pro AS A
 // INNER JOIN info AS B
