@@ -51,7 +51,7 @@ section#entry-page form h2 {
   font-weight: 100;
 }
 section#entry-page form fieldset {
-  margin: 0;
+  margin-bottom : 30px;
   background-color: #fff;
   border: none;
   border-radius: 5px;
