@@ -1,54 +1,41 @@
-import * as React from "react";
+import { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-];
-
-const userid = sessionStorage.getItem("loginId");
-
-axios
-  .get("https://damtime.kro.kr:4000/getmypin", {params: {userid}})
-  .then((res) => {
-    console.log(userid)
-    console.log(res.data);
-  })
-  .catch((error) => console.log(error));
-
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
 
 export default function DataTable() {
+
+  const columns = [
+    { field: "id", headerName: "고유번호", width: 70 }, //No
+    { field: "Location", headerName: "장소명", width: 300 },
+    { field: "Description", headerName: "상세설명", width: 200 },
+    { field: "FacilityType", headerName: "장소유형", width: 150 }
+  ];
+  
+  const [rows, setRows] = useState([]);
+  const rowfn = (p) => {
+   Array.from(p).forEach(el => {
+    el.id = el.No;
+   });
+   setRows(p);
+  }
+
+  const userid = sessionStorage.getItem("loginId");
+  axios
+    .get("https://damtime.kro.kr:4000/getmypin", {params: {userid}})
+    .then((res) => {
+      // console.log(userid)
+      // console.log(res.data);
+      const mypin = res.data;
+      rowfn(mypin);
+    })
+    .catch((error) => console.log(error));
+
+  
+
   return (
     <div
-      style={{ position: "absolute", bottom: 0, height: 400, width: "100%" }}
+      style={{ position: "absolute", top: 150, height: 400, width: "100%" }}
     >
       <DataGrid
         rows={rows}
