@@ -2,24 +2,26 @@
   padding-top: 20px;
   width: 150px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   left: 0px;
   transition: 0.3s;
   background-color: #ceeafa;
   top: 25px;
   opacity: 90%;
+  z-index: 1;
 }
 
 .hide-menu {
   padding-top: 20px;
   width: 150px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   left: -200px;
   transition: 0.3s;
   background-color: #ceeafa;
   top: 25px;
   opacity: 90%;
+  z-index: 1;
 }
 
 ul li {

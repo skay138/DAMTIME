@@ -269,11 +269,14 @@ function Main() {
         <div className="title" onClick={refreshfn}>
           DAMTIME
         </div>
+        <Menu />
         <div id="myMap" className="Mapstyle"></div>
         <button className="currentlocation" id="currentlo">
-          <img src="https://img.icons8.com/ios-filled/50/000000/location-update.png" width="45px"/>
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
+            width="45px"
+          />
         </button>
-        <Menu />
       </div>
 
       {/* 여기부터는 addpin입니다 */}
