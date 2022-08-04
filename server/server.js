@@ -114,7 +114,7 @@ app.post("/damregister", (req, res) => {
   );
 });
 
-app.get("/damlogin", (req, res) => {
+app.post("/damlogin", (req, res) => {
   const id = req.body.userid;
   const pw = req.body.userpw;
 
