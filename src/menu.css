@@ -1,21 +1,38 @@
 .show-menu {
-    width: 150px;
-    height: 100%;
-    position: absolute;
-    left: 0px;
-    transition: 0.3s;
-    background-color: white;
-    top: 28px;
-    opacity: 90%;
+    padding-top: 20px;
+  width: 150px;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  transition: 0.3s;
+  background-color: #ceeafa;
+  top: 28px;
+  opacity: 90%;
 }
-    
+
 .hide-menu {
-    width: 150px;
-    height: 100%;
-    position: absolute;
-    left: -200px;
-    transition: 0.3s;
-    background-color: white;
-    top: 28px;
-    opacity: 90%;
+    padding-top: 20px;
+  width: 150px;
+  height: 100%;
+  position: absolute;
+  left: -200px;
+  transition: 0.3s;
+  background-color: #ceeafa;
+  top: 28px;
+  opacity: 90%;
+}
+
+ul li {
+  margin-top: 20px;
+  list-style: none;
+  margin-left: 0px;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+ul a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
 }

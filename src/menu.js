@@ -12,7 +12,7 @@ const Menu = () => {
     <Hamburger size={20} direction="right" toggled={isOpen} toggle={setOpen} />        
     
     <ul className={isOpen ? "show-menu" : "hide-menu"}>
-            <li ><Link to="/">첫화면</Link></li>
+            <li ><Link to="/">로그인 화면</Link></li>
             <li ><Link to="/main">지도화면</Link></li>
             <li >예시</li>
             <li >앨랠래</li>
