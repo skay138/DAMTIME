@@ -32,17 +32,12 @@
 }
 
 form {
-  height: 100%;
+  height: 65%;
   position: relative;
 }
 
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 40%;
-}
-.cnclbtn {
-  position: absolute;
-  left: 14.7%;
-  bottom: 30%;
+  bottom: 0;
 }

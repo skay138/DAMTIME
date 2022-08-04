@@ -67,6 +67,7 @@ function Addpin({ pinlat, pinlon, userid }) {
     document.getElementById("addpin").className = "add hide";
     setLoc("");
     setDetail("");
+    setFileUrl("");
   };
 
   return (
@@ -105,10 +106,10 @@ function Addpin({ pinlat, pinlon, userid }) {
           type="submit"
           onClick={push}
         >등록</button>
-        <button className="button cnclbtn" onClick={cancel}>
-        취소
-        </button>
       </form>
+      <button className="button" onClick={cancel}>
+        취소
+      </button>
     </div>
   );
 }
