@@ -1,6 +1,5 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -23,16 +22,6 @@ const columns = [
   },
 ];
 
-const userid = sessionStorage.getItem("loginId");
-
-axios
-  .get("https://damtime.kro.kr:4000/getmypin", {params: {userid}})
-  .then((res) => {
-    console.log(userid)
-    console.log(res.data);
-  })
-  .catch((error) => console.log(error));
-
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -45,7 +34,11 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-export default function DataTable() {
+export default function DataTable({ pins }) {
+  //여기에 코드 작성
+  console.log(pins);
+  console.log(pins[0]);
+  
   return (
     <div
       style={{ position: "absolute", bottom: 0, height: 400, width: "100%" }}
