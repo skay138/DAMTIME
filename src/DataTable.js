@@ -38,7 +38,7 @@ export default function DataTable({ pins }) {
   //여기에 코드 작성
   console.log(pins);
   console.log(pins[0]);
-  
+
   return (
     <div
       style={{ position: "absolute", bottom: 0, height: 400, width: "100%" }}
