@@ -4,10 +4,6 @@
   "private": true,
   "main": "main.js",
   "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "@mui/material": "^5.9.3",
-    "@mui/x-data-grid": "^5.15.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -29,7 +25,6 @@
     "react-kakao-maps": "^0.0.13",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "react-table": "^7.8.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

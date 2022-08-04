@@ -174,7 +174,7 @@ app.post("/report", (req, res) => {
   );
 });
 
-app.get("/getmypin", (req, res)=>{
+app.post("/getmypin", (req, res)=>{
   var userid = req.body;
 
   const sqlQuery="SELECT * FROM userpin Where userid = ?,"

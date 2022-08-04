@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+// npm i browser-image-compression 했어요
 import imageCompression from 'browser-image-compression';
 
-function Camera( fileUrl, setFileUrl ) {
+function Camera() {
+    const [fileUrl, setFileUrl] = useState("");
    
     const handleFileOnChange = async (e) => {
         var file = e.target.files[0];	// 입력받은 file객체
        
         // 이미지 resize 옵션 설정 (최대 width을 100px로 지정)
         const options = { 
-            maxSizeMB: 5, 
+            maxSizeMB: 2, 
             maxWidthOrHeight: 100
         }
         
@@ -30,7 +32,7 @@ function Camera( fileUrl, setFileUrl ) {
     return (
         <div id="cameradiv">
             <img id="pic" alt="" src={fileUrl} /><br/>
-            <input type='file' accept='image/*' capture="camera" 
+            <input type='file' accept='image/jpg,image/png,image/jpeg,image/gif' capture="camera" 
             id='camera' onChange={handleFileOnChange} 
             />
         </div>

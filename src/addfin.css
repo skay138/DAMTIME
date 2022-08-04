@@ -3,6 +3,9 @@
   margin: 5px;
 }
 
+
+/* 하시발 */
+
 .add {
   z-index: 2;
   position: absolute;
@@ -39,5 +42,5 @@ form {
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 0;
+  bottom: 0px;
 }

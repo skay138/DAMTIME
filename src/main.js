@@ -22,14 +22,11 @@ function Main() {
 
   //fin info
   const [pin, setPin] = useState({
+    No: "",
     FacilityType: "",
     Location: "",
     Longitude: "",
     Latitude: "",
-    Description: "",
-    UserId: userid,
-    ImgUrl:
-      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png",
   });
 
   //pin api
@@ -129,10 +126,8 @@ function Main() {
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
       var mapimg = document.createElement("img");
-      el.ImgUrl
-        ? (mapimg.src = el.ImgUrl)
-        : (mapimg.src =
-            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png");
+      mapimg.src =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png";
       descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
