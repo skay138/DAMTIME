@@ -29,7 +29,7 @@ axios
   .get("https://damtime.kro.kr:4000/getmypin", {params: {userid}})
   .then((res) => {
     console.log(userid)
-    console.log(res);
+    console.log(res.data);
   })
   .catch((error) => console.log(error));
 
