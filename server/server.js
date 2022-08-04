@@ -169,7 +169,7 @@ app.get("/getmypin", (req, res) => {
   var userid = req.query.userid;
   console.log(userid);
 
-  const sqlQuery = "SELECT * FROM userpin Where userid = ?,";
+  const sqlQuery = "SELECT * FROM userpin Where UserId = (?),";
   connection.query(sqlQuery, [userid], (err, result) => {
     res.send(result);
     console.log(result);
