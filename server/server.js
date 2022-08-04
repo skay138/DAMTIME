@@ -174,6 +174,18 @@ app.post("/report", (req, res) => {
   );
 });
 
+app.post("/getmypin", (req, res)=>{
+  var userid = req.body;
+
+  const sqlQuery="SELECT * FROM userpin Where userid = ?,"
+  connection.query(
+    sqlQuery,
+    [userid],(err, result)=>{
+      res.send(result);
+    }
+  );
+});
+
 // app.listen(port, () => {
 //   console.log(`Connected at http://localhost:${port}`);
 // });

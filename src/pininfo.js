@@ -19,13 +19,15 @@ function Pininfo({ pin }) {
 
   return (
     <div id="pininfo" className="info hide">
-      <div>{pin.Location}</div>
-      <img src={pin.ImgUrl} alt="" />
-      <p>타입 : {pin.FacilityType}</p>
-      <p>{pin.Description ? `추가설명 : ${pin.Description}` : null}</p>
-      <button className="button" name="수정요청" onClick={modify}>
-        수정요청
-      </button>
+      <form>
+        <div>{pin.Location}</div>
+        <img src={pin.ImgUrl} alt="" />
+        <p>타입 : {pin.FacilityType}</p>
+        <p>{pin.Description ? `추가설명 : ${pin.Description}` : null}</p>
+        <button className="pininfobtn button" name="수정요청" onClick={modify}>
+          수정요청
+        </button>
+      </form>
       <Button name="닫기" action="close" />
     </div>
   );

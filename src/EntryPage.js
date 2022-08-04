@@ -144,6 +144,7 @@ function EntryPage() {
                     onChange={handleCHKPW}
                     placeholder="password"
                     required
+                    autoComplete="off"
                   />
                   <p>
                     {checkpw === ""
@@ -188,6 +189,7 @@ function EntryPage() {
                     value={inputPw}
                     onChange={handleInputPw}
                     placeholder="password"
+                    autoComplete="off"
                   />
                 </li>
                 <li>
