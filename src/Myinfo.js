@@ -1,11 +1,11 @@
 import Menu from "./menu";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DataTable from "./DataTable";
 
 function Myinfo() {
   return (
     <div>
+      <div className="title">DAMTIME</div>
       <Menu />
       <DataTable />
     </div>

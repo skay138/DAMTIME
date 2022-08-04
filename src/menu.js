@@ -5,10 +5,10 @@ import "./menu.css";
 
 const Menu = () => {
   const [isOpen, setOpen] = useState(false);
+  const userid = sessionStorage.getItem("loginId");
 
   return (
     <div>
-      <div className="title">DAMTIME</div>
       <Hamburger
         size={20}
         direction="right"
@@ -18,13 +18,14 @@ const Menu = () => {
 
       <ul className={isOpen ? "show-menu" : "hide-menu"}>
         <li>
-          <Link to="/">로그인 화면</Link>
+          {userid === "non" ? (
+            <Link to="/">로그인 하기</Link>
+          ) : (
+            <Link to="/myinfo">내정보</Link>
+          )}
         </li>
         <li>
           <Link to="/main">지도화면</Link>
-        </li>
-        <li>
-          <Link to="/myinfo">내정보</Link>
         </li>
         <li>앨랠래</li>
       </ul>
