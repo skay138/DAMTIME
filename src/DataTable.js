@@ -24,9 +24,10 @@ const columns = [
 ];
 
 const userid = sessionStorage.getItem("loginId");
+console.log(userid)
 
 axios
-  .get("https://damtime.kro.kr:4000/getmypin", userid)
+  .get("https://damtime.kro.kr:4000/getmypin", {params: userid})
   .then((res) => {
     console.log(res);
   })
