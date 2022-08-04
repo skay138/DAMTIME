@@ -166,11 +166,11 @@ app.post("/report", (req, res) => {
 });
 
 app.get("/getmypin", (req, res) => {
-  var {userid} = req.query;
+  var userid = req.query;
   console.log(userid);
 
   const sqlQuery = "SELECT * FROM userpin Where userid = ?,";
-  connection.query(sqlQuery, [{userid}], (err, result) => {
+  connection.query(sqlQuery, [userid], (err, result) => {
     res.send(result);
   });
 });
