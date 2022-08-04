@@ -24,11 +24,11 @@ const columns = [
 ];
 
 const userid = sessionStorage.getItem("loginId");
-console.log(userid)
 
 axios
   .get("https://damtime.kro.kr:4000/getmypin", {params: {userid}})
   .then((res) => {
+    console.log(userid)
     console.log(res);
   })
   .catch((error) => console.log(error));
