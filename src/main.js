@@ -20,9 +20,6 @@ function Main() {
   const [pinla, setPinla] = useState(33.450701); //위도
   const [pinma, setPinma] = useState(126.570667); //경도
 
-  // 카메라에서 변환할 이미지
-  const [fileUrl, setFileUrl] = useState("");
-
   //fin info
   const [pin, setPin] = useState({
     FacilityType: "",
@@ -285,7 +282,7 @@ function Main() {
       </div>
 
       {/* 여기부터는 addpin입니다 */}
-      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} fileUrl={fileUrl} setFileUrl={setFileUrl} />
+      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
 
       {/* 여기부터는 핀정보입니다 */}
       <Pininfo pin={pin} />
