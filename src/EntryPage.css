@@ -72,7 +72,8 @@ section#entry-page form fieldset ul li {
   margin: 10px;
 }
 section#entry-page form fieldset ul li a {
-  color: #02c;
+  font-size: 13px;
+  color: rgb(82, 101, 196);
 }
 section#entry-page form fieldset ul li em {
   grid-column: span 2;
