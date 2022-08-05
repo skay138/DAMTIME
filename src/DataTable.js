@@ -5,9 +5,11 @@ import axios from "axios";
 
 export default function DataTable() {
 
+  const [selectionModel, setSelectionModel] = useState([]);
+
   const columns = [
     { field: "id", headerName: "고유번호", width: 70 }, //No
-    { field: "Location", headerName: "장소명", width: 300 },
+    { field: "Location", headerName: "장소명", width: 400 },
     { field: "Description", headerName: "상세설명", width: 200 },
     { field: "FacilityType", headerName: "장소유형", width: 150 }
   ];
@@ -43,6 +45,11 @@ export default function DataTable() {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        onSelectionModelChange={(newSelectionModel) => {
+          setSelectionModel(newSelectionModel);
+          console.log(selectionModel);
+        }}
+        selectionModel={selectionModel}
       />
     </div>
   );
