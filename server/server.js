@@ -55,6 +55,17 @@ app.get("/userpin", (req, res) => {
   });
 });
 
+app.post("/userpin", (req, res) => {
+  var pins = req.body.data;
+  connection.query(
+    "DELETE * FROM userpin where No = ?;",
+    [pins],
+    (err, result) => {
+      res.send(result);
+    }
+  );
+});
+
 app.post("/insert", (req, res) => {
   var User = req.body.UserId;
   var Location = req.body.Location;
