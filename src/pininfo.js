@@ -14,6 +14,7 @@ function Pininfo({ pin }) {
       alert("비로그인상태입니다.");
     } else {
       navigate("/report", { state: pin });
+      console.log(pin);
     }
   };
 
