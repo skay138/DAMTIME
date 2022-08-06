@@ -80,7 +80,7 @@
 .overlay_info a strong {
   background: url(https://img.icons8.com/material-outlined/24/000000/smoking.png)
     no-repeat;
-  padding-left: 27px;
+  padding-left: 40px;
 }
 .overlay_info .desc {
   padding: 14px;
@@ -90,14 +90,16 @@
 }
 .overlay_info img {
   vertical-align: top;
+  width: 50px;
 }
+
 .overlay_info .address {
   font-size: 12px;
   color: #333;
   position: absolute;
-  left: 80px;
+  left: 14px; /* 원래 80px */
   right: 14px;
-  top: 24px;
+  top: 30px; /* 원래 24px */
   white-space: normal;
 }
 .overlay_info:after {

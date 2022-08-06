@@ -80,7 +80,7 @@ function Addpin({ pinlat, pinlon, userid }) {
         <p>흡연구역 등록</p>
       </h3>
       <br />
-      <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} />
+      {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form>
         <br />
         <p className="p">주소입력(빈칸 시 직접 작성)</p>

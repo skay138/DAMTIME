@@ -112,16 +112,16 @@ const Report = () => {
       alert("수정요청등록");
       navigate("/main");
       console.log(state);
-    }
-    else{
+    } else {
       e.preventDefault();
     }
   };
 
   return (
     <div id="report" className="report">
-      <h1>수정 요청</h1>
-      <form>
+      <div className="title">DAMTIME</div>
+      <form className="form">
+        <h3>수정 요청</h3>
         <select
           id="type"
           className="options"
@@ -134,13 +134,17 @@ const Report = () => {
             </option>
           ))}
         </select>
+        <br />
+        <br />
         <p>신고유형 : {Selected}</p>
+        <br />
         <div id="explaindiv">{explain()}</div>
-        <button className=" button " type="submit" onClick={push}>
+        <button className=" button pininfobtn" type="submit" onClick={push}>
           전송
         </button>
+
+        <button className="pininfobtn2 button" onClick={()=>{navigate("/main")}}>취소</button>
       </form>
-      <Button name="취소" action="home" />
     </div>
   );
 };

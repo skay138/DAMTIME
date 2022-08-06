@@ -21,8 +21,10 @@ function Pininfo({ pin }) {
   return (
     <div id="pininfo" className="info hide">
       <div>{pin.Location}</div>
-      <p>타입 : {pin.FacilityType}</p>
-      <p>{pin.Description ? `추가설명 : ${pin.Description}` : null}</p>
+      <ul>
+        <li>타입 : {pin.FacilityType}</li>
+        <li>{pin.Description ? `추가설명 : ${pin.Description}` : null}</li>
+      </ul>
       <button className="button" name="수정요청" onClick={modify}>
         수정요청
       </button>
