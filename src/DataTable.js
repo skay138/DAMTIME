@@ -43,7 +43,7 @@ export default function DataTable() {
     let data = selectionModel.join();
     console.log(data);
     if(window.confirm("마커를 삭제하시겠습니까?")){
-      axios.post("http://damtime.kro.kr:4000/userpin", data).then((res)=>{
+      axios.post("https://damtime.kro.kr:4000/userpin", data).then((res)=>{
         console.log(res);
       })
     }
