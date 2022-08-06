@@ -5,6 +5,10 @@ import axios from "axios";
 export default function DataTable() {
   const [selectionModel, setSelectionModel] = useState([]);
 
+  const state = {
+    data: selectionModel.join(),
+  };
+
   const userid = sessionStorage.getItem("loginId");
 
   const columns = [
@@ -38,17 +42,15 @@ export default function DataTable() {
   const handdlechange = (e) => {
     setSelectionModel(e);
   };
-  
-  const deletepin = () =>{
-    let data = selectionModel.join();
-    console.log(data);
-    if(window.confirm("마커를 삭제하시겠습니까?")){
-      axios.post("https://damtime.kro.kr:4000/userpin", data).then((res)=>{
-        console.log(res);
-      })
-    }
 
-  }
+  const deletepin = () => {
+    console.log(state)
+    if (window.confirm("마커를 삭제하시겠습니까?")) {
+      axios.post("https://damtime.kro.kr:4000/userpin", state).then((res) => {
+        console.log(res);
+      });
+    }
+  };
 
   return (
     <div style={{ position: "absolute", top: 150, height: 400, width: "100%" }}>
