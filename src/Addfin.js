@@ -9,7 +9,7 @@ const { kakao } = window;
 function Addpin({ pinlat, pinlon, userid }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  const [fileUrl, setFileUrl] = useState("");//뭔지 몰라서 끼워놨어요
+  const [fileUrl, setFileUrl] = useState(""); //뭔지 몰라서 끼워놨어요
 
   const state = {
     FacilityType: "개방형흡연부스",
@@ -55,12 +55,15 @@ function Addpin({ pinlat, pinlon, userid }) {
 
   const push = () => {
     state.Location = `${loc} ${detail}`;
-    axios.post("https://damtime.kro.kr:4000/insert", state).then(function (res) {
-      console.log(res);
-    });
-
-    alert("흡연구역으로 등록되었습니다.");
-    document.getElementById("addpin").className = "add hide";
+    if (window.confirm("마커를 등록하시겠습니까?")) {
+      axios
+        .post("https://damtime.kro.kr:4000/insert", state)
+        .then(function (res) {
+          console.log(res);
+        });
+      alert("흡연구역으로 등록되었습니다.");
+      document.getElementById("addpin").className = "add hide";
+    }
   };
 
   const cancel = () => {
@@ -77,7 +80,7 @@ function Addpin({ pinlat, pinlon, userid }) {
       <br />
       <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} />
       <form>
-      <br />
+        <br />
         <p className="p">주소입력(빈칸 시 직접 작성)</p>
         <input onChange={handleloc} type="text" value={loc}></input>
         <br />
@@ -87,7 +90,8 @@ function Addpin({ pinlat, pinlon, userid }) {
           value={detail}
           placeholder="상세주소입력"
         ></input>
-        <br /><br />
+        <br />
+        <br />
         타입선택
         <select onChange={handlesel}>
           <option value="개방형흡연부스">개방형흡연부스</option>
@@ -100,12 +104,10 @@ function Addpin({ pinlat, pinlon, userid }) {
         <br />
         <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
         <br />
-        <button
-          className="button addpinbtn"
-          type="submit"
-          onClick={push}
-        >등록</button>
       </form>
+      <button className="button addpinbtn" type="submit" onClick={push}>
+        등록
+      </button>
       <button className="button" onClick={cancel}>
         취소
       </button>

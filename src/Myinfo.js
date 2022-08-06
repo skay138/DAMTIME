@@ -9,7 +9,7 @@ function Myinfo() {
     <div>
       <div className="title">DAMTIME</div>
       <Menu />
-      <h2 className="mypintitle">내 핀 관리</h2>
+      <h2 className="mypintitle">내 마커 관리</h2>
       <DataTable />
     </div>
   );

@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function DataTable() {
   const [selectionModel, setSelectionModel] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const state = {
     data: selectionModel.join(),
@@ -37,7 +38,7 @@ export default function DataTable() {
         rowfn(mypin);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [refresh]);
 
   const handdlechange = (e) => {
     setSelectionModel(e);
@@ -48,6 +49,7 @@ export default function DataTable() {
       axios.post("https://damtime.kro.kr:4000/userpin", state).then((res) => {
         if(res.statusText === "OK"){
           alert(res.data.affectedRows + "개의 마커가 삭제되었습니다.");
+          setRefresh((current) => !current);
         }
       }).catch((err)=> console.log(err));
     }

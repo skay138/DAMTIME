@@ -65,28 +65,30 @@ function EntryPage() {
   //회원가입 버튼
   const onClickRegister = (e) => {
     e.preventDefault();
-    if (inputId === "") {
-      alert("이메일을 입력하세요.");
-    } else if (!emailRegex.test(inputId)) {
-      alert("이메일 형식이 아닙니다.");
-    } else {
-      if (checkpw === inputPw) {
-        // 비밀번호 확인
-        if (inputPw.length < 8) {
-          alert("비밀번호를 8자리 이상 입력해주세요.");
-        } else {
-          axios.post("https://damtime.kro.kr:4000/damregister", loginId).then(function (res) {
-            console.log(res.data);
-
-            if (res.data === "아이디중복") {
-              alert("중복된 아이디입니다."); //아이디가 없으면
-            } else if (res.data === "success") {
-              alert("회원가입 되었습니다.");
-              changeView("logIn");
-            }
-          });
-        }
-      } else alert("비밀번호가 일치하지 않습니다.");
+    if(window.confirm("회원가입을 하시겠습니까?")){
+      if (inputId === "") {
+        alert("이메일을 입력하세요.");
+      } else if (!emailRegex.test(inputId)) {
+        alert("이메일 형식이 아닙니다.");
+      } else {
+        if (checkpw === inputPw) {
+          // 비밀번호 확인
+          if (inputPw.length < 8) {
+            alert("비밀번호를 8자리 이상 입력해주세요.");
+          } else {
+            axios.post("https://damtime.kro.kr:4000/damregister", loginId).then(function (res) {
+              console.log(res.data);
+  
+              if (res.data === "아이디중복") {
+                alert("중복된 아이디입니다."); //아이디가 없으면
+              } else if (res.data === "success") {
+                alert("회원가입 되었습니다.");
+                changeView("logIn");
+              }
+            });
+          }
+        } else alert("비밀번호가 일치하지 않습니다.");
+      }
     }
   };
 

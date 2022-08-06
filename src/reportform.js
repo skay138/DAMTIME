@@ -17,7 +17,8 @@ const Report = () => {
   const [clklon, setLon] = useState(pin.Longitude);
   const [text, setInputText] = useState("");
   const [loc, setLoc] = useState("");
-  console.log(pin);
+  const [detail, setDetail] = useState("");
+
   const selectList = [
     "흡연구역 이름",
     "위치수정",
@@ -29,13 +30,14 @@ const Report = () => {
 
   const state = {
     pinNo: pin.No,
-    pininfo: loc,
+    pininfo: `${loc} ${detail}`,
     selected: Selected,
     lat: clklat,
     lon: clklon,
     text: text,
     userid: userid,
   };
+  console.log(state);
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
   var geocoder = new kakao.maps.services.Geocoder();
   var coord = new kakao.maps.LatLng(clklat, clklon);
@@ -51,8 +53,16 @@ const Report = () => {
   };
   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 
+  const handleText = (e) => {
+    setInputText(e.target.value);
+  };
+
   const handdleChange = (e) => {
     setLoc(e.target.value);
+  };
+
+  const handledetail = (e) => {
+    setDetail(e.target.value);
   };
 
   const getValue = (e) => {
@@ -69,7 +79,9 @@ const Report = () => {
             clklat={clklat}
             clklon={clklon}
           />
-          <textarea value={state.pininfo} onChange={handdleChange}></textarea>
+          <input value={state.pininfo} onChange={handdleChange}></input>
+          <br />
+          <input placeholder="상세주소 입력" onChange={handledetail}></input>
         </div>
       );
     } else if (Selected === "흡연구역 이름") {
@@ -90,17 +102,17 @@ const Report = () => {
     }
   };
 
-  const handleText = (e) => {
-    setInputText(e.target.value);
-  };
-
   const push = () => {
-    axios.post("https://damtime.kro.kr:4000/report", state).then(function (res) {
-      console.log(res);
-    });
-    alert("수정요청등록");
-    navigate("/main");
-    console.log(state);
+    if (window.confirm("수정요청을 보내겠습니까?")) {
+      axios
+        .post("https://damtime.kro.kr:4000/report", state)
+        .then(function (res) {
+          console.log(res);
+        });
+      alert("수정요청등록");
+      navigate("/main");
+      console.log(state);
+    }
   };
 
   return (
@@ -121,13 +133,12 @@ const Report = () => {
         </select>
         <p>신고유형 : {Selected}</p>
         <div id="explaindiv">{explain()}</div>
-        <button
-          className="button"
-          type="submit"
-          onClick={push}
-        >요청</button>
-        <Button name="닫기" action="home" />
       </form>
+
+      <button className=" button " type="submit" onClick={push}>
+        전송
+      </button>
+      <Button name="취소" action="home" />
     </div>
   );
 };
