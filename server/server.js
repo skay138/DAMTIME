@@ -56,7 +56,7 @@ app.get("/userpin", (req, res) => {
 });
 
 app.post("/userpin", (req, res) => {
-  var pins = req.body.data;
+  var pins = req.body;
   console.log(pins)
   connection.query(
     "DELETE FROM userpin where No = ?;",
