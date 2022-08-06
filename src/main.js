@@ -15,6 +15,7 @@ function Main() {
   console.log(userid);
 
   const [refresh, setRefresh] = useState(false); //refresh
+  const [pinadded, setPinadded] = useState(false);
 
   //addfin
   const [pinla, setPinla] = useState(33.450701); //위도
@@ -178,13 +179,13 @@ function Main() {
         setUserpin(res.data);
       })
       .catch((error) => console.log(error));
-  }, [refresh]);
+  }, [pinadded]);
 
   useEffect(() => {
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
+        level: 2, // 지도의 확대 레벨
       };
 
     map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -262,6 +263,7 @@ function Main() {
 
   //refresh
   const refreshfn = () => setRefresh((current) => !current);
+  const pinaddedfn = () => setPinadded((current) => !current);
 
   return (
     <div>
@@ -279,7 +281,7 @@ function Main() {
         </button>
 
         {/* 여기부터는 addpin입니다 */}
-        <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
+        <Addpin pinlat={pinla} pinlon={pinma} userid={userid} pinaddedfn={pinaddedfn} />
 
         {/* 여기부터는 핀정보입니다 */}
         <Pininfo pin={pin} />

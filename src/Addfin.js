@@ -6,7 +6,7 @@ import Camera from "./camera";
 
 const { kakao } = window;
 
-function Addpin({ pinlat, pinlon, userid }) {
+function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
   const [fileUrl, setFileUrl] = useState(""); //뭔지 몰라서 끼워놨어요
@@ -54,6 +54,7 @@ function Addpin({ pinlat, pinlon, userid }) {
   };
 
   const push = (e) => {
+    e.preventDefault();
     state.Location = `${loc} ${detail}`;
     if (window.confirm("마커를 등록하시겠습니까?")) {
       axios
@@ -63,8 +64,7 @@ function Addpin({ pinlat, pinlon, userid }) {
         });
       alert("흡연구역으로 등록되었습니다.");
       document.getElementById("addpin").className = "add hide";
-    } else {
-      e.preventDefault();
+      pinaddedfn();
     }
   };
 
