@@ -65,6 +65,7 @@ app.post("/userpin", (req, res) => {
       res.send(result);
     }
   );
+  console.log(connection.query);
 });
 
 app.post("/insert", (req, res) => {

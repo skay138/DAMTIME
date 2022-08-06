@@ -44,7 +44,6 @@ export default function DataTable() {
   };
 
   const deletepin = () => {
-    console.log(state)
     if (window.confirm("마커를 삭제하시겠습니까?")) {
       axios.post("https://damtime.kro.kr:4000/userpin", state).then((res) => {
         if(res.statusText === "OK"){
