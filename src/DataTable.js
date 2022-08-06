@@ -47,8 +47,10 @@ export default function DataTable() {
     console.log(state)
     if (window.confirm("마커를 삭제하시겠습니까?")) {
       axios.post("https://damtime.kro.kr:4000/userpin", state).then((res) => {
-        console.log(res);
-      });
+        if(res.statusText === "OK"){
+          alert(res.data.affectedRows + "개의 마커가 삭제되었습니다.");
+        }
+      }).catch((err)=> console.log(err));
     }
   };
 

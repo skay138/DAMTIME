@@ -59,7 +59,7 @@ app.post("/userpin", (req, res) => {
   var pins = req.body.data;
   console.log(pins)
   connection.query(
-    "DELETE FROM userpin where No = ?;",
+    "DELETE FROM userpin WHERE No IN (?);",
     [pins],
     (err, result) => {
       res.send(result);
