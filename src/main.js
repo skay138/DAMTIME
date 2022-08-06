@@ -277,13 +277,13 @@ function Main() {
             width="45px"
           />
         </button>
+
+        {/* 여기부터는 addpin입니다 */}
+        <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
+
+        {/* 여기부터는 핀정보입니다 */}
+        <Pininfo pin={pin} />
       </div>
-
-      {/* 여기부터는 addpin입니다 */}
-      <Addpin pinlat={pinla} pinlon={pinma} userid={userid} />
-
-      {/* 여기부터는 핀정보입니다 */}
-      <Pininfo pin={pin} />
     </div>
   );
 }
