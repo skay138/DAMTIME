@@ -53,7 +53,7 @@ function Addpin({ pinlat, pinlon, userid }) {
     state.Description = e.target.value;
   };
 
-  const push = () => {
+  const push = (e) => {
     state.Location = `${loc} ${detail}`;
     if (window.confirm("마커를 등록하시겠습니까?")) {
       axios
@@ -63,6 +63,8 @@ function Addpin({ pinlat, pinlon, userid }) {
         });
       alert("흡연구역으로 등록되었습니다.");
       document.getElementById("addpin").className = "add hide";
+    } else {
+      e.preventDefault();
     }
   };
 
@@ -104,10 +106,10 @@ function Addpin({ pinlat, pinlon, userid }) {
         <br />
         <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
         <br />
+        <button className="button addpinbtn" type="submit" onClick={push}>
+          등록
+        </button>
       </form>
-      <button className="button addpinbtn" type="submit" onClick={push}>
-        등록
-      </button>
       <button className="button" onClick={cancel}>
         취소
       </button>

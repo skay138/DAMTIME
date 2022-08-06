@@ -102,7 +102,7 @@ const Report = () => {
     }
   };
 
-  const push = () => {
+  const push = (e) => {
     if (window.confirm("수정요청을 보내겠습니까?")) {
       axios
         .post("https://damtime.kro.kr:4000/report", state)
@@ -112,6 +112,9 @@ const Report = () => {
       alert("수정요청등록");
       navigate("/main");
       console.log(state);
+    }
+    else{
+      e.preventDefault();
     }
   };
 
@@ -133,11 +136,10 @@ const Report = () => {
         </select>
         <p>신고유형 : {Selected}</p>
         <div id="explaindiv">{explain()}</div>
+        <button className=" button " type="submit" onClick={push}>
+          전송
+        </button>
       </form>
-
-      <button className=" button " type="submit" onClick={push}>
-        전송
-      </button>
       <Button name="취소" action="home" />
     </div>
   );
