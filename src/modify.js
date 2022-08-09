@@ -52,8 +52,10 @@ const Modify = ({ pin }) => {
       axios
         .post("https://damtime.kro.kr:4000/pinmodify", state)
         .then(function (res) {
-          alert(res)
-        });
+          if(res.statusText === "OK"){
+            alert("마커가 수정되었습니다.")
+          }
+        }).catch((err) => console.log(err));
       //기존핀 삭제
     } else {
       e.preventDefault();
