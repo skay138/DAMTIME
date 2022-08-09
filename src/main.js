@@ -288,6 +288,7 @@ function Main() {
             src="https://img.icons8.com/sf-regular/96/000000/add.png"
             width="45px"
           />
+          <img src="https://img.icons8.com/sf-regular/96/000000/cancel.png" width="45px"/>
         </button>
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img

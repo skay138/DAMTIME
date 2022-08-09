@@ -52,6 +52,7 @@ const Modify = ({ pin }) => {
       axios
         .post("https://damtime.kro.kr:4000/pinmodify", state)
         .then(function (res) {
+          alert(res)
         });
       //기존핀 삭제
     } else {

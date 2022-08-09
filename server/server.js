@@ -73,15 +73,14 @@ app.post("/insert", (req, res) => {
   var lon = req.body.Longitude;
   var type = req.body.FacilityType;
   var des = req.body.Description;
-  var img = req.body.ImgUrl;
 
   console.log(Location, lat, lon, type);
 
   const sqlQuery =
-    "INSERT INTO userpin (UserId ,FacilityType, Location, Longitude, Latitude, Description, ImgUrl) VALUES (?,?,?,?,?,?,?);";
+    "INSERT INTO userpin (UserId ,FacilityType, Location, Longitude, Latitude, Description) VALUES (?,?,?,?,?,?);";
   connection.query(
     sqlQuery,
-    [User, type, Location, lon, lat, des, img],
+    [User, type, Location, lon, lat, des],
     (err, result) => {
       res.send(result);
     }
