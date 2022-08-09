@@ -92,8 +92,6 @@ function Main() {
 
   //pinload
   function pinupload(data, pinimage) {
-    var setmap = false;
-
     Array.from(data).forEach((el) => {
       var imageSrc = pinimage, // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
@@ -144,7 +142,6 @@ function Main() {
 
       descdiv.onclick = function () {
         mapCustomOverlay.setMap(null);
-        setmap = false;
       };
 
       // 커스텀 오버레이가 표시될 위치입니다
@@ -163,13 +160,10 @@ function Main() {
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
-        setmap = true;
-        mapCustomOverlay.setMap(map)
-        console.log(setmap);
+        mapCustomOverlay.setMap(map);
       });
 
       kakao.maps.event.addListener(map, "click", function () {
-        setmap = false;
         mapCustomOverlay.setMap(null);
       });
     });
@@ -251,36 +245,30 @@ function Main() {
       removable: iwRemoveable,
     });
 
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, "click", function () {});
 
-    kakao.maps.event.addListener(map, "dblclick", function (mouseEvent) {
-      {
-        // 클릭한 위도, 경도 정보를 가져옵니다
-        var latlng = mouseEvent.latLng;
+    //addbtn
+    document.getElementById("addbtn").onclick = addbtn;
 
-        // 가져온 위치로 마커 이동
-        marker.setPosition(latlng);
-
-        if (marker.getVisible()) {
-          marker.setVisible(false);
-          infowindow.close();
-        } else {
-          marker.setVisible(true);
-          infowindow.open(map, marker);
-        }
-        //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
-        document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
+    function addbtn() {
+      if (marker.getVisible()) {
+        marker.setVisible(false);
+        infowindow.close();
+      } else {
+        var position = map.getCenter();
+        marker.setPosition(position);
+        marker.setVisible(true);
+        infowindow.open(map, marker);
       }
-    });
+    }
 
-    kakao.maps.event.addListener(map, "click", function () {
-      marker.setVisible(false);
-      infowindow.close();
-      //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
+
+    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+      var latlng = mouseEvent.latLng;
+      marker.setPosition(latlng);
+      infowindow.setPosition(latlng);
+
       document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
     });
-
   }, [refresh, pindata, userpin]);
 
   //refresh
@@ -295,10 +283,16 @@ function Main() {
         </div>
         <Menu />
         <div id="myMap" className="Mapstyle"></div>
+        <button className="addbtn" id="addbtn">
+          <img
+            src="https://img.icons8.com/sf-regular/96/000000/add.png"
+            width="45px"
+          />
+        </button>
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
-            width="45px"
+            width="40px"
           />
         </button>
 
