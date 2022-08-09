@@ -50,7 +50,7 @@ const Modify = ({ pin }) => {
     if (window.confirm("수정하시겠습니까?")) {
       //핀 업데이트
       axios
-        .post("https://damtime.kro.kr:4000/insert", state)
+        .post("https://damtime.kro.kr:4000/pinmodify", state)
         .then(function (res) {
         });
       //기존핀 삭제
