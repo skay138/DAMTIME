@@ -158,8 +158,10 @@ function Main() {
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
         setmap = !setmap;
-        setmap === true? mapCustomOverlay.setMap(map) : mapCustomOverlay.setMap(null);
-        console.log(setmap)
+        setmap === true
+          ? mapCustomOverlay.setMap(map)
+          : mapCustomOverlay.setMap(null);
+        console.log(setmap);
       });
 
       kakao.maps.event.addListener(map, "click", function () {
@@ -219,6 +221,7 @@ function Main() {
 
     //흡연구역등록
     let btn = document.createElement("div");
+    btn.className = "adddiv"
     btn.textContent = "흡연구역 등록";
 
     btn.onclick = addpin;
@@ -234,34 +237,38 @@ function Main() {
     }
 
     var iwContent = btn, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      iwRemoveable = true; // removeable 속성을 true 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+      iwPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+      iwRemoveable = false; // removeable 속성을 true 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
       content: iwContent,
+      position: iwPosition,
       removable: iwRemoveable,
     });
 
     // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
-    });
+    kakao.maps.event.addListener(marker, "click", function () {});
 
     kakao.maps.event.addListener(map, "click", function (mouseEvent) {
       {
-        marker.getVisible()
-          ? marker.setVisible(false)
-          : marker.setVisible(true);
-        infowindow.close();
+        // 클릭한 위도, 경도 정보를 가져옵니다
+        var latlng = mouseEvent.latLng;
+
+        // 가져온 위치로 마커 이동
+
+        marker.setPosition(latlng);
+
+        if (marker.getVisible()) {
+          marker.setVisible(false);
+          infowindow.close();
+        } else {
+          marker.setVisible(true);
+          infowindow.open(map, marker);
+        }
         //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
         document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
       }
-
-      // 클릭한 위도, 경도 정보를 가져옵니다
-      var latlng = mouseEvent.latLng;
-
-      // 가져온 위치로 마커 이동
-      marker.setPosition(latlng);
     });
   }, [refresh, pindata, userpin]);
 
@@ -285,7 +292,12 @@ function Main() {
         </button>
 
         {/* 여기부터는 addpin입니다 */}
-        <Addpin pinlat={pinla} pinlon={pinma} userid={userid} pinaddedfn={pinaddedfn} />
+        <Addpin
+          pinlat={pinla}
+          pinlon={pinma}
+          userid={userid}
+          pinaddedfn={pinaddedfn}
+        />
 
         {/* 여기부터는 핀정보입니다 */}
         <Pininfo pin={pin} />

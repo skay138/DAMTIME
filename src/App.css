@@ -116,3 +116,9 @@
 .hamburger-react {
   z-index: 15;
 }
+
+.adddiv{
+  width: 150px;
+  text-align: center;
+  background-color: #ceeafa;
+}
