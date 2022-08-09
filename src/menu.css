@@ -8,7 +8,7 @@
   background-color: #ceeafa;
   top: 25px;
   opacity: 90%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .hide-menu {
@@ -21,7 +21,7 @@
   background-color: #ceeafa;
   top: 25px;
   opacity: 90%;
-  z-index: 1;
+  z-index: 3;
 }
 
 ul li {

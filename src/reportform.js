@@ -137,6 +137,7 @@ const Report = () => {
         <br />
         <br />
         <p>신고유형 : {Selected}</p>
+        <br/>
         <div id="explaindiv">{explain()}</div>
         <button className=" button pininfobtn" type="submit" onClick={push}>
           전송

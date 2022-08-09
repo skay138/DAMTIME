@@ -27,7 +27,7 @@ const Menu = () => {
         <li>
           <Link to="/main">지도화면</Link>
         </li>
-        <li>앨랠래</li>
+        <li>도움말</li>
       </ul>
     </div>
   );

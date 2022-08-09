@@ -153,13 +153,17 @@ function Main() {
         yAnchor: 1.25, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
+      var setmap = false;
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
-        mapCustomOverlay.setMap(map);
+        setmap = !setmap;
+        setmap === true? mapCustomOverlay.setMap(map) : mapCustomOverlay.setMap(null);
+        console.log(setmap)
       });
 
       kakao.maps.event.addListener(map, "click", function () {
+        setmap = false;
         mapCustomOverlay.setMap(null);
       });
     });
@@ -192,7 +196,7 @@ function Main() {
 
     geolocation(); //geolaction
 
-    document.getElementById("currentlo").onclick = geolocation;
+    //document.getElementById("currentlo").onclick = geolocation;
 
     // 흡연구역 표시
     pinupload(
@@ -273,7 +277,7 @@ function Main() {
         </div>
         <Menu />
         <div id="myMap" className="Mapstyle"></div>
-        <button className="currentlocation" id="currentlo">
+        <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
             width="45px"
