@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
 
@@ -11,7 +11,7 @@ const Modify = ({ pin }) => {
   // 수정요청 좌표
   const [clklat, setLat] = useState(pin.Latitude);
   const [clklon, setLon] = useState(pin.Longitude);
-  const [loc, setLoc] = useState("");
+  const [loc, setLoc] = useState(pin.Location);
   const [detail, setDetail] = useState("");
   const [location, setLocation] = useState(pin.Location);
 
@@ -33,33 +33,33 @@ const Modify = ({ pin }) => {
     Location: location,
     lat: clklat,
     lon: clklon,
-    userid: userid,
     FacilityType: Selected,
   };
   //console.log(state);
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
-  var geocoder = new kakao.maps.services.Geocoder();
-  var coord = new kakao.maps.LatLng(clklat, clklon);
-  var callback = function (result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-      if (
-        result[0].road_address !== null &&
-        result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
-      ) {
-        setLoc(result[0].road_address.address_name);
+
+  useEffect(() => {
+    var geocoder = new kakao.maps.services.Geocoder();
+    var coord = new kakao.maps.LatLng(clklat, clklon);
+    var callback = function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        if (
+          result[0].road_address !== null &&
+          result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
+        ) {
+          setLoc(result[0].road_address.address_name);
+        }
       }
-    }
-  };
-  geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+    };
+    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+  }, [clklat, clklon]);
 
   const handdleChange = (e) => {
     setLoc(e.target.value);
-    setLocation(`${loc} ${detail}`);
   };
 
   const handledetail = (e) => {
     setDetail(e.target.value);
-    setLocation(`${loc} ${detail}`);
   };
 
   const push = (e) => {
@@ -68,10 +68,11 @@ const Modify = ({ pin }) => {
       axios
         .post("https://damtime.kro.kr:4000/pinmodify", state)
         .then(function (res) {
-          if(res.statusText === "OK"){
-            alert("마커가 수정되었습니다.")
+          if (res.statusText === "OK") {
+            alert("마커가 수정되었습니다.");
           }
-        }).catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
       //기존핀 삭제
     } else {
       e.preventDefault();
@@ -107,9 +108,9 @@ const Modify = ({ pin }) => {
             ))}
           </select>
           <br />
-          <input value={state.Location} onChange={handdleChange}></input>
+          <input value={loc || ""} onChange={handdleChange}></input>
           <br />
-          <input placeholder="상세주소 입력" onChange={handledetail}></input>
+          <input value={detail} placeholder="상세주소 입력" onChange={handledetail}></input>
         </div>
         <br />
         <br />
