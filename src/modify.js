@@ -13,6 +13,7 @@ const Modify = ({ pin }) => {
   const [clklon, setLon] = useState(pin.Longitude);
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
+  const [location, setLocation] = useState(pin.Location);
 
   const selectList = [
     "개방형흡연부스",
@@ -29,7 +30,7 @@ const Modify = ({ pin }) => {
 
   const state = {
     pinNo: pin.No,
-    Location: `${loc} ${detail}`,
+    Location: location,
     lat: clklat,
     lon: clklon,
     userid: userid,
@@ -53,11 +54,12 @@ const Modify = ({ pin }) => {
 
   const handdleChange = (e) => {
     setLoc(e.target.value);
+    setLocation(`${loc} ${detail}`);
   };
 
   const handledetail = (e) => {
     setDetail(e.target.value);
-    console.log(state);
+    setLocation(`${loc} ${detail}`);
   };
 
   const push = (e) => {
