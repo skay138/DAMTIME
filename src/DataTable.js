@@ -9,7 +9,7 @@ export default function DataTable() {
   const state = {
     data: selectionModel.join(),
   };
-
+//1
   const userid = sessionStorage.getItem("loginId");
 
   const columns = [
