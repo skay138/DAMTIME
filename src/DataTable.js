@@ -45,9 +45,18 @@ export default function DataTable() {
   };
 
   const modify = () => {
-    console.log(rows);
-    console.log(selectionModel)
-    return;
+    
+    Array.from(rows).forEach((el) => {
+      Array.from(selectionModel).forEach((sl) => {
+      if(el.No === sl){
+        console.log(el);
+        
+      }
+      });
+    });
+    //console.log(rows);
+    //console.log(selectionModel)
+    //return;
   };
 
   const deletepin = () => {
