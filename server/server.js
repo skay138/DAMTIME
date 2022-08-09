@@ -186,6 +186,27 @@ app.get("/getmypin", (req, res) => {
   });
 });
 
+app.post("/userpin", (req, res) => {
+  var No = req.body.pinNo;
+  var Location = req.body.Location;
+  var lat = req.body.lat;
+  var lon = req.body.lon;
+  //var type = req.body.FacilityType;
+  //var des = req.body.Description;
+
+  console.log(Location, lat, lon, type);
+
+  const sqlQuery =
+    "UPDATE userpin set Location = ?, Longitude = ?, Latitude = ? WHERE No = ?;";
+  connection.query(
+    sqlQuery,
+    [Location, lon, lat, No],
+    (err, result) => {
+      res.send(result);
+    }
+  );
+});
+
 // app.listen(port, () => {
 //   console.log(`Connected at http://localhost:${port}`);
 // });
