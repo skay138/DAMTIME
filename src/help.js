@@ -8,7 +8,7 @@ function Help() {
       <div className="title">DAMTIME</div>
       <Menu />
       <ul>
-        <li><img src="https://img.icons8.com/ios-filled/100/3498DB/marker-d.png" width="35px"></img> : 구에서 설치한 공공 흡연구역</li>
+        <li><img src="https://img.icons8.com/ios-filled/100/3498DB/marker-d.png" width="35px"></img> : 구에서 인증한 공공 흡연구역</li>
         <li><img src="https://img.icons8.com/ios-filled/100/000000/marker-u.png" width="35px"></img> : 유저가 추가한 사설 흡연구역</li>
         <li>지도클릭>버튼클릭>흡연구역 등록<br/>(최대한 정확하게 찍어주세요)</li>
         <li><img src="https://img.icons8.com/ios-filled/50/000000/location-update.png" width="35px"></img> : 새로고침(현위치)</li>
