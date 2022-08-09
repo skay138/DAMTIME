@@ -3,6 +3,8 @@ import "./App.css";
 import "./pininfo.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import Adfit from "./Adfit";
+
 
 function Pininfo({ pin }) {
   const navigate = useNavigate();

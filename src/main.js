@@ -5,6 +5,7 @@ import axios from "axios";
 import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
 import Menu from "./menu";
+import Adfit from "./Adfit";
 
 const { kakao } = window;
 
@@ -296,6 +297,7 @@ function Main() {
             width="40px"
           />
         </button>
+        <Adfit w={"320"} h={"50"} id={"DAN-M3VzVTwwqf9k6WpM"}/>
 
         {/* 여기부터는 addpin입니다 */}
         <Addpin

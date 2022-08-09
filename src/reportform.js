@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Button from "./Button";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
 import { useLocation, useNavigate } from "react-router-dom";
