@@ -163,10 +163,8 @@ function Main() {
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
-        setmap = !setmap;
-        setmap === true
-          ? mapCustomOverlay.setMap(map)
-          : mapCustomOverlay.setMap(null);
+        setmap = true;
+        mapCustomOverlay.setMap(map)
         console.log(setmap);
       });
 
