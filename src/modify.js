@@ -2,14 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
-import { useNavigate } from "react-router-dom";
 
 const { kakao } = window;
 
 const Modify = ({ pin }) => {
   const userid = sessionStorage.getItem("loginId");
-  const navigate = useNavigate();
- 
+
   // 수정요청 좌표
   const [clklat, setLat] = useState(pin.Latitude);
   const [clklon, setLon] = useState(pin.Longitude);
@@ -18,7 +16,7 @@ const Modify = ({ pin }) => {
   //console.log(pin);
   const state = {
     pinNo: pin.No,
-    pininfo: `${loc} ${detail}`,
+    Location: `${loc} ${detail}`,
     lat: clklat,
     lon: clklon,
     userid: userid,
@@ -45,29 +43,17 @@ const Modify = ({ pin }) => {
 
   const handledetail = (e) => {
     setDetail(e.target.value);
+    console.log(state);
   };
-  
+
   const push = (e) => {
     if (window.confirm("수정하시겠습니까?")) {
-
-    //     //핀 업데이트
-    //   axios
-    //     .post("https://damtime.kro.kr:4000/insert", state)
-    //     .then(function (res) {
-    //       console.log(res);
-    //     });
-    //     //기존핀 삭제
-    //   axios
-    //     .post("https://damtime.kro.kr:4000/userpin", state)
-    //     .then((res) => {
-    //       if (res.statusText === "OK") {
-    //         alert("수정완료");
-    //       }
-    //     })
-    //     .catch((err) => console.log(err));
-      
-      navigate("/main");
-      console.log(state);
+      //핀 업데이트
+      axios
+        .post("https://damtime.kro.kr:4000/insert", state)
+        .then(function (res) {
+        });
+      //기존핀 삭제
     } else {
       e.preventDefault();
     }
@@ -75,14 +61,13 @@ const Modify = ({ pin }) => {
 
   const hidemodify = () => {
     document.getElementById("modify").className = "modify hide";
-    console.log("왜안됨");
-  }
+  };
 
   return (
     <div id="modify" className="modify hide">
       <form className="modiform">
         <div id="mapdiv">
-            <h3>위치수정</h3>
+          <h3>위치수정</h3>
           <ReportMap
             pin={pin}
             setLat={setLat}
@@ -90,16 +75,18 @@ const Modify = ({ pin }) => {
             clklat={clklat}
             clklon={clklon}
           />
-          <input value={state.pininfo} onChange={handdleChange}></input>
+          <input value={state.Location} onChange={handdleChange}></input>
           <br />
           <input placeholder="상세주소 입력" onChange={handledetail}></input>
         </div>
         <br />
-        <br/>
+        <br />
         <button className=" button modibtn" type="submit" onClick={push}>
           전송
         </button>
-        <button className="button modibtn2" onClick={hidemodify}>취소</button>
+        <button className="button modibtn2" onClick={hidemodify}>
+          취소
+        </button>
       </form>
     </div>
   );
