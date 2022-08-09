@@ -13,13 +13,27 @@ const Modify = ({ pin }) => {
   const [clklon, setLon] = useState(pin.Longitude);
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  //console.log(pin);
+
+  const selectList = [
+    "개방형흡연부스",
+    "부분개방형흡연실",
+    "폐쇄형흡연부스",
+    "라인형흡연구역",
+    "비대면흡연부스",
+    "기타",
+  ];
+  const [Selected, setSelected] = useState(pin.FacilityType);
+  const getValue = (e) => {
+    setSelected(e.target.value);
+  };
+
   const state = {
     pinNo: pin.No,
     Location: `${loc} ${detail}`,
     lat: clklat,
     lon: clklon,
     userid: userid,
+    FacilityType: Selected,
   };
   //console.log(state);
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
@@ -78,6 +92,19 @@ const Modify = ({ pin }) => {
             clklat={clklat}
             clklon={clklon}
           />
+          <select
+            id="type"
+            className="options"
+            onChange={getValue}
+            value={Selected}
+          >
+            {selectList.map((item) => (
+              <option value={item} key={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+          <br />
           <input value={state.Location} onChange={handdleChange}></input>
           <br />
           <input placeholder="상세주소 입력" onChange={handledetail}></input>
