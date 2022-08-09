@@ -12,8 +12,8 @@ function Main() {
   //로그인 시 정보받기
 
   const userid = sessionStorage.getItem("loginId");
-  console.log(userid);
 
+  const [addbtn, setAddbtn] = useState(true);
   const [refresh, setRefresh] = useState(false); //refresh
   const [pinadded, setPinadded] = useState(false);
 
@@ -250,6 +250,7 @@ function Main() {
     document.getElementById("addbtn").onclick = addbtn;
 
     function addbtn() {
+      setAddbtn((current) =>!current);
       if (marker.getVisible()) {
         marker.setVisible(false);
         infowindow.close();
@@ -283,12 +284,11 @@ function Main() {
         </div>
         <Menu />
         <div id="myMap" className="Mapstyle"></div>
-        <button className="addbtn" id="addbtn">
+        <button className={addbtn? "addbtn" : "addbtnout"} id="addbtn">
           <img
             src="https://img.icons8.com/sf-regular/96/000000/add.png"
             width="45px"
           />
-          <img src="https://img.icons8.com/sf-regular/96/000000/cancel.png" width="45px"/>
         </button>
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
