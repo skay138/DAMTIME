@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import Modify from "./modify";
+import "./pininfo.css";
 
 export default function DataTable() {
   const [selectionModel, setSelectionModel] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const navigate = useNavigate();
+  const [pin, setPin] = useState([]);
 
   const state = {
     data: selectionModel.join(),
@@ -54,7 +55,8 @@ export default function DataTable() {
     Array.from(rows).forEach((el) => {
       Array.from(selectionModel).forEach((sl) => {
       if(el.No === sl){
-        navigate("/report", { state: el });
+        setPin(el);
+        document.getElementById("modify").className = "modify";
       }
       });
     })
@@ -76,6 +78,7 @@ export default function DataTable() {
   };
 
   return (
+    <div>
     <div style={{ width: "100%", height: "100%" }}>
       <div
         style={{ position: "absolute", top: 150, height: 400, width: "100%" }}
@@ -92,6 +95,8 @@ export default function DataTable() {
         <button onClick={modify}>수정</button>
         <button onClick={deletepin}>삭제</button>
       </div>
+    </div>
+    <Modify pin={pin} />
     </div>
   );
 }
