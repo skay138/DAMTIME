@@ -9,7 +9,7 @@ const { kakao } = window;
 function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  const [fileUrl, setFileUrl] = useState(""); //뭔지 몰라서 끼워놨어요
+  //const [fileUrl, setFileUrl] = useState(""); //카메라였던것
 
   const state = {
     FacilityType: "개방형흡연부스",
