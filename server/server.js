@@ -186,7 +186,7 @@ app.get("/getmypin", (req, res) => {
   });
 });
 
-app.post("/userpin", (req, res) => {
+app.post("/pinmodify", (req, res) => {
   var No = req.body.pinNo;
   var Location = req.body.Location;
   var lat = req.body.lat;
@@ -194,7 +194,7 @@ app.post("/userpin", (req, res) => {
   //var type = req.body.FacilityType;
   //var des = req.body.Description;
 
-  console.log(Location, lat, lon, type);
+  console.log(req.body);
 
   const sqlQuery =
     "UPDATE userpin set Location = ?, Longitude = ?, Latitude = ? WHERE No = ?;";
