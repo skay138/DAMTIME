@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function DataTable() {
   const [selectionModel, setSelectionModel] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate();
 
   const state = {
     data: selectionModel.join(),
@@ -45,18 +47,19 @@ export default function DataTable() {
   };
 
   const modify = () => {
-    
+    var len = selectionModel.length;
+    len === 0
+    ? alert("수정할 마커를 선택해주세요 ")
+    : len === 1
+    ?
     Array.from(rows).forEach((el) => {
       Array.from(selectionModel).forEach((sl) => {
       if(el.No === sl){
-        console.log(el);
-        
+        navigate("/report", { state: el });
       }
       });
-    });
-    //console.log(rows);
-    //console.log(selectionModel)
-    //return;
+    })
+    : alert("수정요청은 한 개씩 해주세요");
   };
 
   const deletepin = () => {
