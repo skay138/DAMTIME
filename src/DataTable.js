@@ -11,7 +11,6 @@ export default function DataTable() {
   const state = {
     data: selectionModel.join(),
   };
-//1
   const userid = sessionStorage.getItem("loginId");
 
   const columns = [
@@ -59,7 +58,7 @@ export default function DataTable() {
       }
       });
     })
-    : alert("수정요청은 한 개씩 해주세요");
+    : alert("수정은 한 개씩 해주세요");
   };
 
   const deletepin = () => {

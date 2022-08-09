@@ -92,6 +92,8 @@ function Main() {
 
   //pinload
   function pinupload(data, pinimage) {
+    var setmap = false;
+
     Array.from(data).forEach((el) => {
       var imageSrc = pinimage, // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
@@ -115,11 +117,6 @@ function Main() {
       var content = document.createElement("div");
       content.className = "overlay_info";
 
-      content.onclick = function () {
-        document.getElementById("pininfo").className = "info";
-        setPin(el);
-      };
-
       var atag = document.createElement("a");
       var strong = document.createElement("strong");
       strong.innerHTML = "상세정보";
@@ -140,6 +137,16 @@ function Main() {
       content.appendChild(atag);
       content.appendChild(descdiv);
 
+      atag.onclick = function () {
+        document.getElementById("pininfo").className = "info";
+        setPin(el);
+      };
+
+      descdiv.onclick = function () {
+        mapCustomOverlay.setMap(null);
+        setmap = false;
+      };
+
       // 커스텀 오버레이가 표시될 위치입니다
       var position = new kakao.maps.LatLng(el.Latitude, el.Longitude);
 
@@ -153,7 +160,6 @@ function Main() {
         yAnchor: 1.25, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
-      var setmap = false;
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
@@ -221,7 +227,7 @@ function Main() {
 
     //흡연구역등록
     let btn = document.createElement("div");
-    btn.className = "adddiv"
+    btn.className = "adddiv";
     btn.textContent = "흡연구역 등록";
 
     btn.onclick = addpin;
@@ -250,13 +256,12 @@ function Main() {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, "click", function () {});
 
-    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+    kakao.maps.event.addListener(map, "dblclick", function (mouseEvent) {
       {
         // 클릭한 위도, 경도 정보를 가져옵니다
         var latlng = mouseEvent.latLng;
 
         // 가져온 위치로 마커 이동
-
         marker.setPosition(latlng);
 
         if (marker.getVisible()) {
@@ -270,6 +275,14 @@ function Main() {
         document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
       }
     });
+
+    kakao.maps.event.addListener(map, "click", function () {
+      marker.setVisible(false);
+      infowindow.close();
+      //마커가 보이는데 맵을 클릭하면 마커&인포윈도우 안보이게
+      document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
+    });
+
   }, [refresh, pindata, userpin]);
 
   //refresh
