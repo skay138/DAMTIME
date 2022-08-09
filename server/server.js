@@ -33,8 +33,8 @@ app.get("/", (req, res) => {
   console.log("requested");
 });
 
-app.get("/seocho", (req, res) => {
-  connection.query("SELECT * FROM seocho", function (err, rows, fields) {
+app.get("/public", (req, res) => {
+  connection.query("SELECT * FROM public", function (err, rows, fields) {
     if (err) {
       console.log("불러오기 실패");
     } else {

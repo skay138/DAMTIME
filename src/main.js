@@ -173,7 +173,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("https://damtime.kro.kr:4000/seocho")
+      .get("https://damtime.kro.kr:4000/public")
       .then((res) => {
         setPindata(res.data);
       })
