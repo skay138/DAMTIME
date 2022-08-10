@@ -98,3 +98,14 @@ ul li{
   left: 14.7%;
   bottom: 0;
 }
+
+.loctext {
+  width: 300px;
+  height: 80px;
+  font-size: 18px;
+}
+
+.modimap {
+  position: relative;
+  z-index: 5;
+}
