@@ -18,7 +18,7 @@
 .currentlocation {
   position: absolute;
   left: 5px;
-  bottom: 45px;
+  bottom: 60px;
   z-index: 1;
   border: none;
   background: none;
@@ -27,7 +27,7 @@
 .addbtn {
   position: absolute;
   right: 5px;
-  bottom: 45px;
+  bottom: 60px;
   z-index: 1;
   border: none;
   background: none;
@@ -37,7 +37,7 @@
 .addbtnout{
   position: absolute;
   right: 5px;
-  bottom: 45px;
+  bottom: 60px;
   z-index: 1;
   border: none;
   background: none;

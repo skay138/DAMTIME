@@ -294,7 +294,7 @@ function Main() {
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
-            width="40px"
+            width="35px"
           />
         </button>
         <Adfit w={"320"} h={"50"} id={"DAN-M3VzVTwwqf9k6WpM"}/>
