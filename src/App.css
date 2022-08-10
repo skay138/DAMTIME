@@ -18,7 +18,7 @@
 .currentlocation {
   position: absolute;
   left: 5px;
-  bottom: 60px;
+  bottom: 65px;
   z-index: 1;
   border: none;
   background: none;
