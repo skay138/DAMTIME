@@ -140,6 +140,7 @@ app.post("/damlogin", (req, res) => {
         connection.query(
           "INSERT INTO login (userid, email) values (?,?);",[id, email],
           function(err, newuser){
+            console.log(newuser)
             if(newuser){
               res.send("newuser");
             }
