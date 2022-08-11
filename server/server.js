@@ -108,8 +108,8 @@ app.post("/damregister", (req, res) => {
 
             // 쿼리 작성하여 전달
             const sql =
-              "INSERT INTO login (userid, userpw, salt) values (?,?,?);";
-            const param = [id, key.toString("base64"), salt];
+              "INSERT INTO login (userid, email, userpw, salt) values (?,?,?,?);";
+            const param = [id,id,key.toString("base64"), salt];
             connection.query(sql, param, (err, data) => {
               if (!err) {
                 res.send("success");
@@ -155,6 +155,37 @@ app.post("/damlogin", (req, res) => {
   );
 });
 
+app.post("/kakaologin", (req, res) => {
+  const id = req.body.id;
+  const email = req.body.email;
+
+  console.log(id)
+  console.log(email)
+  connection.query(
+    "select userid from login where userid=?;",
+    [id],
+    function (err, idck) {
+      console.log(idck);
+      if (idck.length) {
+        res.send(true);
+      } else {
+        connection.query(
+          "INSERT INTO login (userid, email) values (?,?);",[id, email],
+          function(err, newuser){
+            console.log(newuser)
+            if(newuser){
+              res.send("newuser");
+            }
+            else{
+              res.send(err);
+            }
+          }
+        )
+      }
+    }
+  );
+});
+
 app.post("/report", (req, res) => {
   var No = req.body.pinNo;
   var reporttype = req.body.selected;
@@ -188,6 +219,8 @@ app.get("/getmypin", (req, res) => {
 app.post("/pinmodify", (req, res) => {
   var No = req.body.pinNo;
   var Location = req.body.Location;
+  var des = req.body.des;
+  var type = req.body.FacilityType;
   var lat = req.body.lat;
   var lon = req.body.lon;
   //var type = req.body.FacilityType;
@@ -196,10 +229,10 @@ app.post("/pinmodify", (req, res) => {
   console.log(req.body);
 
   const sqlQuery =
-    "UPDATE userpin set Location = ?, Longitude = ?, Latitude = ? WHERE No = ?;";
+    "UPDATE userpin set FacilityType = ?, Location = ?, Longitude = ?, Latitude = ?, Description = ? WHERE No = ?;";
   connection.query(
     sqlQuery,
-    [Location, lon, lat, No],
+    [type, Location, lon, lat, des, No],
     (err, result) => {
       res.send(result);
     }

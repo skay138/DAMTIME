@@ -51,7 +51,7 @@ section#entry-page form h2 {
   font-weight: 100;
 }
 section#entry-page form fieldset {
-  margin-bottom : 30px;
+  margin-bottom : 70px;
   background-color: #fff;
   border: none;
   border-radius: 5px;
@@ -72,6 +72,11 @@ section#entry-page form fieldset ul li {
   margin: 10px;
 }
 section#entry-page form fieldset ul li a {
+  font-size: 13px;
+  color: rgb(82, 101, 196);
+}
+
+section#entry-page form a {
   font-size: 13px;
   color: rgb(82, 101, 196);
 }

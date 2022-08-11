@@ -6,15 +6,10 @@ import "./pininfo.css";
 const { kakao } = window;
 
 const Modify = ({ pin }) => {
-  const userid = sessionStorage.getItem("loginId");
+  // const userid = sessionStorage.getItem("loginId");
+
 
   // 수정요청 좌표
-  const [clklat, setLat] = useState(pin.Latitude);
-  const [clklon, setLon] = useState(pin.Longitude);
-  const [loc, setLoc] = useState(pin.Location);
-  const [detail, setDetail] = useState("");
-  const [location, setLocation] = useState(pin.Location);
-
   const selectList = [
     "개방형흡연부스",
     "부분개방형흡연실",
@@ -24,18 +19,36 @@ const Modify = ({ pin }) => {
     "기타",
   ];
   const [Selected, setSelected] = useState(pin.FacilityType);
+  const [clklat, setLat] = useState("");
+  const [clklon, setLon] = useState("");
+  const [loc, setLoc] = useState("");
+  const [des, setDes] = useState("");
+  useEffect(()=>{
+    setLoc(pin.Location);
+    setDes(pin.Description);
+    setSelected(pin.FacilityType);
+    setLat(pin.Latitude);
+    setLon(pin.Longitude);
+  },[pin.Location, pin.Description])
+
+  const [mapon, setMapon] = useState(false);
+  
+
   const getValue = (e) => {
     setSelected(e.target.value);
   };
 
   const state = {
     pinNo: pin.No,
-    Location: location,
+    Location: loc,
     lat: clklat,
     lon: clklon,
     FacilityType: Selected,
+    des : des,
   };
-  //console.log(state);
+
+  console.log(state);
+  
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
   useEffect(() => {
@@ -58,9 +71,9 @@ const Modify = ({ pin }) => {
     setLoc(e.target.value);
   };
 
-  const handledetail = (e) => {
-    setDetail(e.target.value);
-  };
+  const handdleDes = (e) => {
+    setDes(e.target.value);
+  }
 
   const push = (e) => {
     if (window.confirm("수정하시겠습니까?")) {
@@ -79,22 +92,39 @@ const Modify = ({ pin }) => {
     }
   };
 
+  const modifyMap = () => {
+    if (mapon === true ) {
+    return (
+    <div>
+    <h5>상세주소도 입력해주세요</h5>
+    <ReportMap
+      pin={pin}
+      setLat={setLat}
+      setLon={setLon}
+      clklat={clklat}
+      clklon={clklon}
+    />
+    </div>
+    );
+    }
+  }
+  const showMap = () => {
+    {mapon?setMapon(false):setMapon(true)};
+  }
+
   const hidemodify = () => {
     document.getElementById("modify").className = "modify hide";
   };
 
   return (
     <div id="modify" className="modify hide">
+      <h3>마커수정</h3>
       <form className="modiform">
         <div id="mapdiv">
-          <h3>위치수정</h3>
-          <ReportMap
-            pin={pin}
-            setLat={setLat}
-            setLon={setLon}
-            clklat={clklat}
-            clklon={clklon}
-          />
+          <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
+          <br />
+          <textarea className="loctext" onChange={handdleDes} value={des}></textarea>
+          <br />
           <select
             id="type"
             className="options"
@@ -107,12 +137,11 @@ const Modify = ({ pin }) => {
               </option>
             ))}
           </select>
-          <br />
-          <input value={loc || ""} onChange={handdleChange}></input>
-          <br />
-          <input value={detail} placeholder="상세주소 입력" onChange={handledetail}></input>
+          <div id="modiMap" className="modimap">
+            {modifyMap()}
+          </div>
         </div>
-        <br />
+        <button className="mapbtn " type="button" onClick={showMap}>{mapon ? "지도숨김" : "지도표시"}</button>
         <br />
         <button className=" button modibtn" type="submit" onClick={push}>
           전송

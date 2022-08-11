@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./addfin.css";
-import Camera from "./camera";
 
 const { kakao } = window;
 
@@ -18,7 +17,6 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
     Latitude: pinlat,
     Description: "",
     UserId: userid,
-    // ImgUrl: fileUrl,
   };
 
   var geocoder = new kakao.maps.services.Geocoder();
@@ -81,7 +79,7 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       </h3>
       <br />
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
-      <form>
+      <form className="addform">
         <br />
         <p className="p">주소입력(빈칸 시 직접 작성)</p>
         <input onChange={handleloc} type="text" value={loc}></input>

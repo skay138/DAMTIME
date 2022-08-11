@@ -13,7 +13,6 @@ export default function DataTable() {
     data: selectionModel.join(),
   };
   const userid = sessionStorage.getItem("loginId");
-  //
 
   const columns = [
     //{ field: "id", headerName: "번호", width: 70 }, //No
