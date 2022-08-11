@@ -5,7 +5,7 @@ import "./EntryPage.css";
 import Kakaologin from "./kakaologin";
 
 function EntryPage() {
-  const [state, setState] = useState({ currentView: "logIn" });
+  const [state, setState] = useState({ currentView: "kakao" });
 
   const changeView = (view) => {
     setState({
@@ -41,21 +41,23 @@ function EntryPage() {
   //Login 버튼 클릭 이벤트
   const onClickLogin = (e) => {
     e.preventDefault();
-    console.log(loginId)
+    console.log(loginId);
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
-      axios.post("https://damtime.kro.kr:4000/damlogin", loginId).then(function (res) {
-        if (res.data === true) {
-          navigate("/main");
-          sessionStorage.setItem("loginId", loginId.userid);
-        } else if (res.data === false) {
-          alert("비밀번호가 일치하지 않습니다.");
-        } else {
-          console.log(res);
-          alert(res.data);
-        }
-      });
+      axios
+        .post("https://damtime.kro.kr:4000/damlogin", loginId)
+        .then(function (res) {
+          if (res.data === true) {
+            navigate("/main");
+            sessionStorage.setItem("loginId", loginId.userid);
+          } else if (res.data === false) {
+            alert("비밀번호가 일치하지 않습니다.");
+          } else {
+            console.log(res);
+            alert(res.data);
+          }
+        });
     }
   };
 
@@ -67,7 +69,7 @@ function EntryPage() {
   //회원가입 버튼
   const onClickRegister = (e) => {
     e.preventDefault();
-    if(window.confirm("회원가입을 하시겠습니까?")){
+    if (window.confirm("회원가입을 하시겠습니까?")) {
       if (inputId === "") {
         alert("이메일을 입력하세요.");
       } else if (!emailRegex.test(inputId)) {
@@ -78,16 +80,16 @@ function EntryPage() {
           if (inputPw.length < 8) {
             alert("비밀번호를 8자리 이상 입력해주세요.");
           } else {
-            axios.post("https://damtime.kro.kr:4000/damregister", loginId).then(function (res) {
-              console.log(res.data);
-  
-              if (res.data === "아이디중복") {
-                alert("중복된 아이디입니다."); //아이디가 없으면
-              } else if (res.data === "success") {
-                alert("회원가입 되었습니다.");
-                changeView("logIn");
-              }
-            });
+            axios
+              .post("https://damtime.kro.kr:4000/damregister", loginId)
+              .then(function (res) {
+                if (res.data === "아이디중복") {
+                  alert("중복된 아이디입니다."); //아이디가 없으면
+                } else if (res.data === "success") {
+                  alert("회원가입 되었습니다.");
+                  changeView("logIn");
+                }
+              });
           }
         } else alert("비밀번호가 일치하지 않습니다.");
       }
@@ -100,6 +102,34 @@ function EntryPage() {
 
   const currentView = () => {
     switch (state.currentView) {
+      case "kakao":
+        return (
+          <form>
+            <fieldset>
+              <h2>DAMTIME</h2>
+              <legend>LOGIN</legend>
+              <ul>
+                <li>
+                  <Kakaologin />
+                </li>
+                <li>
+                  <div
+                    style={{ textAlign: "center" }}
+                    onClick={nonmember}
+                    type="button"
+                    value="Enter by Non-member"
+                  >
+                    비로그인으로 이용
+                  </div>
+                </li>
+                <li></li>
+              </ul>
+            </fieldset>
+            <a onClick={() => changeView("logIn")}>
+              카카오아이디가 없으신가요?
+            </a>
+          </form>
+        );
       case "signUp":
         return (
           <form>
@@ -213,17 +243,10 @@ function EntryPage() {
                 로그인
               </button>
             </fieldset>
-            <button
-              onClick={nonmember}
-              type="button"
-              value="Enter by Non-member"
-            >
-              비로그인으로 이용
-            </button>
             <button type="button" onClick={() => changeView("signUp")}>
               회원가입하기
             </button>
-            <Kakaologin/>
+            <button onClick={() => changeView("kakao")}>돌아가기</button>
           </form>
         );
       case "PWReset":

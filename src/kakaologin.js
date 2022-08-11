@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "./img/kakao_login_medium_narrow.png";
 var qs = require("qs");
 
 export default function Kakaologin() {
@@ -9,7 +10,6 @@ export default function Kakaologin() {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const PARAMS = new URL(document.location).searchParams;
   const KAKAO_CODE = PARAMS.get("code");
-
 
   let sessionStorage = window.sessionStorage;
   const navigate = useNavigate();
@@ -59,13 +59,10 @@ export default function Kakaologin() {
       .then(function (response) {
         sessionStorage.setItem("loginId", response.data.id);
         axios
-          .post(
-            "https://damtime.kro.kr:4000/kakaologin",
-            ({
-              id: response.data.id,
-              email: response.data.kakao_account.email,
-            })
-          )
+          .post("https://damtime.kro.kr:4000/kakaologin", {
+            id: response.data.id,
+            email: response.data.kakao_account.email,
+          })
           .then(function (res) {
             if (res.data === true) {
               navigate("/main");
@@ -84,14 +81,14 @@ export default function Kakaologin() {
   }
 
   return (
-    <div>
-      <button className="loginbtn"
-        onClick={() => {
-          window.location.href = KAKAO_AUTH_URL;
-        }}
-      >
-        카카오로그인
-      </button>
+    <div style={{textAlign : 'center'}}>
+    <img
+      src={logo}
+      onClick={(e) => {
+        e.preventDefault();
+        window.location.href = KAKAO_AUTH_URL;
+      }}
+    ></img>
     </div>
   );
 }

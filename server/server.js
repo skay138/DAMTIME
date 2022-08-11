@@ -108,8 +108,8 @@ app.post("/damregister", (req, res) => {
 
             // 쿼리 작성하여 전달
             const sql =
-              "INSERT INTO login (userid, userpw, salt) values (?,?,?);";
-            const param = [id, key.toString("base64"), salt];
+              "INSERT INTO login (userid, email, userpw, salt) values (?,?,?,?);";
+            const param = [id,id,key.toString("base64"), salt];
             connection.query(sql, param, (err, data) => {
               if (!err) {
                 res.send("success");
