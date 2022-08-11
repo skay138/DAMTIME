@@ -116,11 +116,13 @@ const Modify = ({ pin }) => {
 
   return (
     <div id="modify" className="modify hide">
+      <h3>마커수정</h3>
       <form className="modiform">
         <div id="mapdiv">
           <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
           <br />
           <textarea className="loctext" onChange={handdleDes} value={des}></textarea>
+          <br />
           <select
             id="type"
             className="options"
