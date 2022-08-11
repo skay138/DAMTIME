@@ -13,6 +13,7 @@ function Main() {
   //로그인 시 정보받기
 
   const userid = sessionStorage.getItem("loginId");
+  console.log(userid)
 
   const [addbtn, setAddbtn] = useState(true);
   const [refresh, setRefresh] = useState(false); //refresh

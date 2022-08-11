@@ -41,6 +41,7 @@ function EntryPage() {
   //Login 버튼 클릭 이벤트
   const onClickLogin = (e) => {
     e.preventDefault();
+    console.log(loginId)
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
@@ -167,7 +168,6 @@ function EntryPage() {
         );
       case "logIn":
         return (
-          <div>
           <form>
             <h2>DAMTIME</h2>
             <fieldset>
@@ -223,9 +223,8 @@ function EntryPage() {
             <button type="button" onClick={() => changeView("signUp")}>
               회원가입하기
             </button>
+            <Kakaologin/>
           </form>
-          <Kakaologin/>
-          </div>
         );
       case "PWReset":
         return (

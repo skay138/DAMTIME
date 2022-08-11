@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 var qs = require("qs");
 
 export default function Kakaologin() {
@@ -9,7 +10,9 @@ export default function Kakaologin() {
   const PARAMS = new URL(document.location).searchParams;
   const KAKAO_CODE = PARAMS.get("code");
 
-  const [user, setUser] = useState("");
+
+  let sessionStorage = window.sessionStorage;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (KAKAO_CODE) {
@@ -54,16 +57,25 @@ export default function Kakaologin() {
 
     axios(getuser)
       .then(function (response) {
+        sessionStorage.setItem("loginId", response.data.id);
         axios
           .post(
-            "https://damtime.kro.kr:4000/damlogin",
+            "https://damtime.kro.kr:4000/kakaologin",
             ({
               id: response.data.id,
               email: response.data.kakao_account.email,
             })
           )
           .then(function (res) {
-            console.log(res);
+            if (res.data === true) {
+              navigate("/main");
+            } else if (res.data === "newuser") {
+              alert("회원가입되었습니다.");
+              navigate("/main");
+            } else {
+              console.log(res);
+              alert(res.data);
+            }
           });
       })
       .catch(function (error) {
@@ -73,7 +85,7 @@ export default function Kakaologin() {
 
   return (
     <div>
-      <button
+      <button className="loginbtn"
         onClick={() => {
           window.location.href = KAKAO_AUTH_URL;
         }}
