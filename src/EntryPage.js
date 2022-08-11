@@ -41,7 +41,6 @@ function EntryPage() {
   //Login 버튼 클릭 이벤트
   const onClickLogin = (e) => {
     e.preventDefault();
-    console.log(loginId);
     if (loginId.userid === "" || loginId.userpw === "") {
       alert("아이디 혹은 비밀번호를 기입하지 않으셨습니다.");
     } else {
@@ -83,6 +82,7 @@ function EntryPage() {
             axios
               .post("https://damtime.kro.kr:4000/damregister", loginId)
               .then(function (res) {
+                console.log(res.data);
                 if (res.data === "아이디중복") {
                   alert("중복된 아이디입니다."); //아이디가 없으면
                 } else if (res.data === "success") {
