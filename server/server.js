@@ -134,6 +134,7 @@ app.post("/damlogin", (req, res) => {
     "select userid from login where userid=?;",
     [id],
     function (err, idck) {
+      console.log(idck);
       if (idck.length) {
         res.send(true);
       } else {
