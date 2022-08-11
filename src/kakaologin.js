@@ -15,7 +15,6 @@ export default function Kakaologin() {
     if (KAKAO_CODE) {
       getKakaoTokenHandler(KAKAO_CODE.toString());
     }
-
   }, []);
 
   function getKakaoTokenHandler(kakao_code) {
@@ -36,7 +35,7 @@ export default function Kakaologin() {
 
     axios(config)
       .then(function (response) {
-        getuser(response.data.access_token)
+        getuser(response.data.access_token);
         console.log("TOKEN" + response.data.access_token);
       })
       .catch(function (error) {
@@ -44,7 +43,7 @@ export default function Kakaologin() {
       });
   }
 
-  function getuser(token){
+  function getuser(token) {
     var getuser = {
       method: "get",
       url: "https://kapi.kakao.com/v2/user/me",
@@ -52,24 +51,25 @@ export default function Kakaologin() {
         Authorization: `Bearer ${token}`,
       },
     };
-  
+
     axios(getuser)
       .then(function (response) {
-        console.log(JSON.stringify(response.data.id));
-        console.log(response.data.kakao_account.email);
-        setUser({
-          id : response.data.id,
-          email : response.data.kakao_account.email
-        })
+        axios
+          .post(
+            "https://damtime.kro.kr:4000/damlogin",
+            ({
+              id: response.data.id,
+              email: response.data.kakao_account.email,
+            })
+          )
+          .then(function (res) {
+            console.log(res);
+          });
       })
       .catch(function (error) {
         console.log(error);
       });
-
-      axios.post("https://damtime.kro.kr:4000/damlogin", user).then(function(res){console.log(res)});
   }
-
-
 
   return (
     <div>
