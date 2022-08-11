@@ -188,6 +188,8 @@ app.get("/getmypin", (req, res) => {
 app.post("/pinmodify", (req, res) => {
   var No = req.body.pinNo;
   var Location = req.body.Location;
+  var des = req.body.des;
+  var type = req.body.FacilityType;
   var lat = req.body.lat;
   var lon = req.body.lon;
   //var type = req.body.FacilityType;
@@ -196,10 +198,10 @@ app.post("/pinmodify", (req, res) => {
   console.log(req.body);
 
   const sqlQuery =
-    "UPDATE userpin set Location = ?, Longitude = ?, Latitude = ? WHERE No = ?;";
+    "UPDATE userpin set FacilityType = ?, Location = ?, Longitude = ?, Latitude = ?, Description = ? WHERE No = ?;";
   connection.query(
     sqlQuery,
-    [Location, lon, lat, No],
+    [type, Location, lon, lat, des, No],
     (err, result) => {
       res.send(result);
     }

@@ -19,14 +19,16 @@ const Modify = ({ pin }) => {
     "기타",
   ];
   const [Selected, setSelected] = useState(pin.FacilityType);
-  const [clklat, setLat] = useState(pin.Latitude);
-  const [clklon, setLon] = useState(pin.Longitude);
+  const [clklat, setLat] = useState("");
+  const [clklon, setLon] = useState("");
   const [loc, setLoc] = useState("");
   const [des, setDes] = useState("");
   useEffect(()=>{
     setLoc(pin.Location);
     setDes(pin.Description);
     setSelected(pin.FacilityType);
+    setLat(pin.Latitude);
+    setLon(pin.Longitude);
   },[pin.Location, pin.Description])
 
   const [mapon, setMapon] = useState(false);
@@ -45,7 +47,7 @@ const Modify = ({ pin }) => {
     des : des,
   };
 
-  console.log(pin.FacilityType);
+  console.log(state);
   
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
