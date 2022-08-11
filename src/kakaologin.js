@@ -81,7 +81,7 @@ export default function Kakaologin() {
   }
 
   return (
-    <div style={{textAlign : 'center'}}>
+    <div style={{textAlign : 'center', margin:"10px"}}>
     <img
       src={logo}
       onClick={(e) => {

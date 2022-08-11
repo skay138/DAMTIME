@@ -108,22 +108,11 @@ function EntryPage() {
             <fieldset>
               <h2>DAMTIME</h2>
               <legend>LOGIN</legend>
-              <ul>
-                <li>
-                  <Kakaologin />
-                </li>
-                <li>
-                  <div
-                    style={{ textAlign: "center" }}
-                    onClick={nonmember}
-                    type="button"
-                    value="Enter by Non-member"
-                  >
-                    비로그인으로 이용
-                  </div>
-                </li>
-                <li></li>
-              </ul>
+              <br/>
+              <Kakaologin />
+              <div style={{ textAlign: "center", margin: "10px" }}>
+                <p onClick={nonmember}>비로그인으로 이용</p>
+              </div>
             </fieldset>
             <a onClick={() => changeView("logIn")}>
               카카오아이디가 없으신가요?
