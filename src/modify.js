@@ -8,6 +8,7 @@ const { kakao } = window;
 const Modify = ({ pin }) => {
   const userid = sessionStorage.getItem("loginId");
 
+
   // 수정요청 좌표
   const [clklat, setLat] = useState(pin.Latitude);
   const [clklon, setLon] = useState(pin.Longitude);
