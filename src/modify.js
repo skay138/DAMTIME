@@ -6,16 +6,19 @@ import "./pininfo.css";
 const { kakao } = window;
 
 const Modify = ({ pin }) => {
-  const userid = sessionStorage.getItem("loginId");
+  // const userid = sessionStorage.getItem("loginId");
 
 
   // 수정요청 좌표
   const [clklat, setLat] = useState(pin.Latitude);
   const [clklon, setLon] = useState(pin.Longitude);
   const [loc, setLoc] = useState(pin.Location);
-  const [detail, setDetail] = useState("");
-  const [location, setLocation] = useState(pin.Location);
+  useEffect(()=>{
+    setLoc(pin.Location);
+  },[pin.Location])
 
+  const [mapon, setMapon] = useState(false);
+  
   const selectList = [
     "개방형흡연부스",
     "부분개방형흡연실",
@@ -31,12 +34,12 @@ const Modify = ({ pin }) => {
 
   const state = {
     pinNo: pin.No,
-    Location: location,
+    Location: loc,
     lat: clklat,
     lon: clklon,
     FacilityType: Selected,
   };
-  //console.log(state);
+  
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
   useEffect(() => {
@@ -59,10 +62,6 @@ const Modify = ({ pin }) => {
     setLoc(e.target.value);
   };
 
-  const handledetail = (e) => {
-    setDetail(e.target.value);
-  };
-
   const push = (e) => {
     if (window.confirm("수정하시겠습니까?")) {
       //핀 업데이트
@@ -80,6 +79,26 @@ const Modify = ({ pin }) => {
     }
   };
 
+  const modifyMap = () => {
+    if (mapon === true ) {
+    return (
+    <div>
+    <h5>새 위치를 터치하시면 주소가 나옵니다.<br />상세주소도 입력해주세요</h5>
+    <ReportMap
+      pin={pin}
+      setLat={setLat}
+      setLon={setLon}
+      clklat={clklat}
+      clklon={clklon}
+    />
+    </div>
+    );
+    }
+  }
+  const showMap = () => {
+    setMapon(true);
+  }
+
   const hidemodify = () => {
     document.getElementById("modify").className = "modify hide";
   };
@@ -88,14 +107,7 @@ const Modify = ({ pin }) => {
     <div id="modify" className="modify hide">
       <form className="modiform">
         <div id="mapdiv">
-          <h3>위치수정</h3>
-          <ReportMap
-            pin={pin}
-            setLat={setLat}
-            setLon={setLon}
-            clklat={clklat}
-            clklon={clklon}
-          />
+          <h3>주소수정</h3>
           <select
             id="type"
             className="options"
@@ -109,11 +121,15 @@ const Modify = ({ pin }) => {
             ))}
           </select>
           <br />
-          <input value={loc || ""} onChange={handdleChange}></input>
           <br />
-          <input value={detail} placeholder="상세주소 입력" onChange={handledetail}></input>
+          <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
+          <br />
+          <div id="modiMap" className="modimap">
+            {modifyMap()}
+          </div>
         </div>
         <br />
+        <button className="mapbtn " type="button" onClick={showMap}>지도표시</button>
         <br />
         <button className=" button modibtn" type="submit" onClick={push}>
           전송
