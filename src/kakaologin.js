@@ -6,7 +6,7 @@ var qs = require("qs");
 
 export default function Kakaologin() {
   const REST_API_KEY = "022088995de86a28ae8d9b33823e57f3";
-  const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://damtime.netlify.app/";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const PARAMS = new URL(document.location).searchParams;
   const KAKAO_CODE = PARAMS.get("code");
