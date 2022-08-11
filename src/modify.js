@@ -10,15 +10,6 @@ const Modify = ({ pin }) => {
 
 
   // 수정요청 좌표
-  const [clklat, setLat] = useState(pin.Latitude);
-  const [clklon, setLon] = useState(pin.Longitude);
-  const [loc, setLoc] = useState(pin.Location);
-  useEffect(()=>{
-    setLoc(pin.Location);
-  },[pin.Location])
-
-  const [mapon, setMapon] = useState(false);
-  
   const selectList = [
     "개방형흡연부스",
     "부분개방형흡연실",
@@ -28,6 +19,19 @@ const Modify = ({ pin }) => {
     "기타",
   ];
   const [Selected, setSelected] = useState(pin.FacilityType);
+  const [clklat, setLat] = useState(pin.Latitude);
+  const [clklon, setLon] = useState(pin.Longitude);
+  const [loc, setLoc] = useState("");
+  const [des, setDes] = useState("");
+  useEffect(()=>{
+    setLoc(pin.Location);
+    setDes(pin.Description);
+    setSelected(pin.FacilityType);
+  },[pin.Location, pin.Description])
+
+  const [mapon, setMapon] = useState(false);
+  
+
   const getValue = (e) => {
     setSelected(e.target.value);
   };
@@ -38,7 +42,10 @@ const Modify = ({ pin }) => {
     lat: clklat,
     lon: clklon,
     FacilityType: Selected,
+    des : des,
   };
+
+  console.log(pin.FacilityType);
   
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
@@ -62,6 +69,10 @@ const Modify = ({ pin }) => {
     setLoc(e.target.value);
   };
 
+  const handdleDes = (e) => {
+    setDes(e.target.value);
+  }
+
   const push = (e) => {
     if (window.confirm("수정하시겠습니까?")) {
       //핀 업데이트
@@ -83,7 +94,7 @@ const Modify = ({ pin }) => {
     if (mapon === true ) {
     return (
     <div>
-    <h5>새 위치를 터치하시면 주소가 나옵니다.<br />상세주소도 입력해주세요</h5>
+    <h5>상세주소도 입력해주세요</h5>
     <ReportMap
       pin={pin}
       setLat={setLat}
@@ -96,7 +107,7 @@ const Modify = ({ pin }) => {
     }
   }
   const showMap = () => {
-    setMapon(true);
+    {mapon?setMapon(false):setMapon(true)};
   }
 
   const hidemodify = () => {
@@ -107,7 +118,9 @@ const Modify = ({ pin }) => {
     <div id="modify" className="modify hide">
       <form className="modiform">
         <div id="mapdiv">
-          <h3>주소수정</h3>
+          <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
+          <br />
+          <textarea className="loctext" onChange={handdleDes} value={des}></textarea>
           <select
             id="type"
             className="options"
@@ -120,16 +133,11 @@ const Modify = ({ pin }) => {
               </option>
             ))}
           </select>
-          <br />
-          <br />
-          <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
-          <br />
           <div id="modiMap" className="modimap">
             {modifyMap()}
           </div>
         </div>
-        <br />
-        <button className="mapbtn " type="button" onClick={showMap}>지도표시</button>
+        <button className="mapbtn " type="button" onClick={showMap}>{mapon ? "지도숨김" : "지도표시"}</button>
         <br />
         <button className=" button modibtn" type="submit" onClick={push}>
           전송
