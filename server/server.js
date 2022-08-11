@@ -128,6 +128,8 @@ app.post("/damlogin", (req, res) => {
   const id = req.body.id;
   const email = req.body.email;
 
+  console.log(id)
+  console.log(email)
   connection.query(
     "select userid from login where userid=?;",
     [id],
