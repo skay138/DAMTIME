@@ -125,31 +125,22 @@ app.post("/damregister", (req, res) => {
 });
 
 app.post("/damlogin", (req, res) => {
-  const id = req.body.userid;
-  const pw = req.body.userpw;
+  const id = req.body.id;
+  const email = req.body.email;
 
   connection.query(
     "select userid from login where userid=?;",
     [id],
     function (err, idck) {
       if (idck.length) {
-        connection.query(
-          "select userpw , salt from login where userid=?;",
-          [id],
-          function (err, pwck) {
-            crypto.pbkdf2(pw, pwck[0].salt, 10, 64, "sha512", (err, key) => {
-              console.log(
-                "비밀번호 일치 여부 :: ",
-                key.toString("base64") === pwck[0].userpw
-              );
-              // true : 아이디, 비밀번호 일치
-              // false : 아이디 일치, 비밀번호 불일치
-              res.send(key.toString("base64") === pwck[0].userpw);
-            });
-          }
-        );
+        res.send(true);
       } else {
-        res.send("아이디가 존재하지 않습니다.");
+        connection.query(
+          "INSERT INTO login (userid, email) values (?,?);",[id, email],
+          function(err, res){
+            console.log(res);
+          }
+        )
       }
     }
   );

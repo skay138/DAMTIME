@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./EntryPage.css";
+import Kakaologin from "./kakaologin";
 
 function EntryPage() {
   const [state, setState] = useState({ currentView: "logIn" });
@@ -166,6 +167,7 @@ function EntryPage() {
         );
       case "logIn":
         return (
+          <div>
           <form>
             <h2>DAMTIME</h2>
             <fieldset>
@@ -222,6 +224,8 @@ function EntryPage() {
               회원가입하기
             </button>
           </form>
+          <Kakaologin/>
+          </div>
         );
       case "PWReset":
         return (
