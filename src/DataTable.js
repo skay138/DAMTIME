@@ -79,7 +79,7 @@ export default function DataTable() {
     <div>
       <div style={{ width: "100%", height: "100%" }}>
         <div
-          style={{ position: "absolute", top: 150, height: 400, width: "100%" }}
+          style={{ position: "absolute", top: 110, height: 400, width: "100%" }}
         >
           <DataGrid
             rows={rows}
@@ -90,8 +90,9 @@ export default function DataTable() {
             onSelectionModelChange={handdlechange}
             selectionModel={selectionModel}
           />
-          <button onClick={modify}>수정</button>
-          <button onClick={deletepin}>삭제</button>
+          <br/>
+          <button className="myinfobtnm" onClick={modify}>수정</button>
+          <button className="myinfobtnd" onClick={deletepin}>삭제</button>
         </div>
       </div>
     </div>
