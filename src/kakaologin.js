@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./img/kakao_login_medium_narrow.png";
-import { restapikey } from "./keys";
 var qs = require("qs");
 
 export default function Kakaologin() {

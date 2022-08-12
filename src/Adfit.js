@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "./App.css";
-import { adfitkey } from "./keys";
 
 function Adfit() {
   useEffect(() => {
