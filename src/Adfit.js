@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-function Adfit({w, h, id}) {
+function Adfit({ w, h, id }) {
   useEffect(() => {
     let ins = document.createElement("ins");
     let scr = document.createElement("script");
@@ -15,11 +15,14 @@ function Adfit({w, h, id}) {
     ins.setAttribute("data-ad-unit", id);
     document.querySelector(".adfit").appendChild(ins);
     document.querySelector(".adfit").appendChild(scr);
-
   }, []);
 
-  return <div className="adfit"></div>;
+  return (
+    <div>
+      <div className="adtop"></div>
+      <div className="adfit"></div>
+    </div>
+  );
 }
-
 
 export default Adfit;

@@ -122,10 +122,6 @@ function Main() {
       atag.appendChild(strong);
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
-      // var mapimg = document.createElement("img");
-      // mapimg.src =
-      //   "https://img.icons8.com/ios-filled/100/000000/smoker.png";
-      // descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
       address.className = "address";

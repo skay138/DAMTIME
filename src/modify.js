@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
 
-
-
 const { kakao } = window;
 
-const Modify = ({ pin }) => {
+const Modify = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pin = location.state;
+
   // 수정요청 좌표
   const selectList = [
     "개방형흡연부스",
@@ -20,16 +23,26 @@ const Modify = ({ pin }) => {
   const [Selected, setSelected] = useState(pin.FacilityType);
   const [clklat, setLat] = useState("");
   const [clklon, setLon] = useState("");
+  const [mlon, setMlon] = useState("");
+  const [mlat, setMlat] = useState("");
   const [loc, setLoc] = useState("");
   const [des, setDes] = useState("");
 
+  const state = {
+    pinNo: pin.No,
+    Location: loc,
+    lat: mlat,
+    lon: mlon,
+    FacilityType: Selected,
+    des: des,
+  };
 
   useEffect(() => {
+    setLoc(pin.Location);
     setDes(pin.Description);
     setSelected(pin.FacilityType);
-    setLat(pin.Latitude);
-    setLon(pin.Longitude);
-    setLoc(pin.Location);
+    setMlat(pin.Latitude);
+    setMlon(pin.Longitude);
   }, [pin.No]);
 
   const [mapon, setMapon] = useState(false);
@@ -38,16 +51,7 @@ const Modify = ({ pin }) => {
     setSelected(e.target.value);
   };
 
-  const state = {
-    pinNo: pin.No,
-    Location: loc,
-    lat: clklat,
-    lon: clklon,
-    FacilityType: Selected,
-    des: des,
-  };
-
- 
+  console.log(state);
 
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
@@ -61,6 +65,8 @@ const Modify = ({ pin }) => {
           result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
         ) {
           setLoc(result[0].road_address.address_name);
+          setMlat(clklat);
+          setMlon(clklon);
         }
       }
     };
@@ -84,7 +90,7 @@ const Modify = ({ pin }) => {
         .then(function (res) {
           if (res.statusText === "OK") {
             alert("마커가 수정되었습니다.");
-            window.location.replace('/myinfo');
+            goback();
           }
         })
         .catch((err) => console.log(err));
@@ -114,13 +120,19 @@ const Modify = ({ pin }) => {
     mapon ? setMapon(false) : setMapon(true);
   };
 
-  const hidemodify = (e) => {
-    e.preventDefault();
-    document.getElementById("modify").className = "modify hide";
-  };
+  const goback = () =>{
+    if(navigate(-1)){
+      navigate(-1)
+    }
+    else{
+      navigate("/main");
+    }
+  }
 
   return (
-    <div id="modify" className="modify hide">
+    <div>
+      <div className="title">DAMTIME</div>
+    <div id="modify" className="modify">
       <h3>마커수정</h3>
       <form className="modiform">
         <div id="mapdiv">
@@ -159,10 +171,11 @@ const Modify = ({ pin }) => {
         <button className=" button modibtn" type="submit" onClick={push}>
           전송
         </button>
-        <button className="button modibtn2" onClick={hidemodify}>
+        <button className="button modibtn2" onClick={goback}>
           취소
         </button>
       </form>
+    </div>
     </div>
   );
 };
