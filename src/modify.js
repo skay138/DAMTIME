@@ -119,13 +119,10 @@ const Modify = () => {
     mapon ? setMapon(false) : setMapon(true);
   };
 
-  const goback = () =>{
-    if(navigate(-1)){
-      navigate(-1)
-    }
-    else{
-      navigate("/main");
-    }
+  const goback = (e) =>{
+    e.preventDefault();
+    window.history.back();
+    
   }
 
   return (

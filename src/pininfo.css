@@ -104,13 +104,13 @@ ul li{
 .modibtn {
   position: absolute;
   left: 14.7%;
-  bottom: 50px;
+  bottom: 60px;
 }
 
 .modibtn2 {
   position: absolute;
   left: 14.7%;
-  bottom: 0;
+  bottom: 10px;
 }
 
 .loctext {
