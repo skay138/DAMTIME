@@ -3,7 +3,6 @@ import "./App.css";
 import "./pininfo.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import Modify from "./modify";
 
 function Pininfo({ pin }) {
   const navigate = useNavigate();
@@ -27,11 +26,11 @@ function Pininfo({ pin }) {
   return (
     
     <div id="pininfo" className="info hide">
-      <div>{pin.Location}</div>
-      <ul>
-        <li>타입 : {pin.FacilityType}</li>
-        <li>{pin.Description ? `추가설명 : ${pin.Description}` : null}</li>
-      </ul>
+      <div className="infotitle">{pin.Location}</div>
+      
+        <div>타입 : {pin.FacilityType}</div>
+        <div>{pin.Description ? `추가설명 : ${pin.Description}` : null}</div>
+    
       {pin.UserId === userid ? (
         <button className="button" onClick={modify}>마커수정</button>
       ) : (
