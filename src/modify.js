@@ -119,7 +119,8 @@ const Modify = () => {
     mapon ? setMapon(false) : setMapon(true);
   };
 
-  const goback = () =>{
+  const goback = (e) =>{
+    e.preventDefault();
     window.history.back();
   }
 
