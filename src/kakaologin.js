@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./img/kakao_login_medium_narrow.png";
 var qs = require("qs");
@@ -39,7 +39,7 @@ export default function Kakaologin() {
     axios(config)
       .then(function (response) {
         getuser(response.data.access_token);
-        console.log("TOKEN" + response.data.access_token);
+        sessionStorage.setItem("kakaotoken", response.data.access_token);
       })
       .catch(function (error) {
         console.log(error);

@@ -20,9 +20,9 @@ function Adfit({ w, h, id }) {
 
   return (
     <div>
-    <div className="adtop"></div>
+      <div className="adtop"></div>
       <div className="adfit"></div>
-      </div>
+    </div>
   );
 }
 

@@ -49,7 +49,8 @@ function Main() {
           lon = position.coords.longitude; // 경도
 
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-          message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
+          message =
+            '<div class ="label"><span class="left"></span><span class="center">현위치!</span><span class="right"></span></div>'; // 인포윈도우에 표시될 내용입니다
 
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
@@ -70,23 +71,29 @@ function Main() {
         position: locPosition,
       });
 
-      var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
+
+      var content = document.createElement("div");
+      content.className = "currentlo";
+      content.innerHTML = "현위치"
+
+     
 
       // 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: iwContent,
-        removable: iwRemoveable,
+      var customOverlay = new kakao.maps.CustomOverlay({
+        content: content,
+        position: locPosition,
+        xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+        yAnchor: 2.35, // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
       });
 
       // 인포윈도우를 마커위에 표시합니다
-      infowindow.open(map, marker);
+      customOverlay.setMap(map);
 
       // 지도 중심좌표를 접속위치로 변경합니다
       map.setCenter(locPosition);
       kakao.maps.event.addListener(marker, "click", function () {
         marker.setMap(null);
-        infowindow.setMap(null);
+        customOverlay.setMap(null);
       });
     }
   }
@@ -122,10 +129,6 @@ function Main() {
       atag.appendChild(strong);
       var descdiv = document.createElement("div");
       descdiv.className = "desc";
-      // var mapimg = document.createElement("img");
-      // mapimg.src =
-      //   "https://img.icons8.com/ios-filled/100/000000/smoker.png";
-      // descdiv.appendChild(mapimg);
 
       var address = document.createElement("span");
       address.className = "address";
@@ -188,7 +191,7 @@ function Main() {
 
   useEffect(() => {
     setAddbtn(true);
-    
+
     var mapContainer = document.getElementById("myMap"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -237,39 +240,40 @@ function Main() {
       }
     }
 
-    var iwContent = btn, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      iwPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-      iwRemoveable = false; // removeable 속성을 true 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+    var iwContent = btn; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+
+      
 
     // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
+    var customOverlay = new kakao.maps.CustomOverlay({
       content: iwContent,
-      position: iwPosition,
-      removable: iwRemoveable,
+      clickable : true,
+      position: map.getCenter(),
+      xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+      yAnchor: 2.45, 
     });
-
 
     //addbtn
     document.getElementById("addbtn").onclick = addbtn;
 
     function addbtn() {
-      setAddbtn((current) =>!current);
+      setAddbtn((current) => !current);
       if (marker.getVisible()) {
         marker.setVisible(false);
-        infowindow.close();
+        customOverlay.setMap(null);
       } else {
         var position = map.getCenter();
         marker.setPosition(position);
         marker.setVisible(true);
-        infowindow.open(map, marker);
+        customOverlay.setMap(map);
+        customOverlay.setPosition(position);
       }
     }
-
 
     kakao.maps.event.addListener(map, "click", function (mouseEvent) {
       var latlng = mouseEvent.latLng;
       marker.setPosition(latlng);
-      infowindow.setPosition(latlng);
+      customOverlay.setPosition(latlng);
 
       document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
     });
@@ -288,7 +292,7 @@ function Main() {
 
         <Menu />
         <div id="myMap" className="Mapstyle"></div>
-        <button className={addbtn? "addbtn" : "addbtnout"} id="addbtn">
+        <button className={addbtn ? "addbtn" : "addbtnout"} id="addbtn">
           <img
             src="https://img.icons8.com/sf-regular/96/000000/add.png"
             width="45px"
@@ -300,7 +304,7 @@ function Main() {
             width="35px"
           />
         </button>
-        <Adfit w={"320"} h={"50"} id={"DAN-M3VzVTwwqf9k6WpM"}/>
+        <Adfit w={"320"} h={"50"} id={"DAN-M3VzVTwwqf9k6WpM"} />
 
         {/* 여기부터는 addpin입니다 */}
         <Addpin

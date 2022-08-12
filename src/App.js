@@ -5,6 +5,7 @@ import Report from "./reportform";
 import EntryPage from "./EntryPage";
 import Myinfo from "./Myinfo";
 import Help from "./help";
+import Modify from "./modify";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/report" element={<Report />} />
       <Route path="/myinfo" element={<Myinfo />} />
       <Route path="/help" element={<Help/>} />
+      <Route path="/modify" element={<Modify/>} />
     </Routes>
   );
 }

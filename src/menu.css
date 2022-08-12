@@ -1,27 +1,29 @@
 .show-menu {
-  padding-top: 20px;
+  padding-top: 0;
   width: 150px;
   height: 100%;
-  position: fixed;
+  position: absolute;
   left: 0px;
   transition: 0.3s;
   background-color: #ceeafa;
-  top: 25px;
+  top: 0;
   opacity: 90%;
   z-index: 3;
+  margin: 0;
 }
 
 .hide-menu {
-  padding-top: 20px;
+  padding-top: 0;
   width: 150px;
   height: 100%;
-  position: fixed;
+  position: absolute;
   left: -200px;
   transition: 0.3s;
   background-color: #ceeafa;
-  top: 25px;
+  top: 0;
   opacity: 90%;
   z-index: 3;
+  margin: 0;
 }
 
 ul li {

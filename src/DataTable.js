@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Modify from "./modify";
 import "./pininfo.css";
 
 export default function DataTable() {
   const [selectionModel, setSelectionModel] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const [pin, setPin] = useState([]);
 
   const state = {
     data: selectionModel.join(),
   };
   const userid = sessionStorage.getItem("loginId");
+  const navigate = useNavigate();
 
   const columns = [
     //{ field: "id", headerName: "번호", width: 70 }, //No
@@ -49,18 +49,16 @@ export default function DataTable() {
   const modify = () => {
     var len = selectionModel.length;
     len === 0
-    ? alert("수정할 마커를 선택해주세요 ")
-    : len === 1
-    ?
-    Array.from(rows).forEach((el) => {
-      Array.from(selectionModel).forEach((sl) => {
-      if(el.No === sl){
-        setPin(el);
-        document.getElementById("modify").className = "modify";
-      }
-      });
-    })
-    : alert("수정은 한 개씩 해주세요");
+      ? alert("수정할 마커를 선택해주세요 ")
+      : len === 1
+      ? Array.from(rows).forEach((el) => {
+          Array.from(selectionModel).forEach((sl) => {
+            if (el.No === sl) {
+              navigate("/modify", { state: el });
+            }
+          });
+        })
+      : alert("수정은 한 개씩 해주세요");
   };
 
   const deletepin = () => {
@@ -79,24 +77,24 @@ export default function DataTable() {
 
   return (
     <div>
-    <div style={{ width: "100%", height: "100%" }}>
-      <div
-        style={{ position: "absolute", top: 150, height: 400, width: "100%" }}
-      >
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          onSelectionModelChange={handdlechange}
-          selectionModel={selectionModel}
-        />
-        <button onClick={modify}>수정</button>
-        <button onClick={deletepin}>삭제</button>
+      <div style={{ width: "100%", height: "100%" }}>
+        <div
+          style={{ position: "absolute", top: 110, height: 400, width: "100%" }}
+        >
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            onSelectionModelChange={handdlechange}
+            selectionModel={selectionModel}
+          />
+          <br/>
+          <button className="myinfobtnm" onClick={modify}>수정</button>
+          <button className="myinfobtnd" onClick={deletepin}>삭제</button>
+        </div>
       </div>
-    </div>
-    <Modify pin={pin} />
     </div>
   );
 }
