@@ -13,7 +13,7 @@ function Adfit() {
     scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
     ins.setAttribute("data-ad-width", "320");
     ins.setAttribute("data-ad-height", "50");
-    ins.setAttribute("data-ad-unit", adfitkey);
+    ins.setAttribute("data-ad-unit", "DAN-M3VzVTwwqf9k6WpM");
     document.querySelector(".adfit").appendChild(ins);
     document.querySelector(".adfit").appendChild(scr);
   }, []);
