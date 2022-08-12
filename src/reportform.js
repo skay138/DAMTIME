@@ -88,6 +88,7 @@ const Report = () => {
       return (
         <div>
           <textarea
+            style={{ width: "60%", height: "160px", fontSize: "16px" }}
             defaultValue={pin.Location}
             onChange={handleText}
           ></textarea>
@@ -96,7 +97,11 @@ const Report = () => {
     } else {
       return (
         <div>
-          <textarea onChange={handleText} value={text}></textarea>
+          <textarea
+            style={{ width: "60%", height: "160px", fontSize: "16px" }}
+            onChange={handleText}
+            value={text}
+          ></textarea>
         </div>
       );
     }
@@ -135,15 +140,19 @@ const Report = () => {
           ))}
         </select>
         <br />
-        <br />
-        <p>신고유형 : {Selected}</p>
-        <br/>
+        <p style={{ marginTop: "10px" }}>신고유형 : {Selected}</p>
         <div id="explaindiv">{explain()}</div>
         <button className=" button pininfobtn" type="submit" onClick={push}>
           전송
         </button>
-
-        <button className="pininfobtn2 button" onClick={()=>{navigate("/main")}}>취소</button>
+        <button
+          className="pininfobtn2 button"
+          onClick={() => {
+            navigate("/main");
+          }}
+        >
+          취소
+        </button>
       </form>
     </div>
   );
