@@ -120,12 +120,7 @@ const Modify = () => {
   };
 
   const goback = () =>{
-    if(navigate(-1)){
-      navigate(-1)
-    }
-    else{
-      navigate("/main");
-    }
+    window.history.back();
   }
 
   return (
