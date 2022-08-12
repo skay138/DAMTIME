@@ -209,7 +209,6 @@ app.post("/report", (req, res) => {
 
 app.get("/getmypin", (req, res) => {
   var userid = req.query.userid;
-  console.log(userid);
 
   const sqlQuery = "SELECT * FROM userpin Where UserId = (?);";
   connection.query(sqlQuery, [userid], (err, result) => {

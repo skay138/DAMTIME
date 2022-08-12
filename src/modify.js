@@ -3,12 +3,11 @@ import React, { useEffect, useState } from "react";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
 
+
+
 const { kakao } = window;
 
 const Modify = ({ pin }) => {
-  // const userid = sessionStorage.getItem("loginId");
-
-
   // 수정요청 좌표
   const selectList = [
     "개방형흡연부스",
@@ -23,16 +22,17 @@ const Modify = ({ pin }) => {
   const [clklon, setLon] = useState("");
   const [loc, setLoc] = useState("");
   const [des, setDes] = useState("");
-  useEffect(()=>{
+
+
+  useEffect(() => {
     setLoc(pin.Location);
     setDes(pin.Description);
     setSelected(pin.FacilityType);
     setLat(pin.Latitude);
     setLon(pin.Longitude);
-  },[pin.Location, pin.Description])
+  }, [pin.No]);
 
   const [mapon, setMapon] = useState(false);
-  
 
   const getValue = (e) => {
     setSelected(e.target.value);
@@ -44,11 +44,11 @@ const Modify = ({ pin }) => {
     lat: clklat,
     lon: clklon,
     FacilityType: Selected,
-    des : des,
+    des: des,
   };
 
   console.log(state);
-  
+
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
   useEffect(() => {
@@ -73,9 +73,10 @@ const Modify = ({ pin }) => {
 
   const handdleDes = (e) => {
     setDes(e.target.value);
-  }
+  };
 
   const push = (e) => {
+    e.preventDefault();
     if (window.confirm("수정하시겠습니까?")) {
       //핀 업데이트
       axios
@@ -83,36 +84,38 @@ const Modify = ({ pin }) => {
         .then(function (res) {
           if (res.statusText === "OK") {
             alert("마커가 수정되었습니다.");
+            window.location.replace('/myinfo');
           }
         })
         .catch((err) => console.log(err));
       //기존핀 삭제
     } else {
-      e.preventDefault();
+      alert("err");
     }
   };
 
   const modifyMap = () => {
-    if (mapon === true ) {
-    return (
-    <div>
-    <h5>상세주소도 입력해주세요</h5>
-    <ReportMap
-      pin={pin}
-      setLat={setLat}
-      setLon={setLon}
-      clklat={clklat}
-      clklon={clklon}
-    />
-    </div>
-    );
+    if (mapon === true) {
+      return (
+        <div>
+          <h5>상세주소도 입력해주세요</h5>
+          <ReportMap
+            pin={pin}
+            setLat={setLat}
+            setLon={setLon}
+            clklat={clklat}
+            clklon={clklon}
+          />
+        </div>
+      );
     }
-  }
+  };
   const showMap = () => {
-    {mapon?setMapon(false):setMapon(true)};
-  }
+    mapon ? setMapon(false) : setMapon(true);
+  };
 
-  const hidemodify = () => {
+  const hidemodify = (e) => {
+    e.preventDefault();
     document.getElementById("modify").className = "modify hide";
   };
 
@@ -121,9 +124,17 @@ const Modify = ({ pin }) => {
       <h3>마커수정</h3>
       <form className="modiform">
         <div id="mapdiv">
-          <textarea className="loctext" onChange={handdleChange} value={loc}></textarea>
+          <textarea
+            className="loctext"
+            onChange={handdleChange}
+            value={loc}
+          ></textarea>
           <br />
-          <textarea className="loctext" onChange={handdleDes} value={des}></textarea>
+          <textarea
+            className="loctext"
+            onChange={handdleDes}
+            value={des}
+          ></textarea>
           <br />
           <select
             id="type"
@@ -141,7 +152,9 @@ const Modify = ({ pin }) => {
             {modifyMap()}
           </div>
         </div>
-        <button className="mapbtn " type="button" onClick={showMap}>{mapon ? "지도숨김" : "지도표시"}</button>
+        <button className="mapbtn " type="button" onClick={showMap}>
+          {mapon ? "지도숨김" : "지도표시"}
+        </button>
         <br />
         <button className=" button modibtn" type="submit" onClick={push}>
           전송
