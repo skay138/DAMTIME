@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
 
 const { kakao } = window;
 
 const Modify = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const pin = location.state;
 
@@ -122,6 +121,7 @@ const Modify = () => {
   const goback = (e) =>{
     e.preventDefault();
     window.history.back();
+    
   }
 
   return (

@@ -1,8 +1,8 @@
-import zIndex from "@mui/material/styles/zIndex";
 import { useEffect } from "react";
 import "./App.css";
+import { adfitkey } from "./keys";
 
-function Adfit({ w, h, id }) {
+function Adfit() {
   useEffect(() => {
     let ins = document.createElement("ins");
     let scr = document.createElement("script");
@@ -11,9 +11,9 @@ function Adfit({ w, h, id }) {
     scr.async = "true";
     scr.type = "text/javascript";
     scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
-    ins.setAttribute("data-ad-width", w);
-    ins.setAttribute("data-ad-height", h);
-    ins.setAttribute("data-ad-unit", id);
+    ins.setAttribute("data-ad-width", "320");
+    ins.setAttribute("data-ad-height", "50");
+    ins.setAttribute("data-ad-unit", adfitkey);
     document.querySelector(".adfit").appendChild(ins);
     document.querySelector(".adfit").appendChild(scr);
   }, []);
