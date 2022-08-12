@@ -285,6 +285,7 @@ function Main() {
         <div className="title" onClick={refreshfn}>
           DAMTIME
         </div>
+
         <Menu />
         <div id="myMap" className="Mapstyle"></div>
         <button className={addbtn? "addbtn" : "addbtnout"} id="addbtn">
