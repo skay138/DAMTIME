@@ -18,21 +18,25 @@ function Pininfo({ pin }) {
     }
   };
 
-  const modify =(e) =>{
+  const modify = (e) => {
     e.preventDefault();
     navigate("/modify", { state: pin });
-  }
+  };
 
   return (
-    
     <div id="pininfo" className="info hide">
       <div className="infotitle">{pin.Location}</div>
-      
-        <div>타입 : {pin.FacilityType}</div>
-        <div>{pin.Description ? `추가설명 : ${pin.Description}` : null}</div>
-    
+      <ul className="infoul">
+        <li>타입 : {pin.FacilityType}</li>
+        <li className="pindes">
+          {pin.Description ? `추가설명 : ${pin.Description}` : null}
+        </li>
+      </ul>
+
       {pin.UserId === userid ? (
-        <button className="button" onClick={modify}>마커수정</button>
+        <button className="button" onClick={modify}>
+          마커수정
+        </button>
       ) : (
         <button className="button" name="수정요청" onClick={askreport}>
           수정요청
