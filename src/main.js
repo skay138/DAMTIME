@@ -303,7 +303,7 @@ function Main() {
             width="35px"
           />
         </button>
-        <Adfit w={"320"} h={"50"} id={"DAN-M3VzVTwwqf9k6WpM"} />
+        <Adfit/>
 
         {/* 여기부터는 addpin입니다 */}
         <Addpin
