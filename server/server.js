@@ -193,13 +193,14 @@ app.post("/report", (req, res) => {
   var lat = req.body.lat;
   var lon = req.body.lon;
   var text = req.body.text;
-  var userid = req.body.userid;
+  var reporter = req.body.reporter; // 기존 userid를 신고자로 바꿨어요
+  var owner = req.body.owner; // 핀 추가한 아이디 입니다
 
   const sqlQuery =
-    "INSERT INTO report (pinNo, type, Location, lat, lon, Description, UserId) VALUES (?,?,?,?,?,?,?);";
+    "INSERT INTO report (pinNo, type, Location, lat, lon, Description, reporter, owner) VALUES (?,?,?,?,?,?,?,?);";
   connection.query(
     sqlQuery,
-    [No, reporttype, loc, lat, lon, text, userid],
+    [No, reporttype, loc, lat, lon, text, reporter, owner],
     (err, result) => {
       res.send(result);
     }
@@ -208,7 +209,6 @@ app.post("/report", (req, res) => {
 
 app.get("/getmypin", (req, res) => {
   var userid = req.query.userid;
-  console.log(userid);
 
   const sqlQuery = "SELECT * FROM userpin Where UserId = (?);";
   connection.query(sqlQuery, [userid], (err, result) => {

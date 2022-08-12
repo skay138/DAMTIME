@@ -34,9 +34,10 @@ const Report = () => {
     lat: clklat,
     lon: clklon,
     text: text,
-    userid: userid,
+    reporter: userid,
+    owner: pin.UserId,
   };
-  //console.log(state);
+  console.log(state);
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
   var geocoder = new kakao.maps.services.Geocoder();
   var coord = new kakao.maps.LatLng(clklat, clklon);
