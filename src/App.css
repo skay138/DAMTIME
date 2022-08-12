@@ -137,14 +137,16 @@
 }
 
 .adddiv{
-  width: 150px;
+  width: 100px;
   text-align: center;
-  background-color: #aad4eb;
-  /* background-image: linear-gradient(to bottom, #ceeafa, #376078);
-  border: 1px solid #3f7e9b; */
+  background-color: white;
+  border: 1px solid #3f7e9b;
   box-shadow: inset 0 1px 0 #7cd4fc, inset 0 -1px 0 #599cbb, inset 0 0 0 1px #79bbd9, 0 2px 4px rgba(0, 0, 0, 0.2);
   color: black;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 3px;
+  border-radius: 7px;
 }
 
 .adtop{
@@ -153,4 +155,17 @@
   bottom: 0px;
   height: 60px;
   background-color: #ceeafa;
+}
+
+
+.currentlo{
+  width: 50px;
+  text-align: center;
+  background-color: white;
+  border: 1px solid #3f7e9b;
+  color: black;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 3px;
+  border-radius: 7px;
 }
