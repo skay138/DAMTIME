@@ -23,6 +23,7 @@ const Report = () => {
     "위치수정",
     "상세정보 수정",
     "삭제 요청",
+    "기타"
   ];
 
   const [Selected, setSelected] = useState("흡연구역 이름");
