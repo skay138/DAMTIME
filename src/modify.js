@@ -25,11 +25,11 @@ const Modify = ({ pin }) => {
 
 
   useEffect(() => {
-    setLoc(pin.Location);
     setDes(pin.Description);
     setSelected(pin.FacilityType);
     setLat(pin.Latitude);
     setLon(pin.Longitude);
+    setLoc(pin.Location);
   }, [pin.No]);
 
   const [mapon, setMapon] = useState(false);
@@ -47,7 +47,7 @@ const Modify = ({ pin }) => {
     des: des,
   };
 
-  console.log(state);
+ 
 
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
