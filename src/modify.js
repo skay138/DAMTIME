@@ -88,7 +88,7 @@ const Modify = () => {
         .then(function (res) {
           if (res.statusText === "OK") {
             alert("마커가 수정되었습니다.");
-            goback();
+            window.history.back();
           }
         })
         .catch((err) => console.log(err));
