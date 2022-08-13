@@ -37,6 +37,7 @@ const Report = () => {
     text: text,
     reporter: userid,
     owner: pin.UserId,
+    FacilityType: pin.FacilityType,
   };
   console.log(state);
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
