@@ -8,7 +8,7 @@
   font-size: 20px;
   background-color: white;
   display: table;
-  transition: 1s;
+  transition: 0.5s;
 }
 
 .infotitle {
@@ -91,7 +91,7 @@ ul li{
 .hide {
     position: absolute;
     bottom: -100%;
-    transition: 1s;
+    transition: 0.5s;
   }
   
 .modify {
