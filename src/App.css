@@ -48,6 +48,7 @@
   border: none;
   background: none;
   transition: all ease 0.2s;
+  transform-origin: 50% 45%;
   transform: rotate(-45deg);
 }
 
