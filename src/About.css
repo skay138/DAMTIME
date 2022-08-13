@@ -1,4 +1,4 @@
-p {
+.team {
     font-size: 35px;
 }
 .contents {
@@ -13,7 +13,7 @@ p {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-span {
+.clickthis {
     font-weight: 700;
 }
 .EasterEgg {

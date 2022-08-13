@@ -19,9 +19,9 @@ function About() {
       <div className="title">DAMTIME</div>
       <Menu />
       <div  className="contents">
-        <p>TEAM DAMDAM</p>
-        <p className="name" ><span onClick={godSangKyu}>박상규</span>
-        <span onClick={assistant}> 최윤호</span>
+        <p className="team">TEAM DAMDAM</p>
+        <p className="name" ><span className="clickthis" onClick={godSangKyu}>박상규</span>
+        <span className="clickthis" onClick={assistant}> 최윤호</span>
         <br />송기원 이상민</p>
         <p className="contact">contact : damtimekr@gmail.com </p>
         <button className="button" onClick={tomain}
