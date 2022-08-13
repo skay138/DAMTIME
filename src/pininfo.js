@@ -25,7 +25,7 @@ function Pininfo({ pin }) {
 
   return (
     <div id="pininfo" className="info hide">
-      <div className="infotitle">{pin.Location}</div>
+      <div className="infotitle"><span className="infospan">{pin.Location}</span></div>
       <ul className="infoul">
         <li>타입 : {pin.FacilityType}</li>
         <li className="pindes">
