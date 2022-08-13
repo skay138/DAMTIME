@@ -210,7 +210,7 @@ app.post("/report", (req, res) => {
   var owner = req.body.owner; // 핀 추가한 아이디 입니다
 
   const sqlQuery =
-    "INSERT INTO report (pinNo, type, owner, reporter, Location, FacilityType, Description, Latitude, Longitude,  note) VALUES (?,?,?,?,?,?,?,?);";
+    "INSERT INTO report (pinNo, type, owner, reporter, Location, FacilityType, Description, Latitude, Longitude,  note) VALUES (?,?,?,?,?,?,?,?,?,?);";
   connection.query(
     sqlQuery,
     [No, reporttype, owner, reporter, loc, type, des, lat, lon, text],

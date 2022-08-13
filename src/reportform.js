@@ -105,6 +105,7 @@ const Report = () => {
   };
 
   const push = (e) => {
+    e.preventDefault();
     if (window.confirm("수정요청을 보내겠습니까?")) {
       axios
         .post("https://damtime.kro.kr:4000/report", state)
@@ -115,7 +116,7 @@ const Report = () => {
       window.history.back();
       console.log(state);
     } else {
-      e.preventDefault();
+      alert("err")
     }
   };
 
