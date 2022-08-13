@@ -237,6 +237,7 @@ function Main() {
         alert("비로그인 상태입니다.");
       } else {
         document.getElementById("addpin").className = "add";
+        document.getElementById("myMap").className = "Mapstyle dark"
         setPinla(marker.getPosition().Ma);
         setPinma(marker.getPosition().La);
       }

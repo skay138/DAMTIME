@@ -68,15 +68,16 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
 
   const cancel = () => {
     document.getElementById("addpin").className = "add hide";
+    document.getElementById("myMap").className = "Mapstyle";
     setLoc("");
     setDetail("");
   };
 
   return (
     <div id="addpin" className="add hide">
-      <h3>
-        <p>흡연구역 등록</p>
-      </h3>
+      <div className="addtitle">
+        <span className="addspan">흡연구역 등록</span>
+      </div>
       <br />
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form className="addform">

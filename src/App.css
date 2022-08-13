@@ -74,7 +74,9 @@
 
 
 .hide {
-  display: none;
+  position: absolute;
+  bottom: -100%;
+  transition: 0.5s;
 }
 
 

@@ -89,7 +89,7 @@ ul li{
     position: absolute;
     bottom: -100%;
     transition: 0.5s;
-  }
+}
   
 .modify {
   z-index: 2;
