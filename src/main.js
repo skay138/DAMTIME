@@ -296,13 +296,13 @@ function Main() {
         <button className={addbtn ? "addbtn" : "addbtnout"} id="addbtn">
           <img
             src="https://img.icons8.com/sf-regular/96/000000/add.png"
-            width="45px"
+            width="45px" alt=""
           />
         </button>
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
-            width="35px"
+            width="35px" alt=""
           />
         </button>
         <Adfit/>
