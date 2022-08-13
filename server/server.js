@@ -133,6 +133,7 @@ app.post("/damlogin", (req, res) => {
     "select userid from login where userid=?;",
     [id],
     function (err, idck) {
+      console.log(idck[0].ban)
       if (idck[0].userid == id) {
         if(idck[0].ban == 1){
           res.send("ban");
