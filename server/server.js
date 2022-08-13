@@ -130,11 +130,10 @@ app.post("/damlogin", (req, res) => {
   const pw = req.body.userpw;
 
   connection.query(
-    "select userid from login where userid=?;",
+    "select * from login where userid=?;",
     [id],
     function (err, idck) {
       if (idck[0].userid == id) {
-        console.log(idck[0].ban)
         if(idck[0].ban == 1){
           res.send("ban");
         }
@@ -172,7 +171,6 @@ app.post("/kakaologin", (req, res) => {
     "select * from login where userid=?;",
     [id],
     function (err, idck) {
-      console.log(idck[0].ban)
       if (idck[0].userid == id) {
         if (idck[0].ban == 1){
           res.send("ban");
