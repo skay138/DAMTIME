@@ -40,7 +40,7 @@ export default function Button({ name, action }) {
   }
 
   return (
-    <button className="button" onClick={select}>
+    <button className={action==="close"?"button clsbtn":"button"} onClick={select}>
       {name}
     </button>
   );

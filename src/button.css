@@ -5,8 +5,9 @@
   background: #ceeafa;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   width: 70%;
-  margin: 2px;
+  margin: 5px;
   color: black;
+  font-size: 15px;
   }
 
 
@@ -63,4 +64,14 @@
     width: 80px;
     margin: 10px;
     color: black;
+  }
+
+  .infobtn{
+    position: relative;
+    bottom: 50px;
+  }
+
+  .clsbtn{
+    position: relative;
+    bottom: 45px;
   }

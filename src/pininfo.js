@@ -34,11 +34,11 @@ function Pininfo({ pin }) {
       </ul>
 
       {pin.UserId === userid ? (
-        <button className="button" onClick={modify}>
+        <button className="button infobtn" onClick={modify}>
           마커수정
         </button>
       ) : (
-        <button className="button" name="수정요청" onClick={askreport}>
+        <button className="button infobtn" name="수정요청" onClick={askreport}>
           수정요청
         </button>
       )}
