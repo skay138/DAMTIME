@@ -134,7 +134,7 @@ app.post("/damlogin", (req, res) => {
     [id],
     function (err, idck) {
       if (idck[0].userid == id) {
-        if(idck[0].ban == "1"){
+        if(idck[0].ban == 1){
           res.send("ban");
         }
         else{
@@ -173,7 +173,7 @@ app.post("/kakaologin", (req, res) => {
     function (err, idck) {
       console.log(idck[0]);
       if (idck[0].userid == id) {
-        if (idck[0].ban == "1"){
+        if (idck[0].ban == 1){
           res.send("ban");
         }
         else{
