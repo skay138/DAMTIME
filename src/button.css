@@ -43,3 +43,24 @@
     padding: 10px;
     font-size: 15px;
   }
+
+  .modbtn{
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    background: #ceeafa;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin: 5px;
+    color: black;
+  }
+
+  .mapbtn{
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    margin: 10px;
+    color: black;
+  }

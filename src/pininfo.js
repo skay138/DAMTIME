@@ -29,7 +29,7 @@ function Pininfo({ pin }) {
       <ul className="infoul">
         <li>타입 : {pin.FacilityType}</li>
         <li className="pindes">
-          {pin.Description ? `추가설명 : ${pin.Description}` : null}
+          {pin.Description ? `상세설명 : ${pin.Description}` : null}
         </li>
       </ul>
 

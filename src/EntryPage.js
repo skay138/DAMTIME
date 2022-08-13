@@ -52,6 +52,8 @@ function EntryPage() {
             sessionStorage.setItem("loginId", loginId.userid);
           } else if (res.data === false) {
             alert("비밀번호가 일치하지 않습니다.");
+          } else if (res.data === "ban") {
+            alert(`${loginId.userid}님은 벤당하셨습니다. 메일로 아이디 기재 후 문의부탁드립니다.`);
           } else {
             console.log(res);
             alert(res.data);
@@ -108,7 +110,7 @@ function EntryPage() {
             <fieldset>
               <h2>DAMTIME</h2>
               <legend>LOGIN</legend>
-              <br/>
+              <br />
               <Kakaologin />
               <div style={{ textAlign: "center", margin: "10px" }}>
                 <p onClick={nonmember}>비로그인으로 이용</p>
