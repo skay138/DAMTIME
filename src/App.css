@@ -100,7 +100,7 @@
   text-decoration: none;
   color: rgb(0, 0, 0);
   padding: 12px 36px 12px 14px;
-  font-size: 14px;
+  font-size: 17px;
   border-radius: 6px 6px 0 0;
 }
 .overlay_info a strong {
@@ -120,12 +120,12 @@
 }
 
 .overlay_info .address {
-  font-size: 12px;
+  font-size: 15px;
   color: #333;
   position: absolute;
-  left: 14px; /* 원래 80px */
+  left: 20px; /* 원래 80px */
   right: 14px;
-  top: 30px; /* 원래 24px */
+  top: 20px; /* 원래 24px */
   white-space: normal;
 }
 .overlay_info:after {
