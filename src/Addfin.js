@@ -62,6 +62,7 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
         });
       alert("흡연구역으로 등록되었습니다.");
       document.getElementById("addpin").className = "add hide";
+      document.getElementById("myMap").className = "Mapstyle";
       pinaddedfn();
     }
   };
