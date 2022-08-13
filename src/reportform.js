@@ -110,9 +110,13 @@ const Report = () => {
       axios
         .post("https://damtime.kro.kr:4000/report", state)
         .then(function (res) {
-          console.log(res);
+          if(res.data !== ""){
+            alert("수정요청등록");
+          }
+          else{
+            alert("에러발생");
+          }
         });
-      alert("수정요청등록");
       window.history.back();
       console.log(state);
     } else {
