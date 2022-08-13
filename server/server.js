@@ -199,19 +199,21 @@ app.post("/kakaologin", (req, res) => {
 
 app.post("/report", (req, res) => {
   var No = req.body.pinNo;
-  var reporttype = req.body.selected;
+  var reporttype = req.body.type;
   var loc = req.body.pininfo;
   var lat = req.body.lat;
   var lon = req.body.lon;
-  var text = req.body.text;
+  var type = req.body.FacilityType;
+  var des = req.body.des;
+  var text = req.body.note;
   var reporter = req.body.reporter; // 기존 userid를 신고자로 바꿨어요
   var owner = req.body.owner; // 핀 추가한 아이디 입니다
 
   const sqlQuery =
-    "INSERT INTO report (pinNo, type, Location, lat, lon, Description, reporter, owner) VALUES (?,?,?,?,?,?,?,?);";
+    "INSERT INTO report (pinNo, type, owner, reporter, Location, FacilityType, Description, Latitude, Longitude,  note) VALUES (?,?,?,?,?,?,?,?);";
   connection.query(
     sqlQuery,
-    [No, reporttype, loc, lat, lon, text, reporter, owner],
+    [No, reporttype, owner, reporter, loc, type, des, lat, lon, text],
     (err, result) => {
       res.send(result);
     }
