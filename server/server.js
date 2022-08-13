@@ -20,6 +20,7 @@ var connection = mysql.createConnection({
   port: 3306,
   password: "dnjsrl0612", // mysql의 비밀번호를 넣는다.
   database: "dambase", //위에서 만든 데이터베이스의 이름을 넣는다.
+  multipleStatements: true,
 });
 
 connection.connect();
@@ -132,22 +133,27 @@ app.post("/damlogin", (req, res) => {
     "select userid from login where userid=?;",
     [id],
     function (err, idck) {
-      if (idck.length) {
-        connection.query(
-          "select userpw , salt from login where userid=?;",
-          [id],
-          function (err, pwck) {
-            crypto.pbkdf2(pw, pwck[0].salt, 10, 64, "sha512", (err, key) => {
-              console.log(
-                "비밀번호 일치 여부 :: ",
-                key.toString("base64") === pwck[0].userpw
-              );
-              // true : 아이디, 비밀번호 일치
-              // false : 아이디 일치, 비밀번호 불일치
-              res.send(key.toString("base64") === pwck[0].userpw);
-            });
-          }
-        );
+      if (idck[0].userid == id) {
+        if(idck[0].ban != "0"){
+          res.send("ban");
+        }
+        else{
+          connection.query(
+            "select userpw , salt from login where userid=?;",
+            [id],
+            function (err, pwck) {
+              crypto.pbkdf2(pw, pwck[0].salt, 10, 64, "sha512", (err, key) => {
+                console.log(
+                  "비밀번호 일치 여부 :: ",
+                  key.toString("base64") === pwck[0].userpw
+                );
+                // true : 아이디, 비밀번호 일치
+                // false : 아이디 일치, 비밀번호 불일치
+                res.send(key.toString("base64") === pwck[0].userpw);
+              });
+            }
+          );
+        }
       } else {
         res.send("아이디가 존재하지 않습니다.");
       }
@@ -159,28 +165,33 @@ app.post("/kakaologin", (req, res) => {
   const id = req.body.id;
   const email = req.body.email;
 
-  console.log(id)
-  console.log(email)
+  console.log(id);
+  console.log(email);
   connection.query(
-    "select userid from login where userid=?;",
+    "select * from login where userid=?;",
     [id],
     function (err, idck) {
-      console.log(idck);
-      if (idck.length) {
-        res.send(true);
+      console.log(idck[0]);
+      if (idck[0].userid == id) {
+        if (idck[0].ban != "0"){
+          res.send("ban");
+        }
+        else{
+          res.send(true);
+        }
       } else {
         connection.query(
-          "INSERT INTO login (userid, email) values (?,?);",[id, email],
-          function(err, newuser){
-            console.log(newuser)
-            if(newuser){
+          "INSERT INTO login (userid, email) values (?,?);",
+          [id, email],
+          function (err, newuser) {
+            console.log(newuser);
+            if (newuser) {
               res.send("newuser");
-            }
-            else{
+            } else {
               res.send(err);
             }
           }
-        )
+        );
       }
     }
   );

@@ -70,9 +70,11 @@ export default function Kakaologin() {
             } else if (res.data === "newuser") {
               alert("회원가입되었습니다.");
               navigate("/main");
-            } else {
-              console.log(res);
-              alert(res.data);
+            } else if (res.data === "ban"){
+              alert("벤당하셨습니다. 문의부탁드립니다.");
+            }
+            else{
+              alert("err");
             }
           });
       })
