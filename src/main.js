@@ -6,6 +6,7 @@ import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
 import Menu from "./menu";
 import Adfit from "./Adfit";
+import { HideGridColMenuItem } from "@mui/x-data-grid";
 
 const { kakao } = window;
 
@@ -141,6 +142,7 @@ function Main() {
 
       atag.onclick = function () {
         document.getElementById("pininfo").className = "info";
+        document.getElementById("myMap").className = "Mapstyle dark";
         setPin(el);
       };
 

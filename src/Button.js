@@ -8,6 +8,7 @@ export default function Button({ name, action }) {
   function close() {
     document.getElementById("pininfo").className = "info hide";
     document.getElementById("addpin").className = "add hide";
+    document.getElementById("myMap").className = "Mapstyle";
   }
 
   function home() {
