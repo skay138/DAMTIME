@@ -1,9 +1,13 @@
 import Menu from "./menu";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function Help() {
-  
+  const navigate = useNavigate();
+  function tomain () {
+    navigate("/main");
+  }
   return (
     <div>
       <div className="title">DAMTIME</div>
@@ -17,6 +21,9 @@ function Help() {
         <li>마커 클릭&gt;상세정보배너 클릭&gt;상세정보<br/>요약정보/맵 클릭&gt;요약정보끄기</li>
         <li>본인이 등록한 마커는 내 정보 또는<br/>마커 정보에서 관리가 가능합니다.</li>
       </ul>
+      <button className="button"
+        style={{width:"100px", positon:"absolute", margin:"20px 40%" }} onClick={tomain}>
+      OK</button>
     </div>
   );
 }
