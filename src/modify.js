@@ -93,8 +93,6 @@ const Modify = () => {
         })
         .catch((err) => console.log(err));
       //기존핀 삭제
-    } else {
-      alert("err");
     }
   };
 
@@ -135,12 +133,14 @@ const Modify = () => {
             className="loctext"
             onChange={handdleChange}
             value={loc}
+            placeholder="주소"
           ></textarea>
           <br />
           <textarea
             className="loctext"
             onChange={handdleDes}
             value={des}
+            placeholder="상세설명"
           ></textarea>
           <br />
           <select

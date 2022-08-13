@@ -119,8 +119,6 @@ const Report = () => {
         });
       window.history.back();
       console.log(state);
-    } else {
-      alert("err")
     }
   };
 
