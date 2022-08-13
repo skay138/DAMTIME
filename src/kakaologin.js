@@ -70,10 +70,15 @@ export default function Kakaologin() {
             } else if (res.data === "newuser") {
               alert("회원가입되었습니다.");
               navigate("/main");
-            } else if (res.data === "ban"){
-              alert("벤당하셨습니다. 문의부탁드립니다.");
-            }
-            else{
+            } else if (res.data === "ban") {
+              alert(
+                `${
+                  response.data.kakao_account.email
+                    ? response.data.kakao_account.email
+                    : response.data.id
+                }님은 벤당하셨습니다. 메일로 아이디 기재 후 문의부탁드립니다.`
+              );
+            } else {
               alert("err");
             }
           });
@@ -84,14 +89,14 @@ export default function Kakaologin() {
   }
 
   return (
-    <div style={{textAlign : 'center', margin:"10px"}}>
-    <img
-      src={logo}
-      onClick={(e) => {
-        e.preventDefault();
-        window.location.href = KAKAO_AUTH_URL;
-      }}
-    ></img>
+    <div style={{ textAlign: "center", margin: "10px" }}>
+      <img
+        src={logo}
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = KAKAO_AUTH_URL;
+        }}
+      ></img>
     </div>
   );
 }

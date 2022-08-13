@@ -53,7 +53,7 @@ function EntryPage() {
           } else if (res.data === false) {
             alert("비밀번호가 일치하지 않습니다.");
           } else if (res.data === "ban") {
-            alert("벤당하셨습니다. 문의부탁드립니다.");
+            alert(`${loginId.userid}님은 벤당하셨습니다. 메일로 아이디 기재 후 문의부탁드립니다.`);
           } else {
             console.log(res);
             alert(res.data);
