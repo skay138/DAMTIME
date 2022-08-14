@@ -18,6 +18,7 @@ export default function Button({ name, action }) {
   function req() {
     console.log("Link did my job");
   }
+  
   function submit() {
     // 수정등록
     alert("요청되었습니다.");

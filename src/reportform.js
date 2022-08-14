@@ -118,7 +118,6 @@ const Report = () => {
           }
         });
       window.history.back();
-      console.log(state);
     }
   };
 
