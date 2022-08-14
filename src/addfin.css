@@ -53,13 +53,13 @@ input {
 
 .addform {
   height: 65%;
-  position: relative;
+  width: 100%;
 }
 
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: -15px
+  bottom: 75px
 }
 
 .cnclbtn {
