@@ -73,22 +73,19 @@ input {
   height: 68px;
   color: rgb(0, 0, 0);
   background-color: #ceeafa;
-  border-color: rgb(0, 0, 0);
-  border-width: 2px 0px 2px 0px;
-  border-style: solid;
   display: flex;
   align-items: center;
 }
 
 .addspan{
   font-size: 29px;
-  margin: 15px 30%;
+  margin: auto;
   font-weight: 500;
 }
 
 select {
   background-color: rgb(255, 255, 255);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 textarea {

@@ -24,8 +24,7 @@ function About() {
         <span className="clickthis" onClick={assistant}> 최윤호</span>
         <br />송기원 이상민</p>
         <p className="contact">contact : damtimekr@gmail.com </p>
-        <button className="button" onClick={tomain}
-        style={{width:"100px", margin:"50px 40%"}}>
+        <button className="aboutbtn" onClick={tomain}>
       메인으로</button>
         <p><img className="EasterEgg" src={cnt>=5 && fun>=1?"http://file3.instiz.net/data/cached_img/upload/2019/12/26/9/2a158b3b75e4b62300f92a56d202641c_mp4.gif":""}
             alt="" onClick={hide} /><br />

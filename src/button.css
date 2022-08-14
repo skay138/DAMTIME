@@ -1,4 +1,4 @@
-.button{
+.button {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
@@ -8,71 +8,96 @@
   margin: 5px;
   color: black;
   font-size: 15px;
-  }
+}
 
+.myinfobtnm {
+  position: absolute;
+  left: 50px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: #ceeafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  margin: 2px;
+  color: black;
+}
 
-  .myinfobtnm{
-    position: absolute;
-    left: 50px;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 5px;
-    background: #ceeafa;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 30%;
-    margin: 2px;
-    color: black;
-  }
+.myinfobtnd {
+  position: absolute;
+  right: 50px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: #ceeafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  margin: 2px;
+  color: black;
+}
 
-  .myinfobtnd{
-    position: absolute;
-    right: 50px;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 5px;
-    background: #ceeafa;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 30%;
-    margin: 2px;
-    color: black;
-  }
+.endbtn {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  padding: 10px;
+  font-size: 15px;
+}
 
-  .endbtn{
-    position: absolute;
-    right: 10px;
-    bottom : 0px;
-    padding: 10px;
-    font-size: 15px;
-  }
+.modbtn {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: #ceeafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin: 7px;
+  color: black;
+}
 
-  .modbtn{
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 5px;
-    background: #ceeafa;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 70%;
-    margin: 7px;
-    color: black;
-  }
+.mapbtn {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background: #ceeafa33;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 90px;
+  margin: 10px;
+  color: black;
+  font-size: 15px;
+}
 
-  .mapbtn{
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    background: #ceeafa33;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 90px;
-    margin: 10px;
-    color: black;
-    font-size: 15px;
-  }
+.infobtn {
+  position: relative;
+  bottom: 20px;
+}
 
-  .infobtn{
-    position: relative;
-    bottom: 50px;
-  }
+.clsbtn {
+  position: relative;
+  bottom: 15px;
+}
 
-  .clsbtn{
-    position: relative;
-    bottom: 45px;
-  }
+.aboutbtn {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: #ceeafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  color: black;
+  font-size: 15px;
+  width: 100px;
+  bottom: 5%;
+  position: relative;
+}
+
+.helpbtn {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: #ceeafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  color: black;
+  font-size: 15px;
+  width: 100px;
+}

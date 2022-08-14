@@ -292,7 +292,6 @@ function Main() {
         <div className="title" onClick={refreshfn}>
           DAMTIME
         </div>
-        <Menu />
         <div id="myMap" className="Mapstyle"></div>
         <button className={addbtn ? "addbtn" : "addbtnout"} id="addbtn">
           <img
@@ -306,7 +305,6 @@ function Main() {
             width="35px" alt=""
           />
         </button>
-        <Adfit/>
 
         {/* 여기부터는 addpin입니다 */}
         <Addpin
@@ -319,6 +317,8 @@ function Main() {
         {/* 여기부터는 핀정보입니다 */}
         <Pininfo pin={pin} />
       </div>
+      <Menu />
+      <Adfit/>
     </div>
   );
 }
