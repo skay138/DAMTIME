@@ -1,5 +1,5 @@
 import Menu from "./menu";
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./About.css";
 
@@ -14,6 +14,11 @@ function About() {
   function tomain () {
     navigate("/main");
   }
+  useEffect(() => {
+    cnt >= 5 && fun >=1
+    ? document.getElementById("easterdiv").className= "easterdiv zup"
+    : document.getElementById("easterdiv").className= "easterdiv";
+  }, [cnt, fun]);
   return (
     <div>
       <div className="title">DAMTIME</div>
@@ -25,10 +30,11 @@ function About() {
         <br />송기원 이상민</p>
         <p className="contact">contact : damtimekr@gmail.com </p>
         <button className="aboutbtn" onClick={tomain}>
-      메인으로</button>
-        <p><img className="EasterEgg" src={cnt>=5 && fun>=1?"http://file3.instiz.net/data/cached_img/upload/2019/12/26/9/2a158b3b75e4b62300f92a56d202641c_mp4.gif":""}
-            alt="" onClick={hide} /><br />
-        <span className="text">{cnt>=5 && fun>=1?"압도적으로 헌신한 박상규에게 이 이스터에그를 바칩니다.":""}</span></p>
+      메인으로</button><br />
+        <div id="easterdiv" className="easterdiv"><img className="EasterEgg" src={cnt>=5 && fun>=1?"http://file3.instiz.net/data/cached_img/upload/2019/12/26/9/2a158b3b75e4b62300f92a56d202641c_mp4.gif":""}
+            alt="" onClick={hide} />
+        <p><span className="text">{cnt>=5 && fun>=1?"압도적으로 헌신한 박상규에게 이 이스터에그를 바칩니다.":""}</span></p>
+        </div>
       </div>
       <p className="foot">Copyright © 2022 DAMDAM All rights reserved.</p>
     </div>

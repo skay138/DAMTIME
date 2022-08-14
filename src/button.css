@@ -88,6 +88,7 @@
   width: 100px;
   bottom: 5%;
   position: relative;
+  z-index: 2;
 }
 
 .helpbtn {
