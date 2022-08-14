@@ -1,14 +1,10 @@
-p {
-  font-size: 16px;
-  font-weight: 600;
-}
 .type{
   margin-top: 15px;
   margin-bottom: 5px;
 }
 .seltype {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 input {
@@ -99,4 +95,5 @@ textarea {
 .ifblank {
   color: rgb(84, 84, 84);
   font-weight: 300;
+  font-size: 16px;
 }

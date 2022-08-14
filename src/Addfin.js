@@ -80,7 +80,7 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       <br />
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form className="addform">
-        <p>주소 입력<span className="ifblank"> (빈칸 시 직접 작성)</span> </p>
+        <p className="seltype">주소 입력<span className="ifblank"> (빈칸 시 직접 작성)</span> </p>
         <input onChange={handleloc} type="text" value={loc}></input>
         <br />
         <input
