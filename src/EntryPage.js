@@ -188,7 +188,7 @@ function EntryPage() {
         );
       case "logIn":
         return (
-          <form>
+          <form className="nokakao">
             <h2>DAMTIME</h2>
             <fieldset>
               <legend>Log In</legend>

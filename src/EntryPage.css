@@ -49,6 +49,8 @@ section#entry-page form fieldset {
   border: none;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* 흰 필드셋 폼 */
+  width: 92%;;
 }
 section#entry-page form fieldset legend {
   padding: 5px;
@@ -85,6 +87,8 @@ section#entry-page form fieldset ul li input {
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  /* 입력창 너비 */
+  width: 95%;
 }
 section#entry-page form fieldset ul li input:hover {
   border: 1px solid #aaf;
@@ -134,4 +138,16 @@ section#entry-page form button:hover {
 .loginbtn{
   width: 100%;
   margin: auto;
+}
+
+.nokakao {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-gap: 10px;
+  margin: auto 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
 }
