@@ -1,5 +1,6 @@
 .team {
     font-size: 35px;
+    font-weight: 600;
 }
 .contents {
     text-align: center;
@@ -14,7 +15,7 @@
     margin-bottom: 20px;
 }
 .clickthis {
-    font-weight: 700;
+    font-weight: 300;
 }
 .EasterEgg {
     width: 300px;
