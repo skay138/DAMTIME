@@ -6,6 +6,7 @@ import EntryPage from "./EntryPage";
 import Myinfo from "./Myinfo";
 import Help from "./help";
 import Modify from "./modify";
+import About from "./About";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/myinfo" element={<Myinfo />} />
       <Route path="/help" element={<Help/>} />
       <Route path="/modify" element={<Modify/>} />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }

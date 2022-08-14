@@ -1,0 +1,33 @@
+.team {
+    font-size: 35px;
+}
+.contents {
+    text-align: center;
+    margin-top: 15%;
+}
+.name {
+    font-size: 24px;
+}
+.contact {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.clickthis {
+    font-weight: 700;
+}
+.EasterEgg {
+    width: 300px;
+    margin-bottom: -20px;
+}
+.text {
+    font-size: 15px;
+    margin: 5px;
+    margin-top: 0px;
+}
+.foot {
+    font-size: 10px;
+    position: absolute;
+    bottom: 15px;
+    margin-left: 20px;
+}

@@ -62,26 +62,27 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
         });
       alert("흡연구역으로 등록되었습니다.");
       document.getElementById("addpin").className = "add hide";
+      document.getElementById("myMap").className = "Mapstyle";
       pinaddedfn();
     }
   };
 
   const cancel = () => {
     document.getElementById("addpin").className = "add hide";
+    document.getElementById("myMap").className = "Mapstyle";
     setLoc("");
     setDetail("");
   };
 
   return (
     <div id="addpin" className="add hide">
-      <h3>
-        <p>흡연구역 등록</p>
-      </h3>
+      <div className="addtitle">
+        <span className="addspan">흡연구역 등록</span>
+      </div>
       <br />
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form className="addform">
-        <br />
-        <p className="p">주소입력(빈칸 시 직접 작성)</p>
+        <p>주소 입력<span className="ifblank"> (빈칸 시 직접 작성)</span> </p>
         <input onChange={handleloc} type="text" value={loc}></input>
         <br />
         <input
@@ -90,9 +91,8 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
           value={detail}
           placeholder="상세주소입력"
         ></input>
-        <br />
-        <br />
-        타입선택
+        <div className="type">
+        <span className="seltype">타입선택 :  </span>
         <select onChange={handlesel}>
           <option value="개방형흡연부스">개방형흡연부스</option>
           <option value="부분개방형흡연실">부분개방형흡연실</option>
@@ -101,14 +101,13 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
           <option value="비대면흡연부스">비대면흡연부스</option>
           <option value="기타">기타</option>
         </select>
-        <br />
+        </div>
         <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
-        <br />
         <button className="button addpinbtn" type="submit" onClick={push}>
           등록
         </button>
       </form>
-      <button className="button" onClick={cancel}>
+      <button className="button cnclbtn" onClick={cancel}>
         취소
       </button>
     </div>

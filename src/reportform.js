@@ -126,7 +126,7 @@ const Report = () => {
     if (mapon === true) {
       return (
         <div>
-          <h5>상세주소도 입력해주세요</h5>
+          <h5>수정될 핀의 상세주소도 입력해주세요</h5>
           <ReportMap
             pin={pin}
             setLat={setLat}
@@ -149,10 +149,10 @@ const Report = () => {
 
   return (
     <div>
-      <div className="title">DAMTIME</div>
+      <header className="title">DAMTIME</header>
       <div id="modify" className="modify">
-        <h3>수정요청</h3>
-        <p style={{ fontSize: "16px", padding: "5px" }}>
+        <h3 className="head">수정요청</h3>
+        <p style={{ fontSize: "20px", padding: "5px" }}>
           주요 요청사항 :{" "}
           <select
             id="type"
@@ -184,7 +184,7 @@ const Report = () => {
               placeholder="상세설명"
             ></textarea>
             <br />
-            <p style={{ fontSize: "16px", padding: "5px" }}>
+            <p style={{ fontSize: "20px", padding: "5px" }}>
               타입수정 :{" "}
               <select
                 id="type"
@@ -207,7 +207,6 @@ const Report = () => {
           <button className="mapbtn" type="button" onClick={showMap}>
             {mapon ? "지도숨김" : "위치수정"}
           </button>
-          <br />
           <br />
           <textarea
             className="notetext"

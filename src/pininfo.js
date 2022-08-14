@@ -14,7 +14,6 @@ function Pininfo({ pin }) {
       alert("비로그인상태입니다.");
     } else {
       navigate("/report", { state: pin });
-      console.log(pin);
     }
   };
 
@@ -25,7 +24,7 @@ function Pininfo({ pin }) {
 
   return (
     <div id="pininfo" className="info hide">
-      <div className="infotitle">{pin.Location}</div>
+      <div className="infotitle"><span className="infospan">{pin.Location}</span></div>
       <ul className="infoul">
         <li>타입 : {pin.FacilityType}</li>
         <li className="pindes">
@@ -34,11 +33,11 @@ function Pininfo({ pin }) {
       </ul>
 
       {pin.UserId === userid ? (
-        <button className="button" onClick={modify}>
+        <button className="button infobtn" onClick={modify}>
           마커수정
         </button>
       ) : (
-        <button className="button" name="수정요청" onClick={askreport}>
+        <button className="button infobtn" name="수정요청" onClick={askreport}>
           수정요청
         </button>
       )}

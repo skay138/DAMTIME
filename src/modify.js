@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ReportMap from "./ReportMap";
 import "./pininfo.css";
+import "./modify.css";
 
 const { kakao } = window;
 
@@ -100,7 +101,7 @@ const Modify = () => {
     if (mapon === true) {
       return (
         <div>
-          <h5>상세주소도 입력해주세요</h5>
+          <h5>수정될 핀의 상세주소도 입력해주세요</h5>
           <ReportMap
             pin={pin}
             setLat={setLat}
@@ -126,7 +127,7 @@ const Modify = () => {
     <div>
       <div className="title">DAMTIME</div>
     <div id="modify" className="modify">
-      <h3>마커수정</h3>
+      <h3 className="modititle">마커수정</h3>
       <form className="modiform">
         <div id="mapdiv">
           <textarea

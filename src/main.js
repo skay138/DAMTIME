@@ -6,6 +6,7 @@ import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
 import Menu from "./menu";
 import Adfit from "./Adfit";
+import { HideGridColMenuItem } from "@mui/x-data-grid";
 
 const { kakao } = window;
 
@@ -141,6 +142,7 @@ function Main() {
 
       atag.onclick = function () {
         document.getElementById("pininfo").className = "info";
+        document.getElementById("myMap").className = "Mapstyle dark";
         setPin(el);
       };
 
@@ -235,6 +237,7 @@ function Main() {
         alert("비로그인 상태입니다.");
       } else {
         document.getElementById("addpin").className = "add";
+        document.getElementById("myMap").className = "Mapstyle dark"
         setPinla(marker.getPosition().Ma);
         setPinma(marker.getPosition().La);
       }
@@ -289,22 +292,19 @@ function Main() {
         <div className="title" onClick={refreshfn}>
           DAMTIME
         </div>
-
-        <Menu />
         <div id="myMap" className="Mapstyle"></div>
         <button className={addbtn ? "addbtn" : "addbtnout"} id="addbtn">
           <img
             src="https://img.icons8.com/sf-regular/96/000000/add.png"
-            width="45px"
+            width="45px" alt=""
           />
         </button>
         <button className="currentlocation" id="currentlo" onClick={refreshfn}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/location-update.png"
-            width="35px"
+            width="35px" alt=""
           />
         </button>
-        <Adfit/>
 
         {/* 여기부터는 addpin입니다 */}
         <Addpin
@@ -317,6 +317,8 @@ function Main() {
         {/* 여기부터는 핀정보입니다 */}
         <Pininfo pin={pin} />
       </div>
+      <Menu />
+      <Adfit/>
     </div>
   );
 }

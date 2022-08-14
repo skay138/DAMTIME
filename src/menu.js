@@ -29,6 +29,7 @@ const Menu = () => {
           <Link to="/main">지도화면</Link>
         </li>
         <li><Link to="/help">도움말</Link></li>
+        <li><Link to="/about">About</Link></li>
       </ul>
     </div>
   );

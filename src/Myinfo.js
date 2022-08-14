@@ -23,7 +23,7 @@ function Myinfo() {
 
   
   return (
-    <div>
+    <div className="myinfo">
       <div className="title">DAMTIME</div>
       <Menu />
       <h2 className="mypintitle">내 마커 관리</h2>

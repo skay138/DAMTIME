@@ -8,6 +8,7 @@ export default function Button({ name, action }) {
   function close() {
     document.getElementById("pininfo").className = "info hide";
     document.getElementById("addpin").className = "add hide";
+    document.getElementById("myMap").className = "Mapstyle";
   }
 
   function home() {
@@ -39,7 +40,7 @@ export default function Button({ name, action }) {
   }
 
   return (
-    <button className="button" onClick={select}>
+    <button className={action==="close"?"button clsbtn":"button"} onClick={select}>
       {name}
     </button>
   );
