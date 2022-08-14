@@ -21,7 +21,7 @@ p {
 
 section#entry-page {
   display: grid;
-  grid-template-columns: 1fr minmax(200px, 400px) 1fr;
+  grid-template-columns: 1fr minmax(280px, 400px) 1fr;
   grid-template-rows: 1fr minmax(auto, 1fr) 1fr;
   grid-gap: 10px;
   width: 100%;
@@ -128,12 +128,15 @@ section#entry-page form button:hover {
   color: black;
 }
 
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 430px) {
+  form {
+    width: 370px;
+  }
   form h2 {
     font-size: 40px;
   }
   form fieldset ul li {
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 90px 1fr;
   }
   form fieldset ul li label {
     padding-right: 10px;
@@ -141,6 +144,8 @@ section#entry-page form button:hover {
     text-align: right !important;
   }
 }
+
+
 @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;

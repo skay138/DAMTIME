@@ -13,7 +13,7 @@ function Help() {
       <div className="title">DAMTIME</div>
       <Menu />
       <div style={{textAlign:"center",}}>
-      <ul style={{ textAlign:"left", paddingRight:"40px"}}>
+      <ul style={{ textAlign:"left", paddingRight:"33px", paddingLeft:"33px"}}>
         <li><img src="https://img.icons8.com/ios-filled/100/3498DB/marker-d.png" width="35px" alt="구"></img> : 구에서 정보제공한 흡연구역</li>
         <li><img src="https://img.icons8.com/ios-filled/100/000000/marker-u.png" width="35px" alt="유저"></img> : 유저가 추가한 사설 흡연구역</li>
         <li><img src="https://img.icons8.com/sf-regular/96/000000/add.png" width="35px" alt="추가"></img> : 핀 등록버튼&gt;등록할위치 클릭</li>
