@@ -9,26 +9,19 @@ body {
   padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
 section#entry-page {
   display: grid;
-  grid-template-columns: 1fr minmax(200px, 400px) 1fr;
+  grid-template-columns: 1fr minmax(280px, 400px) 1fr;
   grid-template-rows: 1fr minmax(auto, 1fr) 1fr;
   grid-gap: 10px;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(-45deg, #886ce4, #717ae4, #5cb9db, #5dddbf);
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
   box-sizing: border-box;
 }
@@ -47,11 +40,11 @@ section#entry-page form h2 {
   margin-bottom: 5px;
   text-align: center;
   text-shadow: 0 4px 16px #fff;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 100;
 }
 section#entry-page form fieldset {
-  margin-bottom : 70px;
+  margin: 0;
   background-color: #fff;
   border: none;
   border-radius: 5px;
@@ -71,14 +64,13 @@ section#entry-page form fieldset ul li {
   align-items: center;
   margin: 10px;
 }
-section#entry-page form fieldset ul li a {
-  font-size: 13px;
-  color: rgb(82, 101, 196);
+section#entry-page form fieldset ul li p {
+  font-size: 14px;
+  font-weight: 300;
 }
-
-section#entry-page form a {
-  font-size: 13px;
-  color: rgb(82, 101, 196);
+section#entry-page form fieldset ul li a {
+  font-size: 14px;
+  color: #02c;
 }
 section#entry-page form fieldset ul li em {
   grid-column: span 2;
@@ -97,11 +89,6 @@ section#entry-page form fieldset ul li input {
 section#entry-page form fieldset ul li input:hover {
   border: 1px solid #aaf;
 }
-section#entry-page form fieldset ul li p {
-  font-size: 13px;
-  opacity: 70%;
-}
-
 section#entry-page form button {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0);
@@ -109,47 +96,26 @@ section#entry-page form button {
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+
 section#entry-page form button:hover {
   background-color: #eef;
   border: 1px solid #aaf;
 }
-.loginbtn {
-  display: block;
-  position: relative;
-  border-radius: 25px;
-  height: 45px;
-  font-size: medium;
-  overflow: hidden;
-  margin: 0 auto;
-  width: 56%;
-  background-color: rgba(255, 255, 255, 0.608);
-  /* background: linear-gradient(270deg, transparent, #dc7d09); */
 
-  color: black;
-}
-
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 430px) {
+  form {
+    width: 370px;
+  }
   form h2 {
     font-size: 40px;
   }
   form fieldset ul li {
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 90px 1fr;
   }
   form fieldset ul li label {
     padding-right: 10px;
     padding-bottom: 0;
     text-align: right !important;
-  }
-}
-@-webkit-keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 @keyframes Gradient {
@@ -162,4 +128,10 @@ section#entry-page form button:hover {
   100% {
     background-position: 0% 50%;
   }
+}
+
+
+.loginbtn{
+  width: 100%;
+  margin: auto;
 }
