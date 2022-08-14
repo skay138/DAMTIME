@@ -34,8 +34,6 @@ export default function DataTable() {
     axios
       .get("https://damtime.kro.kr:4000/getmypin", { params: { userid } })
       .then((res) => {
-        // console.log(userid)
-        // console.log(res.data);
         const mypin = res.data;
         rowfn(mypin);
       })

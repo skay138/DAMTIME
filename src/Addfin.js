@@ -43,8 +43,6 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
 
   const handlesel = (e) => {
     state.FacilityType = e.target.value;
-
-    console.log(state.FacilityType);
   };
 
   const handledes = (e) => {
