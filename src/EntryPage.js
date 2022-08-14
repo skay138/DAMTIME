@@ -113,7 +113,7 @@ function EntryPage() {
               <br />
               <Kakaologin />
               <div style={{ textAlign: "center", margin: "10px" }}>
-                <p onClick={nonmember}>비로그인으로 이용</p>
+                <p style={{fontWeight:"600"}} onClick={nonmember}>비로그인으로 이용</p>
               </div>
             </fieldset>
             <a onClick={() => changeView("logIn")}>
