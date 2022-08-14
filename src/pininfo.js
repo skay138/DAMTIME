@@ -10,7 +10,7 @@ function Pininfo({ pin }) {
   const userid = sessionStorage.getItem("loginId");
 
   const askreport = () => {
-    if (userid === "non") {
+    if (userid === null) {
       alert("비로그인상태입니다.");
     } else {
       navigate("/report", { state: pin });

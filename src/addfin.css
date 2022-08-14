@@ -1,17 +1,14 @@
-p {
-  font-size: 16px;
-  font-weight: 600;
-}
 .type{
   margin-top: 15px;
   margin-bottom: 5px;
 }
 .seltype {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 input {
+  width: 70%;
   font-size: 18px;
   padding: 10px;
 }
@@ -22,7 +19,7 @@ input {
   bottom: 0px;
   text-align: center;
   width: 100%;
-  height: 550px;
+  height: 535px;
   font-size: 18px;
   background-color: white;
   transition: 0.5s;
@@ -53,19 +50,19 @@ input {
 
 .addform {
   height: 65%;
-  position: relative;
+  width: 100%;
 }
 
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 5px
+  bottom: 75px
 }
 
 .cnclbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 40px
+  bottom: 20px
 }
 
 .addtitle {
@@ -91,7 +88,7 @@ select {
 textarea {
   width: 70%;
   font-size: 18px;
-  height: 3em;
+  height: 3.8em;
   margin-top: 10px;
   padding: 10px;
 }
@@ -99,4 +96,5 @@ textarea {
 .ifblank {
   color: rgb(84, 84, 84);
   font-weight: 300;
+  font-size: 16px;
 }

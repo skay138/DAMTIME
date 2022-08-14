@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./addfin.css";
 
@@ -8,14 +8,14 @@ const { kakao } = window;
 function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
   const [loc, setLoc] = useState("");
   const [detail, setDetail] = useState("");
-  //const [fileUrl, setFileUrl] = useState(""); //카메라였던것
+  const [des, setDes] = useState("");
 
   const state = {
     FacilityType: "개방형흡연부스",
     Location: "",
     Longitude: pinlon,
     Latitude: pinlat,
-    Description: "",
+    Description: des,
     UserId: userid,
   };
 
@@ -28,6 +28,9 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
         result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
       ) {
         setLoc(result[0].road_address.address_name);
+      }
+      else{
+        setLoc("");
       }
     }
   };
@@ -43,12 +46,10 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
 
   const handlesel = (e) => {
     state.FacilityType = e.target.value;
-
-    console.log(state.FacilityType);
   };
 
   const handledes = (e) => {
-    state.Description = e.target.value;
+    setDes(e.target.value);
   };
 
   const push = (e) => {
@@ -58,19 +59,24 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       axios
         .post("https://damtime.kro.kr:4000/insert", state)
         .then(function (res) {
-          console.log(res);
+          if(res.data.affectedRows === 1){
+            setDes("");
+            alert("흡연구역으로 등록되었습니다.");
+            document.getElementById("addpin").className = "add hide";
+            document.getElementById("myMap").className = "Mapstyle";
+            pinaddedfn();
+          }
+          else{
+            alert("에러발생");
+          }
         });
-      alert("흡연구역으로 등록되었습니다.");
-      document.getElementById("addpin").className = "add hide";
-      document.getElementById("myMap").className = "Mapstyle";
-      pinaddedfn();
+
     }
   };
 
   const cancel = () => {
     document.getElementById("addpin").className = "add hide";
     document.getElementById("myMap").className = "Mapstyle";
-    setLoc("");
     setDetail("");
   };
 
@@ -82,7 +88,9 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       <br />
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form className="addform">
-        <p>주소 입력<span className="ifblank"> (빈칸 시 직접 작성)</span> </p>
+        <p className="seltype">
+          {loc?"주소 입력" : "건물위만 주소를 불러올 수 있습니다."}
+        </p>
         <input onChange={handleloc} type="text" value={loc}></input>
         <br />
         <input
@@ -92,17 +100,17 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
           placeholder="상세주소입력"
         ></input>
         <div className="type">
-        <span className="seltype">타입선택 :  </span>
-        <select onChange={handlesel}>
-          <option value="개방형흡연부스">개방형흡연부스</option>
-          <option value="부분개방형흡연실">부분개방형흡연실</option>
-          <option value="폐쇄형흡연부스">폐쇄형흡연부스</option>
-          <option value="라인형흡연구역">라인형흡연구역</option>
-          <option value="비대면흡연부스">비대면흡연부스</option>
-          <option value="기타">기타</option>
-        </select>
+          <span className="seltype">타입선택 : </span>
+          <select onChange={handlesel}>
+            <option value="개방형흡연부스">개방형흡연부스</option>
+            <option value="부분개방형흡연실">부분개방형흡연실</option>
+            <option value="폐쇄형흡연부스">폐쇄형흡연부스</option>
+            <option value="라인형흡연구역">라인형흡연구역</option>
+            <option value="비대면흡연부스">비대면흡연부스</option>
+            <option value="기타">기타</option>
+          </select>
         </div>
-        <textarea onChange={handledes} placeholder="추가설명(선택)"></textarea>
+        <textarea value={des} onChange={handledes} placeholder="추가설명(선택)"></textarea>
         <button className="button addpinbtn" type="submit" onClick={push}>
           등록
         </button>

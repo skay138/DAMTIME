@@ -19,7 +19,7 @@ const Menu = () => {
       <ul className={isOpen ? "show-menu" : "hide-menu"}>
         <br/><br/><br/>
         <li>
-          {userid === "non" ? (
+          {userid === null ? (
             <Link to="/">로그인 하기</Link>
           ) : (
             <Link to="/myinfo">내정보</Link>

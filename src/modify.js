@@ -96,6 +96,25 @@ const Modify = () => {
       //기존핀 삭제
     }
   };
+  
+  const delmarker = (e) =>{
+    var delpin = pin.No;
+    var state = { data : delpin};
+    e.preventDefault();
+    if (window.confirm("삭제하시겠습니까?")) {
+      //핀 업데이트
+      axios
+        .post("https://damtime.kro.kr:4000/userpin", state)
+        .then(function (res) {
+          if (res.statusText === "OK") {
+            alert("마커가 삭제되었습니다.");
+            window.history.back();
+          }
+        })
+        .catch((err) => console.log(err));
+      //기존핀 삭제
+    }
+  }
 
   const modifyMap = () => {
     if (mapon === true) {
@@ -165,11 +184,13 @@ const Modify = () => {
         </button>
         <br />
         <button className=" button modibtn" type="submit" onClick={push}>
-          전송
+          수정
         </button>
         <button className="button modibtn2" onClick={goback}>
           취소
         </button>
+        <br/>
+        <div className="delmarker" onClick={delmarker}>마커 삭제하기</div>
       </form>
     </div>
     </div>

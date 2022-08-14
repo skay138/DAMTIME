@@ -63,7 +63,7 @@ function EntryPage() {
   };
 
   const nonmember = () => {
-    sessionStorage.setItem("loginId", "non");
+    sessionStorage.setItem("loginId", null);
     navigate("/main");
   };
 
@@ -84,12 +84,12 @@ function EntryPage() {
             axios
               .post("https://damtime.kro.kr:4000/damregister", loginId)
               .then(function (res) {
-                console.log(res.data);
                 if (res.data === "아이디중복") {
                   alert("중복된 아이디입니다."); //아이디가 없으면
                 } else if (res.data === "success") {
                   alert("회원가입 되었습니다.");
-                  changeView("logIn");
+                  sessionStorage.setItem("loginId", loginId.userid);
+                  navigate("/help");
                 }
               });
           }
@@ -116,9 +116,9 @@ function EntryPage() {
                 <p style={{fontWeight:"600"}} onClick={nonmember}>비로그인으로 이용</p>
               </div>
             </fieldset>
-            <a onClick={() => changeView("logIn")}>
+            <div onClick={() => changeView("logIn")}>
               카카오아이디가 없으신가요?
-            </a>
+            </div>
           </form>
         );
       case "signUp":
@@ -189,7 +189,7 @@ function EntryPage() {
         );
       case "logIn":
         return (
-          <form>
+          <form className="nokakao">
             <h2>DAMTIME</h2>
             <fieldset>
               <legend>Log In</legend>
@@ -219,9 +219,9 @@ function EntryPage() {
                 </li>
                 <li>
                   <i />
-                  <a onClick={() => changeView("PWReset")} href="#">
+                  <div onClick={() => changeView("PWReset")} href="#">
                     Forgot Password?
-                  </a>
+                  </div>
                 </li>
               </ul>
               <br />
