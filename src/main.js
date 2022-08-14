@@ -6,7 +6,6 @@ import Pininfo from "./pininfo";
 import Addpin from "./Addfin";
 import Menu from "./menu";
 import Adfit from "./Adfit";
-import { HideGridColMenuItem } from "@mui/x-data-grid";
 
 const { kakao } = window;
 
@@ -233,7 +232,7 @@ function Main() {
     btn.onclick = addpin;
 
     function addpin() {
-      if (userid === "non") {
+      if (userid === null) {
         alert("비로그인 상태입니다.");
       } else {
         document.getElementById("addpin").className = "add";

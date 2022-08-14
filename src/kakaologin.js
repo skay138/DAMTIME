@@ -69,7 +69,7 @@ export default function Kakaologin() {
               navigate("/main");
             } else if (res.data === "newuser") {
               alert("회원가입되었습니다.");
-              navigate("/main");
+              navigate("/help");
             } else if (res.data === "ban") {
               alert(
                 `${
@@ -91,6 +91,7 @@ export default function Kakaologin() {
   return (
     <div style={{ textAlign: "center", margin: "10px" }}>
       <img
+      alt="kakaologin"
         src={logo}
         onClick={(e) => {
           e.preventDefault();

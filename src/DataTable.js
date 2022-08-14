@@ -15,17 +15,19 @@ export default function DataTable() {
   const navigate = useNavigate();
 
   const columns = [
-    //{ field: "id", headerName: "번호", width: 70 }, //No
+    { field: "id", headerName: "번호", width: 50 },
     { field: "Location", headerName: "장소명", width: 400 },
-    { field: "Description", headerName: "상세설명", width: 200 },
+    { field: "Description", headerName: "상세설명", width: 250 },
     { field: "FacilityType", headerName: "장소유형", width: 150 },
   ];
 
   const [rows, setRows] = useState([]);
 
   const rowfn = (p) => {
+    var rownum = 1;
     Array.from(p).forEach((el) => {
-      el.id = el.No;
+      el.id = rownum;
+      rownum += 1;
     });
     setRows(p);
   };
