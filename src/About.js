@@ -2,7 +2,7 @@ import Menu from "./menu";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./About.css";
-
+import jh from "./img/jh.gif";
 
 function About() {
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ function About() {
   }
   useEffect(() => {
     cnt >= 5 && fun >=1
-    ? document.getElementById("easterdiv").className= "easterdiv zup"
-    : document.getElementById("easterdiv").className= "easterdiv";
+    ? document.getElementById("easterdiv").className= "easterdiv "
+    : document.getElementById("easterdiv").className= "easterdiv zup";
   }, [cnt, fun]);
   return (
     <div>
@@ -31,7 +31,7 @@ function About() {
         <p className="contact">contact : damtimekr@gmail.com </p>
         <button className="aboutbtn" onClick={tomain}>
       메인으로</button><br />
-        <div id="easterdiv" className="easterdiv"><img className="EasterEgg" src={cnt>=5 && fun>=1?"http://file3.instiz.net/data/cached_img/upload/2019/12/26/9/2a158b3b75e4b62300f92a56d202641c_mp4.gif":""}
+        <div id="easterdiv" className="easterdiv"><img className="EasterEgg" src={jh}
             alt="" onClick={hide} />
         <p><span className="text">{cnt>=5 && fun>=1?"압도적으로 헌신한 박상규에게 이 이스터에그를 바칩니다.":""}</span></p>
         </div>
