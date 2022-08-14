@@ -59,13 +59,13 @@ input {
 .addpinbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 5px
+  bottom: -15px
 }
 
 .cnclbtn {
   position: absolute;
   left: 14.7%;
-  bottom: 40px
+  bottom: 20px
 }
 
 .addtitle {
@@ -91,7 +91,7 @@ select {
 textarea {
   width: 70%;
   font-size: 18px;
-  height: 3em;
+  height: 3.8em;
   margin-top: 10px;
   padding: 10px;
 }
