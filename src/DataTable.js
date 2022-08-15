@@ -15,7 +15,7 @@ export default function DataTable() {
   const navigate = useNavigate();
 
   const columns = [
-    { field: "id", headerName: "번호", width: 50 },
+    // { field: "id", headerName: "번호", width: 50 },
     { field: "Location", headerName: "장소명", width: 400 },
     { field: "Description", headerName: "상세설명", width: 250 },
     { field: "FacilityType", headerName: "장소유형", width: 150 },
@@ -24,10 +24,8 @@ export default function DataTable() {
   const [rows, setRows] = useState([]);
 
   const rowfn = (p) => {
-    var rownum = 1;
     Array.from(p).forEach((el) => {
-      el.id = rownum;
-      rownum += 1;
+      el.id = el.No;
     });
     setRows(p);
   };
@@ -53,6 +51,7 @@ export default function DataTable() {
       : len === 1
       ? Array.from(rows).forEach((el) => {
           Array.from(selectionModel).forEach((sl) => {
+            console.log(sl)
             if (el.No === sl) {
               navigate("/modify", { state: el });
             }
