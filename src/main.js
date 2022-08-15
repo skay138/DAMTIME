@@ -232,7 +232,7 @@ function Main() {
     btn.onclick = addpin;
 
     function addpin() {
-      if (userid === null) {
+      if (userid === "null") {
         alert("비로그인 상태입니다.");
       } else {
         document.getElementById("addpin").className = "add";
@@ -276,9 +276,15 @@ function Main() {
       var latlng = mouseEvent.latLng;
       marker.setPosition(latlng);
       customOverlay.setPosition(latlng);
+      
+      if(document.getElementById("addpin").className === "add"){
+        setAddbtn((current)=>!current);
+        marker.setVisible(false);
+        customOverlay.setMap(null);
+        document.getElementById("addpin").className = "add hide";
+      }
 
       document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
-      document.getElementById("addpin").className = "add hide";
       document.getElementById("myMap").className = "Mapstyle";
     });
   }, [refresh, pindata, userpin]);

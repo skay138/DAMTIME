@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./addfin.css";
 
@@ -19,22 +19,23 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
     UserId: userid,
   };
 
-  var geocoder = new kakao.maps.services.Geocoder();
-  var coord = new kakao.maps.LatLng(pinlat, pinlon);
-  var callback = function (result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-      if (
-        result[0].road_address !== null &&
-        result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
-      ) {
-        setLoc(result[0].road_address.address_name);
+  useEffect(() => {
+    var geocoder = new kakao.maps.services.Geocoder();
+    var coord = new kakao.maps.LatLng(pinlat, pinlon);
+    var callback = function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        if (
+          result[0].road_address !== null &&
+          result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
+        ) {
+          setLoc(result[0].road_address.address_name);
+        } else {
+          setLoc("");
+        }
       }
-      else{
-        setLoc("");
-      }
-    }
-  };
-  geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+    };
+    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+  }, [pinlat, pinlon]);
 
   const handleloc = (e) => {
     setLoc(e.target.value);
@@ -59,18 +60,16 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       axios
         .post("https://damtime.kro.kr:4000/insert", state)
         .then(function (res) {
-          if(res.data.affectedRows === 1){
+          if (res.data.affectedRows === 1) {
             setDes("");
             alert("흡연구역으로 등록되었습니다.");
             document.getElementById("addpin").className = "add hide";
             document.getElementById("myMap").className = "Mapstyle";
             pinaddedfn();
-          }
-          else{
+          } else {
             alert("에러발생");
           }
         });
-
     }
   };
 
@@ -78,6 +77,7 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
     document.getElementById("addpin").className = "add hide";
     document.getElementById("myMap").className = "Mapstyle";
     setDetail("");
+    setDes("");
   };
 
   return (
@@ -89,9 +89,9 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
       {/* <Camera fileUrl={fileUrl} setFileUrl={setFileUrl} /> */}
       <form className="addform">
         <p className="seltype">
-          {loc?"주소 입력" : "건물위만 주소를 불러올 수 있습니다."}
+          {loc ? "주소 입력" : "건물위만 주소를 불러올 수 있습니다."}
         </p>
-        <input onChange={handleloc} type="text" value={loc}></input>
+        <input onChange={handleloc} type="text" value={loc} placeholder="직접주소입력"></input>
         <br />
         <input
           onChange={handledetail}
@@ -110,7 +110,11 @@ function Addpin({ pinlat, pinlon, userid, pinaddedfn }) {
             <option value="기타">기타</option>
           </select>
         </div>
-        <textarea value={des} onChange={handledes} placeholder="추가설명(선택)"></textarea>
+        <textarea
+          value={des}
+          onChange={handledes}
+          placeholder="추가설명(선택)"
+        ></textarea>
         <button className="button addpinbtn" type="submit" onClick={push}>
           등록
         </button>
