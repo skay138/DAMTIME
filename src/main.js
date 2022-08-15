@@ -232,7 +232,7 @@ function Main() {
     btn.onclick = addpin;
 
     function addpin() {
-      if (userid === null) {
+      if (userid === "null") {
         alert("비로그인 상태입니다.");
       } else {
         document.getElementById("addpin").className = "add";
