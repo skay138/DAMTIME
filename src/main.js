@@ -278,6 +278,7 @@ function Main() {
       customOverlay.setPosition(latlng);
 
       document.getElementById("pininfo").className = "info hide"; //마커정보 숨기기
+      document.getElementById("addpin").className = "add hide";
       document.getElementById("myMap").className = "Mapstyle";
     });
   }, [refresh, pindata, userpin]);
