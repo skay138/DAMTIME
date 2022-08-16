@@ -172,11 +172,11 @@ app.post("/kakaologin", (req, res) => {
     [id],
     function (err, idck) {
       if (idck.length) {
-        if (idck[0].ban != "0"){
-          res.send("ban");
+        if (idck[0].ban == "1"){
+          res.send(true);
         }
         else{
-          res.send(true);
+          res.send("ban");
         }
       } else {
         connection.query(
