@@ -3,6 +3,7 @@ import "./App.css";
 import "./pininfo.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import Adfitmid from "./adfitmid";
 
 function Pininfo({ pin }) {
   const navigate = useNavigate();
@@ -24,25 +25,33 @@ function Pininfo({ pin }) {
 
   return (
     <div id="pininfo" className="info hide">
-      <div className="infotitle"><span className="infospan">{pin.Location}</span></div>
-      <ul className="infoul">
-        <li>타입 : {pin.FacilityType}</li>
-        <li className="pindes">
-          {pin.Description ? `상세설명 : ${pin.Description}` : null}
-        </li>
-      </ul>
+        <div className="infotitle">
+          <span className="infospan">{pin.Location}</span>
+        </div>
+        <Adfitmid />
+        <ul className="infoul">
+          <li>타입 : {pin.FacilityType}</li>
+          <li className="pindes">
+            {pin.Description ? `상세설명 : ${pin.Description}` : null}
+          </li>
+        </ul>
 
-      {pin.UserId === userid ? (
-        <button className="button infobtn" onClick={modify}>
-          마커수정
-        </button>
-      ) : (
-        <button className="button infobtn" name="수정요청" onClick={askreport}>
-          수정요청
-        </button>
-      )}
-      <Button name="닫기" action="close" />
-    </div>
+
+        {pin.UserId === userid ? (
+          <button className="button infobtn" onClick={modify}>
+            마커수정
+          </button>
+        ) : (
+          <button
+            className="button infobtn"
+            name="수정요청"
+            onClick={askreport}
+          >
+            수정요청
+          </button>
+        )}
+        <Button name="닫기" action="close" />
+      </div>
   );
 }
 export default Pininfo;
