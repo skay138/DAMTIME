@@ -171,7 +171,7 @@ app.post("/kakaologin", (req, res) => {
     "select * from login where userid=?;",
     [id],
     function (err, idck) {
-      if (idck[0].userid == id) {
+      if (idck.length) {
         if (idck[0].ban != "0"){
           res.send("ban");
         }
