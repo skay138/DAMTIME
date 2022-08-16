@@ -66,6 +66,10 @@ const Modify = () => {
           setLoc(result[0].road_address.address_name);
           setMlat(clklat);
           setMlon(clklon);
+        }else{
+          setLoc("");
+          setMlat(clklat);
+          setMlon(clklon);
         }
       }
     };
@@ -153,7 +157,7 @@ const Modify = () => {
             className="loctext"
             onChange={handdleChange}
             value={loc}
-            placeholder="주소"
+            placeholder="도로 위는 직접 주소를 입력해야 합니다."
           ></textarea>
           <br />
           <textarea
