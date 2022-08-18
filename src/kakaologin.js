@@ -63,6 +63,7 @@ export default function Kakaologin() {
           .post("https://damtime.kro.kr:4000/kakaologin", {
             id: response.data.id,
             email: response.data.kakao_account.email,
+            profile : response.data.kakao_account.profile.nickname,
           })
           .then(function (res) {
             if (res.data === true) {
