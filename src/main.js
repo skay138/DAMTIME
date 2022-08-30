@@ -41,7 +41,7 @@ function Main() {
   var map; // 외부접근 위해 전역변수로 설정
 
   //클릭한 마커
-  const [clkedoverlay, setClkedoverlay] = useState([]);
+  var clkedoverlay = null;
 
   //geolocation
   function geolocation() {
@@ -169,8 +169,11 @@ function Main() {
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
+        if(clkedoverlay){
+          clkedoverlay.setMap(null);
+        }
         mapCustomOverlay.setMap(map);
-        setClkedoverlay(el);
+        clkedoverlay = mapCustomOverlay;
         console.log(el);
       });
 
