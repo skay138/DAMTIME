@@ -174,7 +174,6 @@ function Main() {
         }
         mapCustomOverlay.setMap(map);
         clkedoverlay = mapCustomOverlay;
-        console.log(el);
       });
 
       kakao.maps.event.addListener(map, "click", function () {
