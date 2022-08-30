@@ -40,6 +40,9 @@ function Main() {
 
   var map; // 외부접근 위해 전역변수로 설정
 
+  //클릭한 마커
+  var clkedoverlay = null;
+
   //geolocation
   function geolocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
@@ -166,7 +169,11 @@ function Main() {
       //마커의 클릭이벤트
       kakao.maps.event.addListener(marker, "click", function () {
         map.panTo(position);
+        if(clkedoverlay){
+          clkedoverlay.setMap(null);
+        }
         mapCustomOverlay.setMap(map);
+        clkedoverlay = mapCustomOverlay;
       });
 
       kakao.maps.event.addListener(map, "click", function () {
