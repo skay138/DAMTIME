@@ -133,7 +133,7 @@ app.post("/damlogin", (req, res) => {
     "select * from login where userid=?;",
     [id],
     function (err, idck) {
-      if (idck[0].userid == id) {
+      if (idck.length) {
         if(idck[0].ban == 1){
           res.send("ban");
         }
@@ -164,6 +164,7 @@ app.post("/damlogin", (req, res) => {
 app.post("/kakaologin", (req, res) => {
   const id = req.body.id;
   const email = req.body.email;
+  const profile = req.body.profile;
 
   console.log(id);
   console.log(email);
@@ -171,8 +172,8 @@ app.post("/kakaologin", (req, res) => {
     "select * from login where userid=?;",
     [id],
     function (err, idck) {
-      if (idck[0].userid == id) {
-        if (idck[0].ban == 1){
+      if (idck.length) {
+        if (idck[0].ban == "1"){
           res.send("ban");
         }
         else{
@@ -180,8 +181,8 @@ app.post("/kakaologin", (req, res) => {
         }
       } else {
         connection.query(
-          "INSERT INTO login (userid, email) values (?,?);",
-          [id, email],
+          "INSERT INTO login (userid, profile, email) values (?,?,?);",
+          [id, profile, email],
           function (err, newuser) {
             console.log(newuser);
             if (newuser) {

@@ -64,7 +64,7 @@ function EntryPage() {
 
   const nonmember = () => {
     sessionStorage.setItem("loginId", null);
-    navigate("/main");
+    navigate("/help");
   };
 
   //회원가입 버튼

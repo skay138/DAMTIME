@@ -7,6 +7,7 @@ import Addpin from "./Addfin";
 import Menu from "./menu";
 import Adfit from "./Adfit";
 
+
 const { kakao } = window;
 
 function Main() {

@@ -3,6 +3,7 @@ import "./App.css";
 import "./pininfo.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import Adfitmid from "./adfitmid";
 
 function Pininfo({ pin }) {
   const navigate = useNavigate();
@@ -24,9 +25,14 @@ function Pininfo({ pin }) {
 
   return (
     <div id="pininfo" className="info hide">
-      <div className="infotitle"><span className="infospan">{pin.Location}</span></div>
+      <div className="infotitle">
+        <span className="infospan">{pin.Location}</span>
+      </div>
+      <Adfitmid />
       <ul className="infoul">
-        <li>타입 : {pin.FacilityType}</li>
+        <li style={{ marginTop: "0px" }}>
+          {pin.FacilityType ? `타입 : ${pin.FacilityType}` : null}
+        </li>
         <li className="pindes">
           {pin.Description ? `상세설명 : ${pin.Description}` : null}
         </li>
