@@ -54,6 +54,8 @@ const Report = () => {
     note: text,
   };
 
+
+
   useEffect(() => {
     setLoc(pin.Location);
     setDes(pin.Description);
@@ -84,6 +86,10 @@ const Report = () => {
           result[0].road_address !== "제주특별자치도 제주시 첨단로 242"
         ) {
           setLoc(result[0].road_address.address_name);
+          setMlat(clklat);
+          setMlon(clklon);
+        }
+        else{
           setMlat(clklat);
           setMlon(clklon);
         }

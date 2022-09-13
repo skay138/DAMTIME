@@ -52,6 +52,7 @@ const Modify = () => {
   };
 
 
+
   // 클릭해서 얻은 좌표 textarea에 띄워주기 위해 주소화
 
   useEffect(() => {
@@ -145,6 +146,7 @@ const Modify = () => {
     window.history.back();
     
   }
+
 
   return (
     <div>
