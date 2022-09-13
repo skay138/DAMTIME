@@ -87,6 +87,10 @@ const Report = () => {
           setMlat(clklat);
           setMlon(clklon);
         }
+        else{
+          setMlat(clklat);
+          setMlon(clklon);
+        }
       }
     };
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
