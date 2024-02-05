@@ -27,7 +27,7 @@ function About() {
         <p className="team">TEAM DAMDAM</p>
         <p className="name" ><span className="clickthis" onClick={godSangKyu}>박상규</span>
         <span className="clickthis" onClick={assistant}> 최윤호</span>
-        <br />송기원 이상민</p>
+        </p>
         <p className="contact" onClick={() => {navigator.clipboard.writeText("damtimekr@gmail.com"); alert("복사되었습니다.")}}>contact : damtimekr@gmail.com <br/>(클릭하여 메일 복사 )</p>
         <button className="aboutbtn" onClick={tomain}>
       메인으로</button><br />
